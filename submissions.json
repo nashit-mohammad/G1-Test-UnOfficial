@@ -1,0 +1,552 @@
+[
+  {
+    "user": {
+      "name": "Aimon Anwar",
+      "platform": "iPhone",
+      "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.7.6 Mobile/15E148 Safari/604.1"
+    },
+    "feedback": "Great work — you are at or above the practice target.",
+    "improvementAreas": [],
+    "score": {
+      "correct": 20,
+      "total": 20,
+      "answered": 20,
+      "percent": 100,
+      "signsCorrect": 8,
+      "signsTotal": 8,
+      "rulesCorrect": 12,
+      "rulesTotal": 12
+    },
+    "answers": [
+      {
+        "number": 1,
+        "id": "rule-79",
+        "type": "rule",
+        "question": "If you miss your exit on a highway, you should:",
+        "selected": "Continue to the next exit and re-route.",
+        "correct": "Continue to the next exit and re-route.",
+        "status": "correct"
+      },
+      {
+        "number": 2,
+        "id": "rule-72",
+        "type": "rule",
+        "question": "When approaching a stopped school bus on a two-lane road with flashing red lights, you must:",
+        "selected": "Stop and remain stopped until lights are off.",
+        "correct": "Stop and remain stopped until lights are off.",
+        "status": "correct"
+      },
+      {
+        "number": 3,
+        "id": "rule-71",
+        "type": "rule",
+        "question": "If you see a pedestrian with a white cane or guide dog waiting at a curb, you should:",
+        "selected": "Stop and yield the right-of-way.",
+        "correct": "Stop and yield the right-of-way.",
+        "status": "correct"
+      },
+      {
+        "number": 4,
+        "id": "sign-33",
+        "type": "sign",
+        "question": "How should you respond when you see this sign near a school?",
+        "selected": "Slow down, watch for children and be prepared to stop.",
+        "correct": "Slow down, watch for children and be prepared to stop.",
+        "status": "correct"
+      },
+      {
+        "number": 5,
+        "id": "sign-6",
+        "type": "sign",
+        "question": "What restriction does this sign show?",
+        "selected": "The indicated turn is prohibited.",
+        "correct": "The indicated turn is prohibited.",
+        "status": "correct"
+      },
+      {
+        "number": 6,
+        "id": "rule-3",
+        "type": "rule",
+        "question": "Before entering a highway from a private driveway, what is your main responsibility?",
+        "selected": "Yield right-of-way to all vehicles approaching on the highway.",
+        "correct": "Yield right-of-way to all vehicles approaching on the highway.",
+        "status": "correct"
+      },
+      {
+        "number": 7,
+        "id": "rule-51",
+        "type": "rule",
+        "question": "Another vehicle is about to overtake and pass you. What should you do?",
+        "selected": "Keep to the right and allow the vehicle to pass safely.",
+        "correct": "Keep to the right and allow the vehicle to pass safely.",
+        "status": "correct"
+      },
+      {
+        "number": 8,
+        "id": "sign-2",
+        "type": "sign",
+        "question": "When you see this sign, what should you do?",
+        "selected": "Slow or stop as needed and give right-of-way to traffic on the main road.",
+        "correct": "Slow or stop as needed and give right-of-way to traffic on the main road.",
+        "status": "correct"
+      },
+      {
+        "number": 9,
+        "id": "sign-7",
+        "type": "sign",
+        "question": "What restriction does this sign show?",
+        "selected": "The indicated turn is prohibited.",
+        "correct": "The indicated turn is prohibited.",
+        "status": "correct"
+      },
+      {
+        "number": 10,
+        "id": "rule-66",
+        "type": "rule",
+        "question": "When parking uphill with a curb, you should turn your wheels:",
+        "selected": "Away from the curb.",
+        "correct": "Away from the curb.",
+        "status": "correct"
+      },
+      {
+        "number": 11,
+        "id": "rule-73",
+        "type": "rule",
+        "question": "If your brakes fail while driving, you should first:",
+        "selected": "Pump the brake pedal to build pressure.",
+        "correct": "Pump the brake pedal to build pressure.",
+        "status": "correct"
+      },
+      {
+        "number": 12,
+        "id": "rule-16",
+        "type": "rule",
+        "question": "Seat belts are required for:",
+        "selected": "All occupants of the vehicle where seat belts are available.",
+        "correct": "All occupants of the vehicle where seat belts are available.",
+        "status": "correct"
+      },
+      {
+        "number": 13,
+        "id": "sign-27",
+        "type": "sign",
+        "question": "When you see this sign, what should you do?",
+        "selected": "Slow or stop as needed and give right-of-way to traffic on the main road.",
+        "correct": "Slow or stop as needed and give right-of-way to traffic on the main road.",
+        "status": "correct"
+      },
+      {
+        "number": 14,
+        "id": "sign-3",
+        "type": "sign",
+        "question": "What does this regulatory speed sign indicate?",
+        "selected": "The maximum legal speed in ideal conditions.",
+        "correct": "The maximum legal speed in ideal conditions.",
+        "status": "correct"
+      },
+      {
+        "number": 15,
+        "id": "sign-20",
+        "type": "sign",
+        "question": "What does this sign indicate?",
+        "selected": "Bicycle lane; cyclists have priority in the lane.",
+        "correct": "Bicycle lane; cyclists have priority in the lane.",
+        "status": "correct"
+      },
+      {
+        "number": 16,
+        "id": "rule-13",
+        "type": "rule",
+        "question": "When must you use your headlights?",
+        "selected": "From dusk to dawn and in poor visibility.",
+        "correct": "From dusk to dawn and in poor visibility.",
+        "status": "correct"
+      },
+      {
+        "number": 17,
+        "id": "rule-6",
+        "type": "rule",
+        "question": "When deciding whether to make a U-turn, what should you check first?",
+        "selected": "Whether traffic regulations permit a U-turn at that location.",
+        "correct": "Whether traffic regulations permit a U-turn at that location.",
+        "status": "correct"
+      },
+      {
+        "number": 18,
+        "id": "rule-52",
+        "type": "rule",
+        "question": "When deciding whether to make a U-turn, what should you check first?",
+        "selected": "Whether traffic regulations permit a U-turn at that location.",
+        "correct": "Whether traffic regulations permit a U-turn at that location.",
+        "status": "correct"
+      },
+      {
+        "number": 19,
+        "id": "rule-17",
+        "type": "rule",
+        "question": "When passing a cyclist, you should:",
+        "selected": "Give them at least one metre of space when passing at low speeds and more at higher speeds.",
+        "correct": "Give them at least one metre of space when passing at low speeds and more at higher speeds.",
+        "status": "correct"
+      },
+      {
+        "number": 20,
+        "id": "sign-1",
+        "type": "sign",
+        "question": "What must you do at this sign?",
+        "selected": "Come to a complete stop and proceed only when safe.",
+        "correct": "Come to a complete stop and proceed only when safe.",
+        "status": "correct"
+      }
+    ],
+    "submittedAt": "2026-09-22T01:24:05.849Z",
+    "clientIp": "192.168.2.24",
+    "serverUserAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.7.6 Mobile/15E148 Safari/604.1"
+  },
+  {
+    "sessionId": "1790041428730-m5h4l7kwnpj",
+    "difficulty": "medium",
+    "user": {
+      "name": "Aimon Anwar",
+      "platform": "iPhone",
+      "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.7.6 Mobile/15E148 Safari/604.1"
+    },
+    "feedback": "Great work — you are at or above the practice target.",
+    "improvementAreas": [],
+    "score": {
+      "correct": 20,
+      "total": 20,
+      "answered": 20,
+      "percent": 100,
+      "signsCorrect": 5,
+      "signsTotal": 5,
+      "rulesCorrect": 15,
+      "rulesTotal": 15
+    },
+    "answers": [
+      {
+        "number": 1,
+        "id": "sign-33-set-3",
+        "type": "sign",
+        "question": "How should you respond when you see this sign near a school?",
+        "image": "https://files.ontario.ca/3-1-2.jpg",
+        "options": [
+          "Ignore pedestrians; they must yield to vehicles.",
+          "Sound your horn continuously.",
+          "Increase speed to clear the area quickly.",
+          "Slow down, watch for children and be prepared to stop."
+        ],
+        "selected": "Slow down, watch for children and be prepared to stop.",
+        "correct": "Slow down, watch for children and be prepared to stop.",
+        "status": "correct"
+      },
+      {
+        "number": 2,
+        "id": "rule-8-set-26",
+        "type": "rule",
+        "question": "Under all conditions, you should drive at a speed that allows you to:",
+        "image": "https://files.ontario.ca/3-1-21.jpg",
+        "options": [
+          "Stop within a distance that is safe for the conditions.",
+          "Stop within 150 metres.",
+          "Stop within 90 metres.",
+          "Stop within 60 metres."
+        ],
+        "selected": "Stop within a distance that is safe for the conditions.",
+        "correct": "Stop within a distance that is safe for the conditions.",
+        "status": "correct"
+      },
+      {
+        "number": 3,
+        "id": "rule-18-set-16",
+        "type": "rule",
+        "question": "If your vehicle starts to hydroplane, you should:",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "Turn the steering wheel sharply.",
+          "Brake hard immediately.",
+          "Ease off the accelerator and steer straight until you regain traction.",
+          "Accelerate to regain control."
+        ],
+        "selected": "Ease off the accelerator and steer straight until you regain traction.",
+        "correct": "Ease off the accelerator and steer straight until you regain traction.",
+        "status": "correct"
+      },
+      {
+        "number": 4,
+        "id": "rule-29-set-82",
+        "type": "rule",
+        "question": "If you are being tailgated, you should:",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "Stop immediately.",
+          "Speed up to increase distance.",
+          "Slow down gradually and, if safe, change lanes to let them pass.",
+          "Brake suddenly to warn the driver."
+        ],
+        "selected": "Slow down gradually and, if safe, change lanes to let them pass.",
+        "correct": "Slow down gradually and, if safe, change lanes to let them pass.",
+        "status": "correct"
+      },
+      {
+        "number": 5,
+        "id": "rule-36-set-10",
+        "type": "rule",
+        "question": "When approaching a traffic circle (roundabout), you should:",
+        "image": "https://files.ontario.ca/3-1-39a.jpg",
+        "options": [
+          "Enter without yielding.",
+          "Stop in the circle.",
+          "Yield to traffic already in the circle and enter when safe.",
+          "Signal left before entering."
+        ],
+        "selected": "Yield to traffic already in the circle and enter when safe.",
+        "correct": "Yield to traffic already in the circle and enter when safe.",
+        "status": "correct"
+      },
+      {
+        "number": 6,
+        "id": "rule-28-set-102",
+        "type": "rule",
+        "question": "When approaching an intersection with a broken traffic signal (no lights), you should:",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "Yield only to vehicles on the left.",
+          "Wait for police instructions only.",
+          "Treat it as a four-way stop.",
+          "Proceed without stopping."
+        ],
+        "selected": "Treat it as a four-way stop.",
+        "correct": "Treat it as a four-way stop.",
+        "status": "correct"
+      },
+      {
+        "number": 7,
+        "id": "rule-62-set-33",
+        "type": "rule",
+        "question": "Why is driving at the maximum speed limit more dangerous at night than during the day?",
+        "image": "https://files.ontario.ca/3-1-21.jpg",
+        "options": [
+          "You cannot see as far ahead at night, reducing the time to react.",
+          "Parking lights are brighter than headlights.",
+          "Reaction time is always slower at night.",
+          "Roads are always slippery at night."
+        ],
+        "selected": "You cannot see as far ahead at night, reducing the time to react.",
+        "correct": "You cannot see as far ahead at night, reducing the time to react.",
+        "status": "correct"
+      },
+      {
+        "number": 8,
+        "id": "rule-69-set-84",
+        "type": "rule",
+        "question": "When a school bus has its upper red lights flashing and stop arm extended, drivers must:",
+        "image": "https://files.ontario.ca/3-1-2.jpg",
+        "options": [
+          "Pass carefully on the left.",
+          "Honk to alert the driver.",
+          "Stop and remain stopped until lights are turned off and arm retracted.",
+          "Slow down and proceed."
+        ],
+        "selected": "Stop and remain stopped until lights are turned off and arm retracted.",
+        "correct": "Stop and remain stopped until lights are turned off and arm retracted.",
+        "status": "correct"
+      },
+      {
+        "number": 9,
+        "id": "rule-9-set-103",
+        "type": "rule",
+        "question": "As a G1 driver, what blood alcohol level must you maintain while driving?",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "Any level is acceptable if you feel fine.",
+          "Below 0.05 only at night.",
+          "0.00 (no alcohol in your system).",
+          "Below 0.08."
+        ],
+        "selected": "0.00 (no alcohol in your system).",
+        "correct": "0.00 (no alcohol in your system).",
+        "status": "correct"
+      },
+      {
+        "number": 10,
+        "id": "sign-35-set-44",
+        "type": "sign",
+        "question": "What is the correct action when approaching this sign?",
+        "image": "https://files.ontario.ca/3-1-29.jpg",
+        "options": [
+          "Continue if you have the green light.",
+          "Yield and stop if necessary until pedestrians have crossed.",
+          "Drive around pedestrians.",
+          "Sound your horn and proceed."
+        ],
+        "selected": "Yield and stop if necessary until pedestrians have crossed.",
+        "correct": "Yield and stop if necessary until pedestrians have crossed.",
+        "status": "correct"
+      },
+      {
+        "number": 11,
+        "id": "rule-51-set-104",
+        "type": "rule",
+        "question": "An emergency vehicle approaches with its siren and lights activated while you are near an intersection. What should you do?",
+        "image": "https://files.ontario.ca/3-1-58.jpg",
+        "options": [
+          "Pull over and stop as soon as it is safe, keeping the intersection clear.",
+          "Follow the emergency vehicle through traffic.",
+          "Continue at the same speed if you have a green light.",
+          "Stop in the intersection so the vehicle can go around you."
+        ],
+        "selected": "Pull over and stop as soon as it is safe, keeping the intersection clear.",
+        "correct": "Pull over and stop as soon as it is safe, keeping the intersection clear.",
+        "status": "correct"
+      },
+      {
+        "number": 12,
+        "id": "sign-22-set-113",
+        "type": "sign",
+        "question": "What should you be prepared for when you see this sign?",
+        "image": "https://files.ontario.ca/3-1-56a.jpg",
+        "options": [
+          "A roundabout ahead.",
+          "Railway crossing ahead.",
+          "Traffic lights ahead; be prepared to stop.",
+          "No stopping zone."
+        ],
+        "selected": "Traffic lights ahead; be prepared to stop.",
+        "correct": "Traffic lights ahead; be prepared to stop.",
+        "status": "correct"
+      },
+      {
+        "number": 13,
+        "id": "rule-43-set-107",
+        "type": "rule",
+        "question": "When turning left at an intersection, you must:",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "Speed up to beat oncoming cars.",
+          "Turn without signalling.",
+          "Yield to oncoming traffic and pedestrians in the crosswalk.",
+          "Always have the right-of-way."
+        ],
+        "selected": "Yield to oncoming traffic and pedestrians in the crosswalk.",
+        "correct": "Yield to oncoming traffic and pedestrians in the crosswalk.",
+        "status": "correct"
+      },
+      {
+        "number": 14,
+        "id": "sign-19-set-62",
+        "type": "sign",
+        "question": "What does this sign mean?",
+        "image": "https://files.ontario.ca/3-1-9.jpg",
+        "options": [
+          "You may stop to load/unload.",
+          "Stop only for pedestrians.",
+          "Parking allowed for short periods.",
+          "Stopping is prohibited at all times."
+        ],
+        "selected": "Stopping is prohibited at all times.",
+        "correct": "Stopping is prohibited at all times.",
+        "status": "correct"
+      },
+      {
+        "number": 15,
+        "id": "rule-42-set-56",
+        "type": "rule",
+        "question": "If you approach a school crossing guard displaying a stop sign, you must:",
+        "image": "https://files.ontario.ca/3-1-2.jpg",
+        "options": [
+          "Stop and remain stopped until the guard signals you to proceed.",
+          "Honk and proceed.",
+          "Slow down and proceed.",
+          "Drive around the guard."
+        ],
+        "selected": "Stop and remain stopped until the guard signals you to proceed.",
+        "correct": "Stop and remain stopped until the guard signals you to proceed.",
+        "status": "correct"
+      },
+      {
+        "number": 16,
+        "id": "rule-67-set-80",
+        "type": "rule",
+        "question": "What is the two-second rule used for?",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "Measuring the time to change lanes.",
+          "Determining a safe following distance in good conditions.",
+          "Timing how long to wait at a stop sign.",
+          "Measuring reaction time for braking."
+        ],
+        "selected": "Determining a safe following distance in good conditions.",
+        "correct": "Determining a safe following distance in good conditions.",
+        "status": "correct"
+      },
+      {
+        "number": 17,
+        "id": "rule-39-set-73",
+        "type": "rule",
+        "question": "If you see a 'No Stopping' sign, you must:",
+        "image": "https://files.ontario.ca/3-1-11.jpg",
+        "options": [
+          "Stop only for emergency vehicles.",
+          "Stop only for deliveries.",
+          "You may stop to pick up passengers.",
+          "Not stop at any time for any reason."
+        ],
+        "selected": "Not stop at any time for any reason.",
+        "correct": "Not stop at any time for any reason.",
+        "status": "correct"
+      },
+      {
+        "number": 18,
+        "id": "rule-50-set-75",
+        "type": "rule",
+        "question": "Before changing lanes, when should you check your blind spot?",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "After signalling and checking mirrors, immediately before moving laterally.",
+          "Only after moving halfway into the next lane.",
+          "Only when driving beside a large truck.",
+          "After accelerating into the next lane."
+        ],
+        "selected": "After signalling and checking mirrors, immediately before moving laterally.",
+        "correct": "After signalling and checking mirrors, immediately before moving laterally.",
+        "status": "correct"
+      },
+      {
+        "number": 19,
+        "id": "sign-39-set-38",
+        "type": "sign",
+        "question": "What does this sign indicate ahead?",
+        "image": "https://files.ontario.ca/3-1-39a.jpg",
+        "options": [
+          "A four-way stop.",
+          "A tunnel entrance.",
+          "A dead end.",
+          "A circular intersection (roundabout) ahead."
+        ],
+        "selected": "A circular intersection (roundabout) ahead.",
+        "correct": "A circular intersection (roundabout) ahead.",
+        "status": "correct"
+      },
+      {
+        "number": 20,
+        "id": "rule-78-set-77",
+        "type": "rule",
+        "question": "When merging onto a highway, you should:",
+        "image": "https://files.ontario.ca/3-1-58.jpg",
+        "options": [
+          "Reverse if there is no gap.",
+          "Enter at any speed and force your way in.",
+          "Stop at the end of the ramp and wait for a gap.",
+          "Match the speed of traffic and merge when safe."
+        ],
+        "selected": "Match the speed of traffic and merge when safe.",
+        "correct": "Match the speed of traffic and merge when safe.",
+        "status": "correct"
+      }
+    ],
+    "submittedAt": "2026-09-22T02:12:50.729Z",
+    "clientIp": "192.168.2.24",
+    "serverUserAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.7.6 Mobile/15E148 Safari/604.1"
+  }
+]

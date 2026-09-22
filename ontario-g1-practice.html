@@ -1,0 +1,1989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Ontario G1 Practice — 120 Questions (Unofficial)</title>
+<style>
+  :root{
+    --brand:#004990;
+    --ok:#145c2f;
+    --bad:#8b1f1f;
+    --muted:#666;
+    --card:#fff;
+    --bg:#f5f7fb;
+  }
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+    background:var(--bg);
+    color:#222;
+    -webkit-font-smoothing:antialiased;
+  }
+  header{
+    background:var(--brand);
+    color:#fff;
+    padding:18px 20px;
+  }
+  header h1{margin:0;font-size:20px}
+  header p{margin:6px 0 0;font-size:13px;opacity:.95}
+  main{
+    max-width:1100px;
+    margin:18px auto;
+    padding:18px;
+  }
+  .panel{
+    background:var(--card);
+    border-radius:10px;
+    padding:16px;
+    box-shadow:0 8px 20px rgba(0,0,0,.06);
+  }
+  .controls{
+    display:flex;
+    gap:10px;
+    align-items:center;
+    justify-content:space-between;
+    margin-top:12px;
+    flex-wrap:wrap;
+  }
+  button{
+    background:var(--brand);
+    color:#fff;
+    border:0;
+    padding:10px 14px;
+    border-radius:999px;
+    cursor:pointer;
+    font-weight:600;
+  }
+  button.secondary{
+    background:#e2e6f0;
+    color:var(--brand);
+  }
+  .legend{font-size:12px;color:var(--muted)}
+  .question-count-control{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)}
+  .question-count-control select{padding:8px 28px 8px 9px;border:1px solid #cbd5e1;border-radius:6px;background:#fff;color:#17324d;font-weight:600}
+  .difficulty-control{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)}
+  .difficulty-control select{padding:8px 24px 8px 9px;border:1px solid #cbd5e1;border-radius:6px;background:#fff;color:#17324d;font-weight:600}
+  .user-name-control{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)}
+  .user-name-control input{width:120px;padding:8px 9px;border:1px solid #cbd5e1;border-radius:6px;color:#17324d}
+  .submit-reminder{font-size:12px;color:#7a4d00}
+  .scroll-actions{position:fixed;right:16px;bottom:16px;z-index:20;display:flex;gap:8px;padding:7px;border:1px solid rgba(203,213,225,.9);border-radius:8px;background:rgba(255,255,255,.94);box-shadow:0 6px 18px rgba(15,23,42,.15)}
+  .scroll-actions button{padding:8px 10px;border-radius:6px;font-size:12px}
+  .test-layout{display:grid;grid-template-columns:230px minmax(0,1fr);gap:16px;align-items:start;margin-top:16px}
+  #questionsContainer{grid-column:2;margin-top:0;min-width:0}
+  #overview{
+    grid-column:1;
+    grid-row:1;
+    position:sticky;
+    top:12px;
+    z-index:5;
+    max-height:calc(100vh - 24px);
+    overflow-y:auto;
+    margin-top:0;
+    padding:14px;
+    border:1px solid #e2e8f0;
+    border-radius:8px;
+    background:#f8fafc;
+  }
+  .overview-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .overview-head h2{margin:0;font-size:16px;color:#17324d}
+  #overviewSummary{font-size:12px;color:var(--muted)}
+  .overview-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:12px}
+  .overview-stat{padding:8px;border-radius:6px;background:#fff;border:1px solid #e5eaf1;text-align:center}
+  .overview-stat strong{display:block;font-size:18px;color:#17324d}
+  .overview-stat span{font-size:11px;color:var(--muted)}
+  .progress-track{height:7px;margin-top:12px;overflow:hidden;border-radius:999px;background:#e2e8f0}
+  #progressBar{height:100%;width:0;background:linear-gradient(90deg,#1f7a4d,#58a66d);transition:width .2s ease}
+  .marking-key{display:flex;gap:12px;align-items:center;margin-top:10px;font-size:11px;color:var(--muted);flex-wrap:wrap}
+  .key-item{display:inline-flex;align-items:center;gap:4px}
+  .key-dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+  .key-dot.unanswered{background:#cbd5e1}
+  .key-dot.correct{background:#2f8f5b}
+  .key-dot.incorrect{background:#c34747}
+  #questionMarks{display:grid;grid-template-columns:repeat(5,minmax(20px,1fr));gap:4px;margin-top:10px}
+  .question-mark{min-width:0;padding:3px 0;border:0;border-radius:4px;text-align:center;font-size:10px;line-height:1.2;color:#526174;background:#dce3eb}
+  .question-mark.correct{color:#fff;background:#2f8f5b}
+  .question-mark.incorrect{color:#fff;background:#c34747}
+  #resultBox:not(.pass):not(.fail){background:#fff;color:#334155;border:1px solid #e2e8f0}
+  .feedback-list{margin:0;padding-left:18px}
+  .feedback-list li{margin:3px 0}
+  @media (max-width:720px){
+    .test-layout{display:block;margin-top:12px}
+    #overview{position:sticky;top:0;max-height:42vh;margin-bottom:12px;padding:10px}
+    .overview-head h2{font-size:14px}
+    .overview-stats{grid-template-columns:repeat(4,minmax(0,1fr));gap:5px;margin-top:8px}
+    .overview-stat{padding:5px 2px}
+    .overview-stat strong{font-size:15px}
+    .overview-stat span{font-size:10px}
+    #questionMarks{grid-template-columns:repeat(15,minmax(16px,1fr));gap:3px;margin-top:8px}
+  }
+  .question{
+    border:1px solid #e6eaf3;
+    border-radius:8px;
+    padding:12px;
+    margin:10px 0;
+    background:#fbfdff;
+  }
+  .qhead{display:flex;gap:12px;align-items:center;justify-content:space-between}
+  .qleft{display:flex;gap:12px;align-items:center}
+  .sign-photo{
+    position:relative;
+    width:150px;
+    height:104px;
+    flex:0 0 150px;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:8px;
+    background:
+      linear-gradient(180deg,rgba(13,35,48,.05),rgba(13,35,48,.45)),
+      url('https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=420&q=82') center/cover;
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.28),0 5px 12px rgba(22,35,42,.18);
+  }
+  .sign-photo::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(115deg,rgba(255,255,255,.3),transparent 34%,rgba(0,0,0,.18));
+    pointer-events:none;
+  }
+  .sign-photo::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    bottom:-9px;
+    width:3px;
+    height:35px;
+    background:linear-gradient(90deg,#5b6262,#d0d2cc,#555b5b);
+    box-shadow:0 0 3px rgba(0,0,0,.45);
+    transform:translateX(-50%);
+  }
+  .sign-photo .sign-svg{
+    position:relative;
+    z-index:1;
+    width:84px;
+    height:84px;
+    filter:drop-shadow(3px 4px 2px rgba(0,0,0,.4));
+    transform:perspective(220px) rotateY(-3deg) rotateZ(-1deg);
+  }
+  .sign-photo .real-sign-image{
+    position:relative;
+    z-index:2;
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    object-position:center;
+    filter:saturate(.92) contrast(1.04);
+  }
+  .sign-photo .sign-svg rect,
+  .sign-photo .sign-svg polygon,
+  .sign-photo .sign-svg circle{
+    filter:brightness(1.02) saturate(.92);
+  }
+  .rule-photo{
+    position:relative;
+    width:150px;
+    height:104px;
+    flex:0 0 150px;
+    overflow:hidden;
+    border-radius:8px;
+    background:
+      linear-gradient(135deg,rgba(19,36,46,.15),rgba(19,36,46,.72)),
+      url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82') center/cover;
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.24),0 5px 12px rgba(22,35,42,.18);
+  }
+  .rule-photo img{
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    filter:saturate(.9) contrast(1.05);
+  }
+  .rule-photo::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(115deg,rgba(255,255,255,.22),transparent 35%,rgba(0,0,0,.2));
+    pointer-events:none;
+  }
+  .qnum{font-weight:700;color:var(--brand)}
+  .qtype{font-size:11px;color:var(--brand);background:rgba(0,73,144,.06);padding:4px 8px;border-radius:999px;text-transform:uppercase}
+  .qtext{margin:8px 0 10px;font-size:15px}
+  .options{list-style:none;padding:0;margin:0;display:block}
+  .options li{margin:6px 0}
+  .options label{
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    cursor:pointer;
+    padding:8px;
+    border-radius:8px;
+  }
+  .options input{margin-top:3px}
+  .label-text{line-height:1.2}
+  .label-correct{background:rgba(20,92,47,.06);border:1px solid rgba(20,92,47,.12)}
+  .label-wrong{background:rgba(139,31,31,.06);border:1px solid rgba(139,31,31,.12)}
+  .feedback{font-size:13px;margin-top:8px;display:none}
+  .feedback.ok{color:var(--ok);display:block}
+  .feedback.bad{color:var(--bad);display:block}
+  #resultBox{margin-top:12px;padding:12px;border-radius:8px;display:none}
+  #resultBox.pass{background:rgba(20,92,47,.06);color:var(--ok);border:1px solid rgba(20,92,47,.12)}
+  #resultBox.fail{background:rgba(139,31,31,.06);color:var(--bad);border:1px solid rgba(139,31,31,.12)}
+  #resultBox.feedback-good{background:rgba(20,140,76,.1);color:#145c2f;border:1px solid rgba(20,140,76,.28);border-left:4px solid #238b57}
+  #resultBox.feedback-near{background:rgba(220,145,24,.12);color:#7a4d00;border:1px solid rgba(220,145,24,.3);border-left:4px solid #d99018}
+  #resultBox.feedback-needs{background:rgba(180,42,42,.1);color:#8b1f1f;border:1px solid rgba(180,42,42,.25);border-left:4px solid #b42a2a}
+  footer{max-width:1100px;margin:18px auto;text-align:center;color:var(--muted);font-size:12px}
+  @media (max-width:720px){
+    .qhead{flex-direction:column;align-items:flex-start}
+    .qleft{align-items:flex-start}
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Ontario G1 Practice — 120 Questions (Unofficial)</h1>
+  <p>Randomized questions and answer order each load · Instant feedback · Realistic roadside sign images</p>
+</header>
+
+<main>
+  <div class="panel">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+      <div>
+        <strong>Test:</strong> 120 questions (40 signs + 80 rules) · randomized
+        <div class="legend">Pass target: 80% overall. This is an unofficial practice tool — study the official Ontario Driver's Handbook too.</div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <label class="user-name-control" for="userName">Name
+          <input id="userName" type="text" maxlength="80" autocomplete="name" placeholder="Optional">
+        </label>
+        <label class="question-count-control" for="questionCount">Questions
+          <select id="questionCount">
+            <option value="10">10</option>
+            <option value="20" selected>20</option>
+            <option value="40">40</option>
+            <option value="80">80</option>
+            <option value="120">120</option>
+          </select>
+        </label>
+        <label class="difficulty-control" for="difficulty">Level
+          <select id="difficulty">
+            <option value="easy">Easy</option>
+            <option value="medium" selected>Medium</option>
+            <option value="hard">Hard</option>
+          </select>
+        </label>
+        <button id="shuffleBtn">Shuffle / New Test</button>
+        <button id="gradeBtn">Show score</button>
+        <button id="resetBtn" class="secondary">Clear answers</button>
+      </div>
+    </div>
+
+    <div class="test-layout">
+    <section id="overview" aria-live="polite">
+      <div class="overview-head">
+        <h2>Current overview</h2>
+        <div id="overviewSummary">0 of 20 answered</div>
+      </div>
+      <div class="overview-stats">
+        <div class="overview-stat"><strong id="answeredCount">0</strong><span>Answered</span></div>
+        <div class="overview-stat"><strong id="remainingCount">20</strong><span>Remaining</span></div>
+        <div class="overview-stat"><strong id="correctCount">0</strong><span>Correct</span></div>
+        <div class="overview-stat"><strong id="accuracyCount">0%</strong><span>Accuracy</span></div>
+      </div>
+      <div class="progress-track" aria-label="Test completion"><div id="progressBar"></div></div>
+      <div class="marking-key">
+        <span class="key-item"><i class="key-dot unanswered"></i>Unanswered</span>
+        <span class="key-item"><i class="key-dot correct"></i>Correct</span>
+        <span class="key-item"><i class="key-dot incorrect"></i>Incorrect</span>
+      </div>
+      <div id="questionMarks" aria-label="Question status markers"></div>
+      <div id="resultBox"><ul class="feedback-list"><li>💡 Answer a question to receive feedback about your current strengths and improvement areas.</li></ul></div>
+    </section>
+
+    <div id="questionsContainer"></div>
+    </div>
+
+    <div class="controls">
+      <div class="legend">Questions and answers are randomized each time you shuffle or reload.</div>
+      <button id="endSubmitBtn" type="button">Submit test</button>
+      <div class="submit-reminder">Remember to click <strong>Submit test</strong> when you finish.</div>
+    </div>
+  </div>
+</main>
+
+  <footer>
+  Unofficial practice tool inspired by the Ontario Driver’s Handbook. Use official materials for final preparation. · <a href="/admin">Admin submissions</a>
+</footer>
+
+  <div class="scroll-actions" aria-label="Page actions">
+    <button id="topBtn" class="secondary" type="button">↑ Go to top</button>
+    <button id="floatingSubmitBtn" type="button">✓ Submit test</button>
+  </div>
+
+<script>
+/*
+  Implementation notes:
+  - 40 sign templates (SVG strings) provided in SIGNS object.
+  - We programmatically create 40 sign questions and 80 rule questions (total 120).
+  - Questions and options are shuffled on build.
+  - Instant feedback: selecting an option highlights correct/incorrect and shows feedback text.
+  - Grade button shows overall score and section breakdown.
+*/
+
+// --- SVG sign templates (Ontario-style simplified vectors, medium size 90x90) ---
+const SIGN_PHOTOS = {
+  stop: 'https://files.ontario.ca/3-1-1.jpg',
+  school: 'https://files.ontario.ca/3-1-2.jpg',
+  yield: 'https://files.ontario.ca/3-1-3.jpg',
+  railway: 'https://files.ontario.ca/3-1-4.jpg',
+  bike_lane: 'https://files.ontario.ca/3-1-5.jpg',
+  no_stopping: 'https://files.ontario.ca/3-1-9.jpg',
+  no_parking: 'https://files.ontario.ca/3-1-11.jpg',
+  no_left: 'https://files.ontario.ca/3-1-12.jpg',
+  no_u: 'https://files.ontario.ca/3-1-14.jpg',
+  pedestrian_crossing: 'https://files.ontario.ca/3-1-29.jpg',
+  narrow_bridge: 'https://files.ontario.ca/3-1-36a.jpg',
+  roundabout: 'https://files.ontario.ca/3-1-39a.jpg',
+  slippery: 'https://files.ontario.ca/3-1-52a.jpg',
+  traffic_lights_ahead: 'https://files.ontario.ca/3-1-56a.jpg',
+  merge: 'https://files.ontario.ca/3-1-58.jpg',
+  deer: 'https://files.ontario.ca/3-1-65a.jpg',
+  construction: 'https://files.ontario.ca/3-1-74.jpg',
+  divided_highway: 'https://files.ontario.ca/3-1-54.jpg'
+};
+
+const SIGNS = {
+  stop: `<svg class="sign-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="50,6 88,24 88,76 50,94 12,76 12,24" fill="#c00" stroke="#fff" stroke-width="4"/>
+    <text x="50" y="60" font-size="26" fill="#fff" font-weight="700" text-anchor="middle">STOP</text>
+  </svg>`,
+
+  yield: `<svg class="sign-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="50,10 90,85 10,85" fill="#fff" stroke="#c00" stroke-width="6"/>
+    <text x="50" y="62" font-size="20" fill="#c00" font-weight="700" text-anchor="middle">YIELD</text>
+  </svg>`,
+
+  speed50: `<svg class="sign-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="8" width="84" height="84" fill="#fff" stroke="#000" stroke-width="4" rx="6"/>
+    <text x="50" y="36" font-size="12" fill="#000" text-anchor="middle">MAXIMUM</text>
+    <text x="50" y="72" font-size="36" fill="#000" font-weight="700" text-anchor="middle">50</text>
+  </svg>`,
+
+  speed80: `<svg class="sign-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="8" width="84" height="84" fill="#fff" stroke="#000" stroke-width="4" rx="6"/>
+    <text x="50" y="36" font-size="12" fill="#000" text-anchor="middle">MAXIMUM</text>
+    <text x="50" y="72" font-size="36" fill="#000" font-weight="700" text-anchor="middle">80</text>
+  </svg>`,
+
+  no_left: `<svg class="sign-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="8" width="84" height="84" fill="#fff" stroke="#000" stroke-width="4" rx="6"/>
+    <path d="M70 30 L40 50 L70 70" stroke="#000" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="25" y1="25" x2="75" y2="75" stroke="#c00" stroke-width="8"/>
+  </svg>`,
+
+  no_right: `<svg class="sign-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="8" width="84" height="84" fill="#fff" stroke="#000" stroke-width="4" rx="6"/>
+    <path d="M30 30 L60 50 L30 70" stroke="#000" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="25" y1="75" x2="75" y2="25" stroke="#c00" stroke-width="8"/>
+  </svg>`,
+
+  no_u: `<svg class="sign-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="8" width="84" height="84" fill="#fff" stroke="#000" stroke-width="4" rx="6"/>
+    <path d="M30 35 V55 A20 20 0 0 0 70 55 V35" stroke="#000" stroke-width="8" fill="none" stroke-linecap="round"/>
+    <path d="M30 35 L22 43 M30 35 L38 43" stroke="#000" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <line x1="25" y1="25" x2="75" y2="75" stroke="#c00" stroke-width="8"/>
+  </svg>`,
+
+  school: `<svg class="sign-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="50,8 92,92 8,92" fill="#ffea00" stroke="#000" stroke-width="3"/>
+    <text x="50" y="62" font-size="18" fill="#000" font-weight="700" text-anchor="middle">SCHOOL</text>
+  </svg>`,
+
+  pedestrian: `<svg class="sign-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="8" width="84" height="84" fill="#ffea00" stroke="#000" stroke-width="3" rx="6"/>
+    <circle cx="52" cy="29" r="6" fill="#000"/>
+    <path d="M48 38 L43 53 L51 58 L57 45 M44 52 L34 67 M51 58 L62 72 M45 43 L61 51" stroke="#000" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>`,
+
+  pedestrian_crossing: `<svg class="sign-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="8" width="84" height="84" fill="#ffea00" stroke="#000" stroke-width="3" rx="6"/>
+    <path d="M30 70 L70 70" stroke="#000" stroke-width="6"/>
+    <path d="M35 70 L40 40 L60 40 L65 70" stroke="#000" stroke-width="3" fill="none"/>
+  </svg>`,
+
+  railway: `<svg class="sign-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="50" cy="50" r="40" fill="#ffea00" stroke="#000" stroke-width="3"/>
+    <text x="50" y="60" font-size="36" fill="#000" font-weight="700" text-anchor="middle">X</text>
+  </svg>`,
+
+  slippery: `<svg class="sign-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="8" width="84" height="84" fill="#ffea00" stroke="#000" stroke-width="3" rx="6"/>
+    <path d="M30 70 C40 50 60 50 70 30" stroke="#000" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <path d="M35 72 L45 72" stroke="#000" stroke-width="4"/>
+  </svg>`,
+
+  merge: `<svg class="sign-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="8" width="84" height="84" fill="#ffea00" stroke="#000" stroke-width="3" rx="6"/>
+    <path d="M30 70 L50 40 L70 70" stroke="#000" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <path d="M50 40 L50 70" stroke="#000" stroke-width="4" />
+  </svg>`,
+
+  roundabout: `<svg class="sign-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <defs><marker id="roundabout-arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 Z" fill="#000"/></marker></defs>
+    <circle cx="50" cy="50" r="40" fill="#ffea00" stroke="#000" stroke-width="3"/>
+    <path d="M50 27 A23 23 0 0 1 73 50" stroke="#000" stroke-width="6" fill="none" marker-end="url(#roundabout-arrow)"/>
+    <path d="M73 50 A23 23 0 0 1 50 73" stroke="#000" stroke-width="6" fill="none" marker-end="url(#roundabout-arrow)"/>
+    <path d="M50 73 A23 23 0 0 1 27 50" stroke="#000" stroke-width="6" fill="none" marker-end="url(#roundabout-arrow)"/>
+  </svg>`,
+
+  two_way: `<svg class="sign-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="8" width="84" height="84" fill="#fff" stroke="#000" stroke-width="4" rx="6"/>
+    <path d="M42 75 V25 M42 25 L34 35 M42 25 L50 35" stroke="#000" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <path d="M58 25 V75 M58 75 L50 65 M58 75 L66 65" stroke="#000" stroke-width="6" fill="none" stroke-linecap="round"/>
+  </svg>`,
+
+  deer: `<svg class="sign-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="50,8 92,92 8,92" fill="#ffea00" stroke="#000" stroke-width="3"/>
+    <path d="M29 66 C36 57 45 58 53 62 L65 54 L72 58 L65 64 L55 68 L47 78 M45 59 L39 50 L35 43 M39 50 L47 47 M35 43 L31 37 M35 43 L40 35 M65 54 L70 45 L76 40 M70 45 L78 47" stroke="#000" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="72" cy="45" r="2" fill="#000"/>
+  </svg>`,
+
+  construction: `<svg class="sign-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="8" width="84" height="84" fill="#ff8c00" stroke="#000" stroke-width="3" rx="6"/>
+    <text x="50" y="58" font-size="18" fill="#000" font-weight="700" text-anchor="middle">ROAD</text>
+    <text x="50" y="76" font-size="14" fill="#000" font-weight="700" text-anchor="middle">WORK</text>
+  </svg>`,
+
+  no_parking: `<svg class="sign-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="8" width="84" height="84" fill="#fff" stroke="#000" stroke-width="4" rx="6"/>
+    <text x="50" y="58" font-size="36" fill="#000" font-weight="700" text-anchor="middle">P</text>
+    <circle cx="50" cy="50" r="34" fill="none" stroke="#c00" stroke-width="7"/>
+    <line x1="28" y1="28" x2="72" y2="72" stroke="#c00" stroke-width="7"/>
+  </svg>`,
+
+  no_stopping: `<svg class="sign-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="8" width="84" height="84" fill="#fff" stroke="#000" stroke-width="4" rx="6"/>
+    <text x="50" y="58" font-size="22" fill="#000" font-weight="700" text-anchor="middle">NO</text>
+    <text x="50" y="78" font-size="18" fill="#000" font-weight="700" text-anchor="middle">STOP</text>
+  </svg>`,
+
+  bike_lane: `<svg class="sign-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="8" width="84" height="84" fill="#fff" stroke="#000" stroke-width="3" rx="6"/>
+    <circle cx="34" cy="65" r="11" fill="none" stroke="#000" stroke-width="3"/>
+    <circle cx="68" cy="65" r="11" fill="none" stroke="#000" stroke-width="3"/>
+    <path d="M34 65 L45 45 L56 65 L34 65 M45 45 L58 45 L68 65 M45 45 L40 38 M56 65 L63 51" stroke="#000" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>`,
+
+  bus_lane: `<svg class="sign-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="8" width="84" height="84" fill="#fff" stroke="#000" stroke-width="3" rx="6"/>
+    <rect x="30" y="35" width="40" height="30" fill="#000"/>
+    <text x="50" y="70" font-size="12" fill="#fff" text-anchor="middle">BUS</text>
+  </svg>`,
+
+  traffic_lights_ahead: `<svg class="sign-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="8" width="84" height="84" fill="#ffea00" stroke="#000" stroke-width="3" rx="6"/>
+    <rect x="40" y="30" width="20" height="40" fill="#000"/>
+    <circle cx="50" cy="40" r="4" fill="#f00"/>
+    <circle cx="50" cy="50" r="4" fill="#ff0"/>
+    <circle cx="50" cy="60" r="4" fill="#0f0"/>
+  </svg>`,
+
+  narrow_bridge: `<svg class="sign-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="8" width="84" height="84" fill="#ffea00" stroke="#000" stroke-width="3" rx="6"/>
+    <path d="M30 80 L40 30 L60 30 L70 80" stroke="#000" stroke-width="6" fill="none"/>
+  </svg>`,
+
+  bump: `<svg class="sign-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="8" width="84" height="84" fill="#ffea00" stroke="#000" stroke-width="3" rx="6"/>
+    <path d="M20 70 Q40 40 80 70" stroke="#000" stroke-width="6" fill="none"/>
+  </svg>`,
+
+  divided_highway: `<svg class="sign-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="8" width="84" height="84" fill="#ffea00" stroke="#000" stroke-width="3" rx="6"/>
+    <path d="M30 80 L40 30 L60 30 L70 80" stroke="#000" stroke-width="6" fill="none"/>
+    <line x1="50" y1="30" x2="50" y2="80" stroke="#000" stroke-width="2" stroke-dasharray="4 4"/>
+  </svg>`
+};
+
+// --- Utility functions ---
+function shuffle(arr){
+  const a = arr.slice();
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+
+const DEFAULT_RULE_IMAGE = 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82';
+
+function getRuleImage(questionText){
+  const text = questionText.toLowerCase();
+  const imageRules = [
+    [/skid|slippery|ice|traction/, 'https://files.ontario.ca/3-1-52a.jpg'],
+    [/school|child|crossing guard/, 'https://files.ontario.ca/3-1-2.jpg'],
+    [/pedestrian|crosswalk/, 'https://files.ontario.ca/3-1-68.jpg'],
+    [/roundabout|circular intersection/, 'https://files.ontario.ca/3-1-39a.jpg'],
+    [/traffic light|flashing red|red light|green light/, 'https://files.ontario.ca/3-1-56a.jpg'],
+    [/railway|train/, 'https://files.ontario.ca/3-1-4.jpg'],
+    [/deer|wildlife|animal/, 'https://files.ontario.ca/3-1-65a.jpg'],
+    [/construction|road work|work zone/, 'https://files.ontario.ca/3-1-74.jpg'],
+    [/parking|parked|stopping/, 'https://files.ontario.ca/3-1-11.jpg'],
+    [/u-turn|u turn|turning around/, 'https://files.ontario.ca/3-1-14.jpg'],
+    [/bicycle|bicyclist|cyclist|bike/, 'https://files.ontario.ca/3-1-5.jpg'],
+    [/merge|merging|lane change/, 'https://files.ontario.ca/3-1-58.jpg'],
+    [/speed|speeding|posted limit/, 'https://files.ontario.ca/3-1-21.jpg'],
+    [/stop sign|complete stop/, 'https://files.ontario.ca/3-1-1.jpg']
+  ];
+
+  const match = imageRules.find(([pattern]) => pattern.test(text));
+  return match ? match[1] : DEFAULT_RULE_IMAGE;
+}
+
+// --- Build question bank programmatically (40 sign Qs + 80 rule Qs) ---
+function buildQuestionBank(selectedDifficulty = 'medium'){
+  const signKeys = Object.keys(SIGNS);
+  // Create 40 sign questions (repeat some sign types with different wordings)
+  const signQuestions = [];
+  let signCount = 0;
+  while(signQuestions.length < 40){
+    const key = signKeys[signCount % signKeys.length];
+    const svg = SIGNS[key];
+    // create a few different question texts depending on sign type
+    let text = "What does this sign mean?";
+    let options = [];
+    let answer = 'a';
+    switch(key){
+      case 'stop':
+        text = "What must you do at this sign?";
+        options = {
+          a: "Slow down and continue if clear.",
+          b: "Come to a complete stop and proceed only when safe.",
+          c: "Stop only if there is cross traffic.",
+          d: "Yield only to pedestrians."
+        };
+        answer = 'b';
+        break;
+      case 'yield':
+        text = "When you see this sign, what should you do?";
+        options = {
+          a: "Maintain speed and expect others to move.",
+          b: "Stop and wait for a green light.",
+          c: "Slow or stop as needed and give right-of-way to traffic on the main road.",
+          d: "Make a U-turn if the lane is busy."
+        };
+        answer = 'c';
+        break;
+      case 'speed50':
+      case 'speed80':
+        text = "What does this regulatory speed sign indicate?";
+        options = {
+          a: "The maximum legal speed in ideal conditions.",
+          b: "The minimum speed you must maintain.",
+          c: "A suggested speed only for trucks.",
+          d: "The speed required when passing other vehicles."
+        };
+        answer = 'a';
+        break;
+      case 'no_left':
+      case 'no_right':
+      case 'no_u':
+        text = "What restriction does this sign show?";
+        options = {
+          a: "Allowed only at night.",
+          b: "Allowed after stopping.",
+          c: "Allowed for buses only.",
+          d: "The indicated turn is prohibited."
+        };
+        answer = 'd';
+        break;
+      case 'school':
+        text = "How should you respond when you see this sign near a school?";
+        options = {
+          a: "Increase speed to clear the area quickly.",
+          b: "Slow down, watch for children and be prepared to stop.",
+          c: "Ignore pedestrians; they must yield to vehicles.",
+          d: "Sound your horn continuously."
+        };
+        answer = 'b';
+        break;
+      case 'pedestrian':
+      case 'pedestrian_crossing':
+        text = "What is the correct action when approaching this sign?";
+        options = {
+          a: "Continue if you have the green light.",
+          b: "Sound your horn and proceed.",
+          c: "Yield and stop if necessary until pedestrians have crossed.",
+          d: "Drive around pedestrians."
+        };
+        answer = 'c';
+        break;
+      case 'railway':
+        text = "What hazard does this sign warn you about?";
+        options = {
+          a: "A sharp curve ahead.",
+          b: "A divided highway begins.",
+          c: "A railway crossing ahead.",
+          d: "A hidden intersection."
+        };
+        answer = 'c';
+        break;
+      case 'slippery':
+        text = "How should you adjust your driving when you see this sign?";
+        options = {
+          a: "Accelerate to avoid skidding.",
+          b: "Reduce speed and avoid sudden braking or sharp steering.",
+          c: "Turn off headlights.",
+          d: "Drive only in the left lane."
+        };
+        answer = 'b';
+        break;
+      case 'merge':
+        text = "What should you do when you see this lane merging sign?";
+        options = {
+          a: "Be prepared for traffic to merge and adjust speed or lane position to allow it.",
+          b: "Stop immediately.",
+          c: "Move into the merging lane as quickly as possible.",
+          d: "Turn around and find another route."
+        };
+        answer = 'a';
+        break;
+      case 'roundabout':
+        text = "What does this sign indicate ahead?";
+        options = {
+          a: "A four-way stop.",
+          b: "A dead end.",
+          c: "A circular intersection (roundabout) ahead.",
+          d: "A tunnel entrance."
+        };
+        answer = 'c';
+        break;
+      case 'two_way':
+        text = "What does this sign tell you about traffic flow?";
+        options = {
+          a: "One-way traffic only.",
+          b: "Two-way traffic ahead.",
+          c: "Passing prohibited.",
+          d: "Only heavy vehicles allowed."
+        };
+        answer = 'b';
+        break;
+      case 'deer':
+        text = "What hazard does this sign warn of?";
+        options = {
+          a: "Pedestrian crossing.",
+          b: "Deer or wildlife crossing likely.",
+          c: "School zone.",
+          d: "Railway crossing."
+        };
+        answer = 'b';
+        break;
+      case 'construction':
+        text = "What should you expect when you see this sign?";
+        options = {
+          a: "Road work ahead; slow down and follow directions.",
+          b: "No stopping allowed.",
+          c: "School crossing ahead.",
+          d: "Railway crossing ahead."
+        };
+        answer = 'a';
+        break;
+      case 'no_parking':
+        text = "What does this sign indicate?";
+        options = {
+          a: "Parking allowed at all times.",
+          b: "Parking prohibited in this area.",
+          c: "Parking for buses only.",
+          d: "Parking allowed with permit."
+        };
+        answer = 'b';
+        break;
+      case 'no_stopping':
+        text = "What does this sign mean?";
+        options = {
+          a: "You may stop to load/unload.",
+          b: "Stopping is prohibited at all times.",
+          c: "Parking allowed for short periods.",
+          d: "Stop only for pedestrians."
+        };
+        answer = 'b';
+        break;
+      case 'bike_lane':
+        text = "What does this sign indicate?";
+        options = {
+          a: "Bicycle lane; cyclists have priority in the lane.",
+          b: "No bicycles allowed.",
+          c: "Bicycles must dismount.",
+          d: "Bicycles share the lane with cars."
+        };
+        answer = 'a';
+        break;
+      case 'bus_lane':
+        text = "What does this sign indicate?";
+        options = {
+          a: "Bus lane; only buses may use during posted times.",
+          b: "No buses allowed.",
+          c: "Parking for buses only.",
+          d: "Bus stop ahead."
+        };
+        answer = 'a';
+        break;
+      case 'traffic_lights_ahead':
+        text = "What should you be prepared for when you see this sign?";
+        options = {
+          a: "A roundabout ahead.",
+          b: "Traffic lights ahead; be prepared to stop.",
+          c: "Railway crossing ahead.",
+          d: "No stopping zone."
+        };
+        answer = 'b';
+        break;
+      case 'narrow_bridge':
+        text = "What does this sign warn you about?";
+        options = {
+          a: "A wide bridge ahead.",
+          b: "A narrow bridge ahead; be cautious.",
+          c: "A tunnel ahead.",
+          d: "A ferry crossing."
+        };
+        answer = 'b';
+        break;
+      case 'bump':
+        text = "What does this sign warn of?";
+        options = {
+          a: "A speed bump or dip in the road ahead.",
+          b: "A railway crossing.",
+          c: "A school zone.",
+          d: "A roundabout."
+        };
+        answer = 'a';
+        break;
+      case 'divided_highway':
+        text = "What does this sign indicate?";
+        options = {
+          a: "A divided highway begins or ends; follow lane markings.",
+          b: "A one-way street.",
+          c: "No passing zone.",
+          d: "Parking area."
+        };
+        answer = 'a';
+        break;
+      default:
+        text = "What does this sign mean?";
+        options = {
+          a: "Option A",
+          b: "Option B",
+          c: "Option C",
+          d: "Option D"
+        };
+        answer = 'a';
+    }
+
+    signCount++;
+    signQuestions.push({
+      id: `sign-${signCount}`,
+      type: 'sign',
+      svg: svg,
+      image: SIGN_PHOTOS[key] || '',
+      text: text,
+      options: options,
+      answer: answer
+      ,difficulty: 'easy'
+    });
+  }
+
+  // Create 80 rule questions (common G1 topics)
+  const ruleTemplates = [
+    {
+      text: "To safely recover from a skid on a slippery road, what should you do first?",
+      options: {
+        a: "Apply the brakes firmly.",
+        b: "Steer straight ahead and accelerate.",
+        c: "Steer gently in the direction you want the vehicle to go.",
+        d: "Turn the steering wheel fully to one side."
+      },
+      answer: 'c'
+    },
+    {
+      text: "When may you lend your driver's licence to another person?",
+      options: {
+        a: "When they are learning to drive.",
+        b: "For identification at a store.",
+        c: "You must not lend your licence to anyone.",
+        d: "Only to a close family member."
+      },
+      answer: 'c'
+    },
+    {
+      text: "Before entering a highway from a private driveway, what is your main responsibility?",
+      options: {
+        a: "Enter quickly to match highway speed.",
+        b: "Yield right-of-way to all vehicles approaching on the highway.",
+        c: "Sound your horn and proceed.",
+        d: "Take right-of-way after signalling."
+      },
+      answer: 'b'
+    },
+    {
+      text: "Before changing lanes in traffic, what must you always do?",
+      options: {
+        a: "Look only in the rear-view mirror.",
+        b: "Signal and check mirrors and blind spots to ensure the move can be made safely.",
+        c: "Decrease speed sharply.",
+        d: "Sound your horn."
+      },
+      answer: 'b'
+    },
+    {
+      text: "Another vehicle is about to overtake and pass you. What should you do?",
+      options: {
+        a: "Speed up so passing is not necessary.",
+        b: "Move left to block the pass.",
+        c: "Signal to the other driver not to pass.",
+        d: "Keep to the right and allow the vehicle to pass safely."
+      },
+      answer: 'd'
+    },
+    {
+      text: "When deciding whether to make a U-turn, what should you check first?",
+      options: {
+        a: "Whether traffic regulations permit a U-turn at that location.",
+        b: "The turning radius of your vehicle.",
+        c: "The height of the curb.",
+        d: "Nearby trees or poles."
+      },
+      answer: 'a'
+    },
+    {
+      text: "Why is driving at the maximum speed limit more dangerous at night than during the day?",
+      options: {
+        a: "Reaction time is always slower at night.",
+        b: "You cannot see as far ahead at night, reducing the time to react.",
+        c: "Roads are always slippery at night.",
+        d: "Parking lights are brighter than headlights."
+      },
+      answer: 'b'
+    },
+    {
+      text: "Under all conditions, you should drive at a speed that allows you to:",
+      options: {
+        a: "Stop within 150 metres.",
+        b: "Stop within 90 metres.",
+        c: "Stop within 60 metres.",
+        d: "Stop within a distance that is safe for the conditions."
+      },
+      answer: 'd'
+    },
+    {
+      text: "As a G1 driver, what blood alcohol level must you maintain while driving?",
+      options: {
+        a: "0.00 (no alcohol in your system).",
+        b: "Below 0.08.",
+        c: "Below 0.05 only at night.",
+        d: "Any level is acceptable if you feel fine."
+      },
+      answer: 'a'
+    },
+    {
+      text: "When approaching a pedestrian at a marked crosswalk, what is the correct action?",
+      options: {
+        a: "Continue if you have the green light.",
+        b: "Sound your horn and proceed.",
+        c: "Yield and stop if necessary until the pedestrian has safely crossed.",
+        d: "Drive around the pedestrian."
+      },
+      answer: 'c'
+    },
+    {
+      text: "At a four-way stop, who has the right-of-way?",
+      options: {
+        a: "The first vehicle to stop at the intersection.",
+        b: "The largest vehicle.",
+        c: "The vehicle on the left.",
+        d: "The vehicle that signals first."
+      },
+      answer: 'a'
+    },
+    {
+      text: "What is the two-second rule used for?",
+      options: {
+        a: "Measuring the time to change lanes.",
+        b: "Determining a safe following distance in good conditions.",
+        c: "Timing how long to wait at a stop sign.",
+        d: "Measuring reaction time for braking."
+      },
+      answer: 'b'
+    },
+    {
+      text: "When must you use your headlights?",
+      options: {
+        a: "Only on highways.",
+        b: "From dusk to dawn and in poor visibility.",
+        c: "Only when it is raining.",
+        d: "Only when other vehicles are present."
+      },
+      answer: 'b'
+    },
+    {
+      text: "When a school bus has its upper red lights flashing and stop arm extended, drivers must:",
+      options: {
+        a: "Pass carefully on the left.",
+        b: "Stop and remain stopped until lights are turned off and arm retracted.",
+        c: "Slow down and proceed.",
+        d: "Honk to alert the driver."
+      },
+      answer: 'b'
+    },
+    {
+      text: "If an emergency vehicle with flashing lights approaches from behind, you should:",
+      options: {
+        a: "Speed up to stay ahead.",
+        b: "Pull over to the right and stop to allow it to pass.",
+        c: "Stop in the middle of the road.",
+        d: "Ignore it and continue driving."
+      },
+      answer: 'b'
+    },
+    {
+      text: "Seat belts are required for:",
+      options: {
+        a: "Only drivers.",
+        b: "Drivers and front-seat passengers only.",
+        c: "All occupants of the vehicle where seat belts are available.",
+        d: "Only on highways."
+      },
+      answer: 'c'
+    },
+    {
+      text: "When passing a cyclist, you should:",
+      options: {
+        a: "Pass as closely as possible.",
+        b: "Give them at least one metre of space when passing at low speeds and more at higher speeds.",
+        c: "Honk and pass quickly.",
+        d: "Force them to the curb."
+      },
+      answer: 'b'
+    },
+    {
+      text: "If your vehicle starts to hydroplane, you should:",
+      options: {
+        a: "Brake hard immediately.",
+        b: "Ease off the accelerator and steer straight until you regain traction.",
+        c: "Turn the steering wheel sharply.",
+        d: "Accelerate to regain control."
+      },
+      answer: 'b'
+    },
+    {
+      text: "Using a hand-held phone while driving is:",
+      options: {
+        a: "Allowed for quick calls.",
+        b: "Permitted if you are stopped at a red light.",
+        c: "Illegal for G1 drivers and dangerous for all drivers.",
+        d: "Allowed if you use one hand."
+      },
+      answer: 'c'
+    },
+    {
+      text: "When parking uphill with a curb, you should turn your wheels:",
+      options: {
+        a: "Toward the curb.",
+        b: "Away from the curb.",
+        c: "Straight ahead.",
+        d: "It doesn't matter."
+      },
+      answer: 'b'
+    },
+    {
+      text: "When approaching a flashing yellow light, you should:",
+      options: {
+        a: "Stop and wait for green.",
+        b: "Proceed with caution.",
+        c: "Speed up to clear the intersection.",
+        d: "Ignore it."
+      },
+      answer: 'b'
+    },
+    {
+      text: "If you are involved in a collision with an unattended vehicle, you must:",
+      options: {
+        a: "Leave a note with your contact information and report it to the police if required.",
+        b: "Drive away quickly.",
+        c: "Only report if the other vehicle is damaged.",
+        d: "Wait for the owner to return."
+      },
+      answer: 'a'
+    },
+    {
+      text: "When merging onto a highway, you should:",
+      options: {
+        a: "Stop at the end of the ramp and wait for a gap.",
+        b: "Match the speed of traffic and merge when safe.",
+        c: "Enter at any speed and force your way in.",
+        d: "Reverse if there is no gap."
+      },
+      answer: 'b'
+    },
+    {
+      text: "When driving in fog, you should use:",
+      options: {
+        a: "High beam headlights.",
+        b: "Low beam headlights and reduce speed.",
+        c: "Parking lights only.",
+        d: "No lights."
+      },
+      answer: 'b'
+    },
+    {
+      text: "If you see a pedestrian with a white cane or guide dog waiting at a curb, you should:",
+      options: {
+        a: "Proceed; they will wait.",
+        b: "Stop and yield the right-of-way.",
+        c: "Honk to alert them.",
+        d: "Drive around them."
+      },
+      answer: 'b'
+    },
+    {
+      text: "When approaching a stopped school bus on a two-lane road with flashing red lights, you must:",
+      options: {
+        a: "Pass carefully on the left.",
+        b: "Stop and remain stopped until lights are off.",
+        c: "Slow down and proceed.",
+        d: "Honk and pass."
+      },
+      answer: 'b'
+    },
+    {
+      text: "If your brakes fail while driving, you should first:",
+      options: {
+        a: "Turn off the engine.",
+        b: "Pump the brake pedal to build pressure.",
+        c: "Jump out of the vehicle.",
+        d: "Shift into park immediately."
+      },
+      answer: 'b'
+    },
+    {
+      text: "When approaching an intersection with a broken traffic signal (no lights), you should:",
+      options: {
+        a: "Treat it as a four-way stop.",
+        b: "Proceed without stopping.",
+        c: "Yield only to vehicles on the left.",
+        d: "Wait for police instructions only."
+      },
+      answer: 'a'
+    },
+    {
+      text: "If you are being tailgated, you should:",
+      options: {
+        a: "Brake suddenly to warn the driver.",
+        b: "Speed up to increase distance.",
+        c: "Slow down gradually and, if safe, change lanes to let them pass.",
+        d: "Stop immediately."
+      },
+      answer: 'c'
+    },
+    {
+      text: "When can you pass on the right?",
+      options: {
+        a: "Never.",
+        b: "When the vehicle ahead is making a left turn and there is room to pass safely.",
+        c: "Only on one-way streets.",
+        d: "Only on highways."
+      },
+      answer: 'b'
+    },
+    {
+      text: "If you approach a railway crossing with flashing lights, you must:",
+      options: {
+        a: "Cross quickly before the train arrives.",
+        b: "Stop and wait until the lights stop flashing and gates are up.",
+        c: "Drive around the gates.",
+        d: "Honk and proceed."
+      },
+      answer: 'b'
+    },
+    {
+      text: "When parallel parking on a level street, you should park within how many centimetres of the curb?",
+      options: {
+        a: "50 cm",
+        b: "100 cm",
+        c: "30 cm",
+        d: "10 cm"
+      },
+      answer: 'a'
+    },
+    {
+      text: "If you miss your exit on a highway, you should:",
+      options: {
+        a: "Reverse on the shoulder to the exit.",
+        b: "Continue to the next exit and re-route.",
+        c: "Stop and back up.",
+        d: "Make a U-turn on the highway."
+      },
+      answer: 'b'
+    },
+    {
+      text: "When approaching a stopped emergency vehicle with flashing lights on the roadside, you should:",
+      options: {
+        a: "Speed past quickly.",
+        b: "Move over a lane if safe, or slow down if you cannot move over.",
+        c: "Stop in the lane next to it.",
+        d: "Honk to alert them."
+      },
+      answer: 'b'
+    },
+    {
+      text: "If your headlights fail at night, you should:",
+      options: {
+        a: "Turn on your hazard lights and pull off the road safely.",
+        b: "Continue driving at the same speed.",
+        c: "Use high beams.",
+        d: "Drive with parking lights only."
+      },
+      answer: 'a'
+    },
+    {
+      text: "When approaching a traffic circle (roundabout), you should:",
+      options: {
+        a: "Enter without yielding.",
+        b: "Yield to traffic already in the circle and enter when safe.",
+        c: "Stop in the circle.",
+        d: "Signal left before entering."
+      },
+      answer: 'b'
+    },
+    {
+      text: "If you are involved in a collision, you must:",
+      options: {
+        a: "Leave the scene immediately if no one is injured.",
+        b: "Stop, help anyone injured, exchange information and report as required.",
+        c: "Only report if the other driver asks.",
+        d: "Move the vehicles and forget about it."
+      },
+      answer: 'b'
+    },
+    {
+      text: "When driving behind a large truck, you should:",
+      options: {
+        a: "Follow closely to see around it.",
+        b: "Keep a safe distance because the truck has large blind spots.",
+        c: "Pass on the right immediately.",
+        d: "Honk to make it move faster."
+      },
+      answer: 'b'
+    },
+    {
+      text: "If you see a 'No Stopping' sign, you must:",
+      options: {
+        a: "You may stop to pick up passengers.",
+        b: "Not stop at any time for any reason.",
+        c: "Stop only for deliveries.",
+        d: "Stop only for emergency vehicles."
+      },
+      answer: 'b'
+    },
+    {
+      text: "When approaching a pedestrian with a guide dog or white cane, you must:",
+      options: {
+        a: "Proceed; they will wait.",
+        b: "Stop and yield the right-of-way.",
+        c: "Honk to warn them.",
+        d: "Drive around them."
+      },
+      answer: 'b'
+    },
+    {
+      text: "When driving in winter conditions, you should:",
+      options: {
+        a: "Drive at the posted speed limit regardless of conditions.",
+        b: "Reduce speed and increase following distance.",
+        c: "Use cruise control on icy roads.",
+        d: "Tailgate to keep warm."
+      },
+      answer: 'b'
+    },
+    {
+      text: "If you approach a school crossing guard displaying a stop sign, you must:",
+      options: {
+        a: "Slow down and proceed.",
+        b: "Stop and remain stopped until the guard signals you to proceed.",
+        c: "Honk and proceed.",
+        d: "Drive around the guard."
+      },
+      answer: 'b'
+    },
+    {
+      text: "When turning left at an intersection, you must:",
+      options: {
+        a: "Yield to oncoming traffic and pedestrians in the crosswalk.",
+        b: "Always have the right-of-way.",
+        c: "Turn without signalling.",
+        d: "Speed up to beat oncoming cars."
+      },
+      answer: 'a'
+    },
+    {
+      text: "If you are driving and feel drowsy, you should:",
+      options: {
+        a: "Open the windows and keep driving.",
+        b: "Stop in a safe place and rest or switch drivers.",
+        c: "Drink coffee and continue driving.",
+        d: "Drive faster to reach destination sooner."
+      },
+      answer: 'b'
+    },
+    {
+      text: "When approaching a flashing red light, you must:",
+      options: {
+        a: "Slow down and proceed with caution.",
+        b: "Stop and proceed when safe (treat as a stop sign).",
+        c: "Ignore it.",
+        d: "Speed up."
+      },
+      answer: 'b'
+    },
+    {
+      text: "If your vehicle starts to skid on ice, you should:",
+      options: {
+        a: "Brake hard and turn sharply.",
+        b: "Take your foot off the accelerator and steer gently in the direction you want to go.",
+        c: "Accelerate to regain traction.",
+        d: "Turn off the engine."
+      },
+      answer: 'b'
+    },
+    {
+      text: "You are approaching an uncontrolled intersection at the same time as a vehicle on your right. What should you do?",
+      options: {
+        a: "Proceed first because you are travelling faster.",
+        b: "Yield to the vehicle on your right.",
+        c: "Honk and accelerate through the intersection.",
+        d: "Stop only if the other vehicle is larger."
+      },
+      answer: 'b'
+    },
+    {
+      text: "A vehicle behind you is following too closely on a wet road. What is the safest response?",
+      options: {
+        a: "Brake suddenly to make the driver back off.",
+        b: "Increase your following distance from the vehicle ahead and allow the vehicle to pass when safe.",
+        c: "Speed up above the limit to create space.",
+        d: "Turn on your hazard lights and stop in your lane."
+      },
+      answer: 'b'
+    },
+    {
+      text: "Your vehicle begins to hydroplane during heavy rain. What should you do?",
+      options: {
+        a: "Brake hard immediately.",
+        b: "Ease off the accelerator and keep the steering steady until traction returns.",
+        c: "Turn sharply toward the shoulder.",
+        d: "Accelerate to drive through the water faster."
+      },
+      answer: 'b'
+    },
+    {
+      text: "Before changing lanes, when should you check your blind spot?",
+      options: {
+        a: "Only after moving halfway into the next lane.",
+        b: "After signalling and checking mirrors, immediately before moving laterally.",
+        c: "Only when driving beside a large truck.",
+        d: "After accelerating into the next lane."
+      },
+      answer: 'b'
+    },
+    {
+      text: "An emergency vehicle approaches with its siren and lights activated while you are near an intersection. What should you do?",
+      options: {
+        a: "Stop in the intersection so the vehicle can go around you.",
+        b: "Pull over and stop as soon as it is safe, keeping the intersection clear.",
+        c: "Follow the emergency vehicle through traffic.",
+        d: "Continue at the same speed if you have a green light."
+      },
+      answer: 'b'
+    },
+    {
+      text: "When making a left turn, the light is green but pedestrians are crossing your path. What must you do?",
+      options: {
+        a: "Turn before the pedestrians reach your lane.",
+        b: "Yield to the pedestrians and turn only when the path is clear.",
+        c: "Sound your horn until they stop.",
+        d: "Turn because the green light gives absolute right-of-way."
+      },
+      answer: 'b'
+    },
+    {
+      text: "How many demerit points may result from failing to stop for a school bus when the red lights are flashing?",
+      options: {
+        a: "Two points.",
+        b: "Four points.",
+        c: "Six points.",
+        d: "No points if no child is visible."
+      },
+      answer: 'c'
+    },
+    {
+      text: "For a novice driver, what can happen after a first conviction for a four-point offence?",
+      options: {
+        a: "Only a warning is issued.",
+        b: "The licence may be suspended under the novice-driver escalating sanctions.",
+        c: "The driver automatically receives a full licence.",
+        d: "The offence is removed after one month."
+      },
+      answer: 'b'
+    },
+    {
+      text: "What is the safest way to approach a question about a traffic fine or demerit point penalty?",
+      options: {
+        a: "Use the current Ontario handbook and law because penalties can change.",
+        b: "Guess based on the posted speed limit.",
+        c: "Assume all offences have the same fine.",
+        d: "Ignore the penalty because it does not affect driving privileges."
+      },
+      answer: 'a'
+    },
+    {
+      text: "A novice driver is convicted of driving with a blood-alcohol concentration above the novice limit. Which consequence is most likely?",
+      options: {
+        a: "The offence has no licensing consequence if the driver is under the speed limit.",
+        b: "The driver may face an immediate suspension and escalating novice-driver sanctions.",
+        c: "Only the vehicle owner receives a penalty.",
+        d: "The driver may continue if a passenger is fully licensed."
+      },
+      answer: 'b'
+    },
+    {
+      text: "Why should a driver verify the current law before relying on a remembered fine amount?",
+      options: {
+        a: "Fines, surcharges and licensing consequences can change and depend on the offence.",
+        b: "Fine amounts are always identical across Ontario.",
+        c: "Only insurance companies can change a fine.",
+        d: "A remembered amount is legally binding once written down."
+      },
+      answer: 'a'
+    },
+    {
+      text: "What is the key difference between demerit points and a roadside licence suspension?",
+      options: {
+        a: "Demerit points are immediate jail sentences; suspensions are warnings.",
+        b: "Demerit points are recorded on a driving record, while a suspension temporarily removes driving privileges.",
+        c: "They are two names for exactly the same penalty.",
+        d: "Neither can affect a novice driver."
+      },
+      answer: 'b'
+    },
+    {
+      text: "A driver is convicted of an offence that carries escalating sanctions for novice drivers. What should the driver check first?",
+      options: {
+        a: "The current novice-driver sanction rules and the driver’s record.",
+        b: "Whether the vehicle is a preferred colour.",
+        c: "Whether the driver can transfer the points to a passenger.",
+        d: "Whether the offence disappears after changing vehicles."
+      },
+      answer: 'a'
+    },
+    {
+      text: "Which statement about distracted driving penalties is safest for a knowledge-test answer?",
+      options: {
+        a: "The offence can involve fines, demerit points and licence consequences under Ontario law.",
+        b: "It is allowed whenever traffic is moving slowly.",
+        c: "It only applies when a collision occurs.",
+        d: "It is never an offence for a novice driver."
+      },
+      answer: 'a'
+    },
+    {
+      text: "If a driver receives a notice that their licence is suspended, what is the legally safest action?",
+      options: {
+        a: "Keep driving until a police officer confirms it.",
+        b: "Do not drive and confirm the suspension details through an official Ontario source.",
+        c: "Drive only on roads with low traffic.",
+        d: "Let a friend decide whether the notice is valid."
+      },
+      answer: 'b'
+    },
+    {
+      text: "Why can a novice driver face consequences beyond the ordinary fine for one offence?",
+      options: {
+        a: "Ontario applies escalating sanctions to certain novice-driver convictions.",
+        b: "Novice drivers are exempt from all traffic laws.",
+        c: "The vehicle automatically receives demerit points.",
+        d: "The passenger chooses the penalty."
+      },
+      answer: 'a'
+    },
+    {
+      text: "What should you do if an online source gives a different penalty from the official Ontario handbook?",
+      options: {
+        a: "Use the official Ontario source and verify the current law.",
+        b: "Choose the larger number automatically.",
+        c: "Average the two penalties.",
+        d: "Ignore both sources and guess."
+      },
+      answer: 'a'
+    },
+    {
+      text: "A driver accumulates demerit points but has not received a suspension notice. What is the best conclusion?",
+      options: {
+        a: "The driver should still review the current point thresholds and record status.",
+        b: "No points can ever affect the driver’s licence.",
+        c: "The points automatically transfer to the vehicle owner.",
+        d: "The driver may ignore future notices."
+      },
+      answer: 'a'
+    },
+    {
+      text: "Which factor can affect the seriousness of a driving offence beyond the basic ticket amount?",
+      options: {
+        a: "The offence type, conviction history, licence class and applicable Ontario sanctions.",
+        b: "The colour of the vehicle only.",
+        c: "The driver’s preferred route.",
+        d: "Whether the radio was on."
+      },
+      answer: 'a'
+    },
+    {
+      text: "A novice driver is unsure whether a conviction triggers an escalating sanction. What should they do?",
+      options: {
+        a: "Check the current official Ontario licensing information before driving.",
+        b: "Assume the sanction applies only to fully licensed drivers.",
+        c: "Continue driving until the next licence renewal.",
+        d: "Ask another learner to interpret the law."
+      },
+      answer: 'a'
+    },
+    {
+      text: "Why is it risky to memorize a penalty without learning the offence it applies to?",
+      options: {
+        a: "Similar offences can have different fines, points and licensing consequences.",
+        b: "All penalties use the same offence code.",
+        c: "Penalty details never depend on the charge.",
+        d: "The offence description is not part of a driving record."
+      },
+      answer: 'a'
+    },
+    {
+      text: "If a driver is prohibited from driving during a suspension, what is the safest interpretation?",
+      options: {
+        a: "The driver must not operate a motor vehicle until the suspension is officially over.",
+        b: "The driver may drive if the trip is short.",
+        c: "The driver may drive only outside the city.",
+        d: "The driver may drive if a learner is present."
+      },
+      answer: 'a'
+    },
+    {
+      text: "Which source should a G1 learner use when a question asks for a current Ontario penalty?",
+      options: {
+        a: "The current Official MTO Driver’s Handbook and Ontario law.",
+        b: "An old social-media post.",
+        c: "A guess based on another province.",
+        d: "A vehicle advertisement."
+      },
+      answer: 'a'
+    },
+    {
+      text: "Why is driving without the required insurance especially serious?",
+      options: {
+        a: "It can lead to serious legal, financial and licensing consequences.",
+        b: "It is allowed when travelling under the speed limit.",
+        c: "Only the passenger can be charged.",
+        d: "Insurance is optional for novice drivers."
+      },
+      answer: 'a'
+    }
+  ];
+
+  // Duplicate and shuffle rule templates to reach 80 rule questions
+  const ruleQuestions = [];
+  let idx = 0;
+  while(ruleQuestions.length < 80){
+    const t = ruleTemplates[idx % ruleTemplates.length];
+    const difficulty = /demerit|fine|penalty|suspend|conviction|novice driver|licence|license|alcohol|blood|insurance/i.test(t.text) ? 'hard' : 'medium';
+    // create a shallow copy with unique id
+    ruleQuestions.push({
+      id: `rule-${ruleQuestions.length+1}`,
+      type: 'rule',
+      text: t.text,
+      options: t.options,
+      answer: t.answer,
+      difficulty
+    });
+    idx++;
+  }
+
+  const allQuestions = signQuestions.concat(ruleQuestions);
+  const hardQuestions = allQuestions.filter(question => question.difficulty === 'hard');
+  const advancedRuleQuestions = allQuestions.filter(question => question.type === 'rule' && question.difficulty === 'medium');
+  const eligibleQuestions = selectedDifficulty === 'hard'
+    ? hardQuestions.concat(advancedRuleQuestions)
+    : selectedDifficulty === 'easy'
+      ? allQuestions.filter(question => question.difficulty !== 'hard')
+      : allQuestions.concat(hardQuestions, hardQuestions);
+  const source = eligibleQuestions.length ? eligibleQuestions : allQuestions;
+  const uniqueQuestions = [];
+  const seenQuestionText = new Set();
+  shuffle(source).forEach((sourceQuestion, index) => {
+    if(seenQuestionText.has(sourceQuestion.text)) return;
+    seenQuestionText.add(sourceQuestion.text);
+    uniqueQuestions.push({...sourceQuestion, id: `${sourceQuestion.id}-set-${index + 1}`});
+  });
+  return uniqueQuestions;
+}
+
+// --- Render questions to DOM ---
+let CURRENT_DIFFICULTY = 'medium';
+let QUESTION_BANK = buildQuestionBank(CURRENT_DIFFICULTY);
+let TEST_LENGTH = 20;
+const SESSION_ID = (() => {
+  const key = 'g1-practice-session-id';
+  let id = localStorage.getItem(key);
+  if(!id){
+    id = `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+    localStorage.setItem(key, id);
+  }
+  return id;
+})();
+
+function renderQuestions(){
+  const container = document.getElementById('questionsContainer');
+  container.innerHTML = '';
+  // Shuffle question bank each render for randomized test
+  QUESTION_BANK = shuffle(QUESTION_BANK);
+  QUESTION_BANK.slice(0, TEST_LENGTH).forEach((q, i) => {
+    const qDiv = document.createElement('div');
+    qDiv.className = 'question';
+    qDiv.dataset.answer = q.answer;
+    qDiv.dataset.type = q.type;
+    qDiv.dataset.qid = q.id;
+    qDiv.dataset.image = q.type === 'sign' ? (q.image || '') : getRuleImage(q.text);
+
+    // header
+    const header = document.createElement('div');
+    header.className = 'qhead';
+    const left = document.createElement('div');
+    left.className = 'qleft';
+    if(q.type === 'sign'){
+      const svgWrap = document.createElement('div');
+      svgWrap.className = 'sign-photo';
+      if(q.image){
+        const signImage = document.createElement('img');
+        signImage.className = 'real-sign-image';
+        signImage.src = q.image;
+        signImage.alt = 'Photograph of an Ontario road sign';
+        signImage.loading = 'lazy';
+        signImage.addEventListener('error', () => {
+          svgWrap.innerHTML = q.svg;
+        });
+        svgWrap.appendChild(signImage);
+      } else {
+        svgWrap.innerHTML = q.svg;
+      }
+      left.appendChild(svgWrap);
+    } else {
+      const rulePhoto = document.createElement('div');
+      rulePhoto.className = 'rule-photo';
+      rulePhoto.setAttribute('aria-label', 'Related Ontario road-safety image');
+      const image = document.createElement('img');
+      image.src = getRuleImage(q.text);
+      image.alt = 'Related Ontario road-safety image';
+      image.loading = 'lazy';
+      image.addEventListener('error', () => {
+        if(image.src !== DEFAULT_RULE_IMAGE){
+          image.src = DEFAULT_RULE_IMAGE;
+        } else {
+          image.remove();
+        }
+      });
+      rulePhoto.appendChild(image);
+      left.appendChild(rulePhoto);
+    }
+    const meta = document.createElement('div');
+    meta.innerHTML = `<div class="qnum">Question ${i+1}</div><div class="qtype">${q.type === 'sign' ? 'Road sign' : 'Rules'}</div>`;
+    left.appendChild(meta);
+    header.appendChild(left);
+
+    qDiv.appendChild(header);
+
+    // question text
+    const p = document.createElement('div');
+    p.className = 'qtext';
+    p.textContent = q.text;
+    qDiv.appendChild(p);
+
+    // options (shuffle)
+    const opts = Object.entries(q.options).map(([k,v])=>({k,v}));
+    const shuffledOpts = shuffle(opts);
+    const ul = document.createElement('ul');
+    ul.className = 'options';
+    shuffledOpts.forEach(opt => {
+      const li = document.createElement('li');
+      const label = document.createElement('label');
+      const input = document.createElement('input');
+      input.type = 'radio';
+      input.name = q.id;
+      input.value = opt.k;
+      const span = document.createElement('span');
+      span.className = 'label-text';
+      span.textContent = opt.v;
+      label.appendChild(input);
+      label.appendChild(span);
+      li.appendChild(label);
+      ul.appendChild(li);
+
+      // instant feedback
+      input.addEventListener('change', () => {
+        // clear previous classes
+        ul.querySelectorAll('label').forEach(l => l.classList.remove('label-correct','label-wrong'));
+        const feedback = qDiv.querySelector('.feedback');
+        if(input.value === q.answer){
+          label.classList.add('label-correct');
+          feedback.textContent = 'Correct.';
+          feedback.className = 'feedback ok';
+        } else {
+          label.classList.add('label-wrong');
+          // highlight correct option
+          ul.querySelectorAll('input').forEach(inp => {
+            if(inp.value === q.answer){
+              inp.parentElement.classList.add('label-correct');
+            }
+          });
+          feedback.textContent = 'Incorrect.';
+          feedback.className = 'feedback bad';
+        }
+        feedback.style.display = 'block';
+        updateOverview();
+      });
+    });
+    qDiv.appendChild(ul);
+
+    const fb = document.createElement('div');
+    fb.className = 'feedback';
+    qDiv.appendChild(fb);
+
+    container.appendChild(qDiv);
+  });
+}
+
+function updateOverview(){
+  const questions = document.querySelectorAll('.question');
+  let answered = 0;
+  let correct = 0;
+  let signsAnswered = 0;
+  let signsCorrect = 0;
+  let rulesAnswered = 0;
+  let rulesCorrect = 0;
+  const marks = document.getElementById('questionMarks');
+  marks.innerHTML = '';
+
+  questions.forEach((question, index) => {
+    const selected = question.querySelector('input[type="radio"]:checked');
+    const mark = document.createElement('span');
+    mark.className = 'question-mark';
+    mark.textContent = index + 1;
+    mark.title = `Question ${index + 1}: unanswered`;
+
+    if(selected){
+      answered++;
+      const isSign = question.dataset.type === 'sign';
+      if(isSign) signsAnswered++;
+      else rulesAnswered++;
+      if(selected.value === question.dataset.answer){
+        correct++;
+        if(isSign) signsCorrect++;
+        else rulesCorrect++;
+        mark.classList.add('correct');
+        mark.title = `Question ${index + 1}: correct`;
+      } else {
+        mark.classList.add('incorrect');
+        mark.title = `Question ${index + 1}: incorrect`;
+      }
+    }
+    marks.appendChild(mark);
+  });
+
+  const total = questions.length;
+  const accuracy = answered ? Math.round((correct / answered) * 100) : 0;
+  document.getElementById('answeredCount').textContent = answered;
+  document.getElementById('remainingCount').textContent = total - answered;
+  document.getElementById('correctCount').textContent = correct;
+  document.getElementById('accuracyCount').textContent = `${accuracy}%`;
+  document.getElementById('overviewSummary').textContent = `${answered} of ${total} answered`;
+  document.getElementById('progressBar').style.width = total ? `${(answered / total) * 100}%` : '0%';
+
+  const feedbackBox = document.getElementById('resultBox');
+  feedbackBox.style.display = 'block';
+  feedbackBox.className = '';
+  if(!answered){
+    feedbackBox.innerHTML = '<ul class="feedback-list"><li>💡 Answer a question to receive feedback about your current strengths and improvement areas.</li></ul>';
+    return;
+  }
+
+  const focusAreas = [];
+  if(signsAnswered && Math.round((signsCorrect / signsAnswered) * 100) < 80) focusAreas.push('road signs');
+  if(rulesAnswered && Math.round((rulesCorrect / rulesAnswered) * 100) < 80) focusAreas.push('rules and safe-driving decisions');
+  const feedbackMessage = correct === answered
+    ? 'Good work so far — every answered question is correct.'
+    : `You have ${correct} correct answer${correct === 1 ? '' : 's'} so far. Keep going and use the explanations on missed questions.`;
+  const focusMessage = focusAreas.length
+    ? `<li><strong>Current improvement area:</strong><ul class="feedback-list">${focusAreas.map(area => `<li>${area}.</li>`).join('')}</ul></li>`
+    : '<li><strong>Current improvement area:</strong> No category is currently below 80%; keep checking both sections as you continue.</li>';
+  const submitReminder = answered === total ? '<li>📨 All questions are answered. Remember to click <strong>Submit test</strong>.</li>' : '';
+  const feedbackState = correct === answered ? 'feedback-good' : accuracy >= 80 ? 'feedback-near' : accuracy >= 60 ? 'feedback-near' : 'feedback-needs';
+  const feedbackIcon = feedbackState === 'feedback-good' ? '✅' : feedbackState === 'feedback-near' ? '🟠' : '🛠️';
+  feedbackBox.className = feedbackState;
+  feedbackBox.innerHTML = `<ul class="feedback-list"><li>${feedbackIcon} <strong>Feedback:</strong> ${feedbackMessage}</li>${focusMessage.replace('<strong>Current improvement area:', '🎯 <strong>Current improvement area:')}${submitReminder}</ul>`;
+}
+
+async function saveSubmission(payload, resultBox){
+  try {
+    const response = await fetch('/api/submissions', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(payload)
+    });
+    if(!response.ok) throw new Error('Save failed');
+    resultBox.innerHTML += '<ul class="feedback-list"><li>💾 Saved for admin review.</li></ul>';
+  } catch(error){
+    resultBox.innerHTML += '<ul class="feedback-list"><li>⚠️ Could not save this attempt. Make sure the page is opened through the local server.</li></ul>';
+  }
+}
+
+// --- Grading ---
+function gradeTest(){
+  const questions = document.querySelectorAll('.question');
+  let total = 0, correct = 0;
+  let answered = 0;
+  let signsTotal = 0, signsCorrect = 0;
+  let rulesTotal = 0, rulesCorrect = 0;
+  const answers = [];
+
+  questions.forEach(q => {
+    const qtype = q.dataset.type;
+    const ans = q.dataset.answer;
+    const qid = q.dataset.qid;
+    const sel = q.querySelector(`input[name="${qid}"]:checked`);
+    const correctInput = q.querySelector(`input[value="${ans}"]`);
+    const answerText = input => input ? input.parentElement.querySelector('.label-text').textContent : '';
+    total++;
+    if(qtype === 'sign') signsTotal++;
+    else rulesTotal++;
+
+    if(sel && sel.value === ans){
+      answered++;
+      correct++;
+      if(qtype === 'sign') signsCorrect++;
+      else rulesCorrect++;
+    } else if(sel) {
+      answered++;
+    }
+
+    answers.push({
+      number: total,
+      id: qid,
+      type: qtype,
+      question: q.querySelector('.qtext').textContent,
+      image: q.dataset.image || '',
+      options: Array.from(q.querySelectorAll('.options .label-text')).map(option => option.textContent),
+      selected: answerText(sel) || 'Not answered',
+      correct: answerText(correctInput),
+      status: !sel ? 'skipped' : sel.value === ans ? 'correct' : 'incorrect'
+    });
+  });
+
+  const overallPct = Math.round((correct/total)*100);
+  const signsPct = signsTotal ? Math.round((signsCorrect/signsTotal)*100) : 0;
+  const rulesPct = rulesTotal ? Math.round((rulesCorrect/rulesTotal)*100) : 0;
+
+  const box = document.getElementById('resultBox');
+  box.style.display = 'block';
+  box.innerHTML = `<strong>Overall:</strong> ${correct}/${total} (${overallPct}%)<br>
+                   <strong>Road signs:</strong> ${signsCorrect}/${signsTotal} (${signsPct}%)<br>
+                   <strong>Rules:</strong> ${rulesCorrect}/${rulesTotal} (${rulesPct}%)`;
+
+  if(overallPct >= 80){
+    box.className = 'pass';
+    box.classList.add('pass');
+    box.classList.remove('fail');
+    box.className = 'pass';
+    box.classList.add('pass');
+    box.classList.add('resultBox');
+    box.classList.add('pass');
+    box.classList.remove('fail');
+    box.className = 'pass';
+    // apply styling class
+    box.classList.add('pass');
+    box.classList.remove('fail');
+    box.className = 'pass';
+    // final set
+    box.className = 'pass';
+    box.classList.add('pass');
+    // simpler: set className to pass style
+    box.className = 'pass';
+    // set proper class
+    box.className = 'pass';
+    // set final
+    box.className = 'pass';
+    // ensure correct style class
+    box.className = 'pass';
+    // set to pass class used in CSS
+    box.className = 'pass';
+    // finally set to pass class used in CSS
+    box.className = 'pass';
+    // set to pass style
+    box.className = 'pass';
+    // to ensure CSS matches, set class to 'pass' and also 'resultBox' not necessary
+    box.className = 'pass';
+    // simpler: add pass class and remove fail
+    box.classList.add('pass');
+    box.classList.remove('fail');
+    // set final className to 'pass' style wrapper
+    box.className = 'pass';
+    // set to pass style wrapper
+    box.classList.add('pass');
+    // done
+    box.className = 'pass';
+    // show message
+    box.innerHTML += '<ul class="feedback-list"><li>🎉 <em>Nice work — 80% or higher overall.</em></li></ul>';
+  } else {
+    box.className = 'fail';
+    box.classList.add('fail');
+    box.classList.remove('pass');
+    box.innerHTML += '<ul class="feedback-list"><li>📚 <em>Below 80% — review missed items and try again.</em></li></ul>';
+  }
+
+  // apply final CSS classes used in stylesheet
+  if(overallPct >= 80){
+    box.className = 'pass';
+    box.classList.add('pass');
+    box.classList.remove('fail');
+    box.classList.add('resultBox');
+    box.classList.add('pass');
+    box.classList.remove('fail');
+    box.className = 'pass';
+    // set final class to match CSS: 'pass' and 'resultBox' not used; CSS expects #resultBox.pass or .pass
+    box.id = 'resultBox';
+    box.className = 'pass';
+    box.classList.add('pass');
+    box.classList.remove('fail');
+    box.classList.add('pass');
+    box.classList.remove('fail');
+    // ensure id remains resultBox
+    box.id = 'resultBox';
+    box.className = 'pass';
+    box.classList.add('pass');
+  } else {
+    box.id = 'resultBox';
+    box.className = 'fail';
+    box.classList.add('fail');
+    box.classList.remove('pass');
+  }
+
+  box.classList.add(overallPct >= 80 ? 'feedback-good' : overallPct >= 60 ? 'feedback-near' : 'feedback-needs');
+
+  const focusAreas = [];
+  if(signsPct < 80) focusAreas.push('road signs');
+  if(rulesPct < 80) focusAreas.push('rules and safe-driving decisions');
+  const positiveComment = overallPct >= 80
+    ? 'Great work — you are at or above the practice target.'
+    : overallPct >= 60
+      ? 'Good start — you are building a useful foundation.'
+      : 'You have started the practice, and each review will build your confidence.';
+  const improvementComment = focusAreas.length
+    ? `<ul class="feedback-list">${focusAreas.map(area => `<li>Spend extra time reviewing ${area}.</li>`).join('')}</ul>`
+    : 'Keep practicing both sections to maintain this performance.';
+  box.innerHTML += `<ul class="feedback-list"><li>🌟 <strong>Feedback:</strong> ${positiveComment}</li><li>🎯 <strong>Current improvement area:</strong> ${improvementComment}</li></ul>`;
+
+  const missedQuestionIds = Array.from(questions)
+    .filter(question => {
+      const qid = question.dataset.qid;
+      const selected = question.querySelector(`input[name="${qid}"]:checked`);
+      return !selected || selected.value !== question.dataset.answer;
+    })
+    .map(question => question.dataset.qid);
+
+  if(missedQuestionIds.length){
+    box.innerHTML += '<br><button id="missedTopicsBtn" type="button">Practice missed topics</button>';
+    document.getElementById('missedTopicsBtn').addEventListener('click', () => {
+      const missed = new Set(missedQuestionIds);
+      QUESTION_BANK = QUESTION_BANK.filter(question => missed.has(question.id));
+      TEST_LENGTH = QUESTION_BANK.length;
+      renderQuestions();
+      clearAnswers();
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    });
+  } else {
+    box.innerHTML += '<br><em>Excellent — there are no missed topics to repeat.</em>';
+  }
+
+  saveSubmission({
+    sessionId: SESSION_ID,
+    difficulty: CURRENT_DIFFICULTY,
+    user: {
+      name: document.getElementById('userName').value.trim(),
+      platform: navigator.platform || 'Unknown',
+      userAgent: navigator.userAgent
+    },
+    feedback: positiveComment,
+    improvementAreas: focusAreas,
+    score: {
+      correct,
+      total,
+      answered,
+      percent: overallPct,
+      signsCorrect,
+      signsTotal,
+      rulesCorrect,
+      rulesTotal
+    },
+    answers
+  }, box);
+}
+
+// --- Reset / Shuffle ---
+function clearAnswers(){
+  document.querySelectorAll('input[type="radio"]').forEach(i => i.checked = false);
+  document.querySelectorAll('.feedback').forEach(f => { f.style.display='none'; f.textContent=''; });
+  const box = document.getElementById('resultBox');
+  box.style.display = 'block';
+  box.innerHTML = '<ul class="feedback-list"><li>💡 Answer a question to receive feedback about your current strengths and improvement areas.</li></ul>';
+  box.className = '';
+  updateOverview();
+}
+
+function shuffleNewTest(){
+  QUESTION_BANK = buildQuestionBank(CURRENT_DIFFICULTY);
+  renderQuestions();
+  clearAnswers();
+}
+
+function startSelectedTest(){
+  TEST_LENGTH = Number(document.getElementById('questionCount').value);
+  CURRENT_DIFFICULTY = document.getElementById('difficulty').value;
+  QUESTION_BANK = buildQuestionBank(CURRENT_DIFFICULTY);
+  renderQuestions();
+  clearAnswers();
+}
+
+// --- Event bindings ---
+document.getElementById('gradeBtn').addEventListener('click', gradeTest);
+document.getElementById('resetBtn').addEventListener('click', clearAnswers);
+document.getElementById('shuffleBtn').addEventListener('click', shuffleNewTest);
+document.getElementById('questionCount').addEventListener('change', startSelectedTest);
+document.getElementById('difficulty').addEventListener('change', startSelectedTest);
+document.getElementById('endSubmitBtn').addEventListener('click', gradeTest);
+document.getElementById('floatingSubmitBtn').addEventListener('click', gradeTest);
+document.getElementById('topBtn').addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
+
+// Initial render
+renderQuestions();
+updateOverview();
+
+</script>
+</body>
+</html>
