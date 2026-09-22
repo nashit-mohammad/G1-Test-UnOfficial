@@ -28,6 +28,8 @@
   }
   header h1{margin:0;font-size:20px}
   header p{margin:6px 0 0;font-size:13px;opacity:.95}
+  .admin-nav{display:inline-block;margin-top:12px;padding:6px 10px;border:1px solid rgba(255,255,255,.55);border-radius:6px;color:#fff;font-size:12px;text-decoration:none}
+  .admin-nav:hover,.admin-nav:focus{background:rgba(255,255,255,.14);color:#fff}
   main{
     max-width:1100px;
     margin:18px auto;
@@ -276,12 +278,13 @@
 <header>
   <h1>Ontario G1 Practice — 120 Questions (Unofficial)</h1>
   <p>Randomized questions and answer order each load · Instant feedback · Realistic roadside sign images</p>
+  <a class="admin-nav" href="/admin">Admin</a>
 </header>
 
 <div id="nameModal" class="name-modal" role="dialog" aria-modal="true" aria-labelledby="nameModalTitle">
   <form id="nameForm" class="name-modal-card">
     <h2 id="nameModalTitle">Start your practice test</h2>
-    <p>Enter your name before beginning. Your name is used to identify your response in the admin results.</p>
+    <p>Enter your name before beginning.</p>
     <label for="modalUserName">Your name
       <input id="modalUserName" type="text" maxlength="80" autocomplete="name" required>
     </label>
