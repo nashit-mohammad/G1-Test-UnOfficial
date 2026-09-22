@@ -1611,9 +1611,20 @@ const SESSION_ID = (() => {
   return id;
 })();
 let ATTEMPT_ID = `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+const SAVED_NAME_KEY = 'g1-practice-user-name';
 
 function startNewAttempt(){
   ATTEMPT_ID = `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+}
+
+function restoreSavedName(){
+  const savedName = localStorage.getItem(SAVED_NAME_KEY)?.trim();
+  if(!savedName) return false;
+  const nameInput = document.getElementById('userName');
+  nameInput.value = savedName;
+  nameInput.readOnly = true;
+  document.getElementById('nameModal').hidden = true;
+  return true;
 }
 
 function updateNameRequirement(){
@@ -1652,6 +1663,7 @@ function completeNameEntry(event){
   const nameInput = document.getElementById('userName');
   nameInput.value = name;
   nameInput.readOnly = true;
+  localStorage.setItem(SAVED_NAME_KEY, name);
   updateNameRequirement();
   const modal = document.getElementById('nameModal');
   modal.classList.add('closing');
@@ -2110,8 +2122,13 @@ document.getElementById('topBtn').addEventListener('click', () => window.scrollT
 // Initial render
 renderQuestions();
 updateOverview();
+const hasSavedName = restoreSavedName();
 updateNameRequirement();
-document.getElementById('modalUserName').focus();
+if(hasSavedName){
+  document.getElementById('userName').focus();
+} else {
+  document.getElementById('modalUserName').focus();
+}
 
 </script>
 </body>
