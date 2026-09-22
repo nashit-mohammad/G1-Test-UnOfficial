@@ -224,15 +224,24 @@ const server = http.createServer(async (request, response) => {
   }
 
   if(request.method === 'GET' && requestUrl.pathname === '/health'){
+    const wantsHtml = (request.headers.accept || '').includes('text/html');
+    const sendHealth = (statusCode, payload) => {
+      if(!wantsHtml){
+        sendJson(response, statusCode, payload);
+        return;
+      }
+      response.writeHead(statusCode, {'Content-Type':'text/html; charset=utf-8'});
+      response.end(`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="/favicon.ico"><title>G1 Health Check</title><style>body{margin:0;padding:40px;font-family:system-ui,sans-serif;color:#17324d;background:#f5f7fb}main{max-width:560px;margin:auto;padding:28px;border:1px solid #dbe2ea;border-radius:10px;background:#fff;box-shadow:0 8px 20px rgba(15,23,42,.08)}h1{margin-top:0}strong{color:${payload.ok ? '#176b3c' : '#a52222'}}</style></head><body><main><h1>G1 Health Check</h1><p>Status: <strong>${payload.ok ? 'Healthy' : 'Unavailable'}</strong></p><p>Storage: ${escapeHtml(payload.storage || payload.error || 'Unknown')}</p></main></body></html>`);
+    };
     if(!USE_SUPABASE){
-      sendJson(response, 200, {ok:true, storage:'local'});
+      sendHealth(200, {ok:true, storage:'local'});
       return;
     }
     try {
       await supabaseRequest('submissions?select=id&limit=1');
-      sendJson(response, 200, {ok:true, storage:'supabase'});
+      sendHealth(200, {ok:true, storage:'supabase'});
     } catch(error){
-      sendJson(response, 503, {ok:false, error:'Supabase unavailable'});
+      sendHealth(503, {ok:false, error:'Supabase unavailable'});
     }
     return;
   }
