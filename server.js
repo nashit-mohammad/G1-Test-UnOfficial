@@ -216,6 +216,20 @@ const server = http.createServer(async (request, response) => {
 
   if(isAdminRoute && !requireAdmin(request, response)) return;
 
+  if(request.method === 'GET' && requestUrl.pathname === '/health'){
+    if(!USE_SUPABASE){
+      sendJson(response, 200, {ok:true, storage:'local'});
+      return;
+    }
+    try {
+      await supabaseRequest('submissions?select=id&limit=1');
+      sendJson(response, 200, {ok:true, storage:'supabase'});
+    } catch(error){
+      sendJson(response, 503, {ok:false, error:'Supabase unavailable'});
+    }
+    return;
+  }
+
   if(request.method === 'POST' && requestUrl.pathname === '/api/submissions'){
     let body = '';
     request.on('data', chunk => {
