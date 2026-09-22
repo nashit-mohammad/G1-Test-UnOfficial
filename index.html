@@ -67,11 +67,32 @@
   .difficulty-control select{padding:8px 24px 8px 9px;border:1px solid #cbd5e1;border-radius:6px;background:#fff;color:#17324d;font-weight:600}
   .user-name-control{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)}
   .user-name-control input{width:120px;padding:8px 9px;border:1px solid #cbd5e1;border-radius:6px;color:#17324d}
+  .edit-name-button{padding:5px 7px;border-radius:6px;font-size:13px;line-height:1}
   .top-controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .name-reminder{display:none}
+  .name-modal{position:fixed;inset:0;z-index:50;display:grid;place-items:center;padding:20px;background:rgba(15,23,42,.58);backdrop-filter:blur(4px);animation:modal-fade-in .55s ease both}
+  .name-modal[hidden]{display:none}
+  .name-modal-card{width:min(100%,380px);padding:24px;border:1px solid #dbe4ef;border-radius:14px;background:#fff;box-shadow:0 18px 50px rgba(15,23,42,.28);animation:modal-pop-in .65s cubic-bezier(.2,.8,.2,1) both}
+  .name-modal-card h2{margin:0;color:#17324d;font-size:22px}
+  .name-modal-card p{margin:8px 0 18px;color:var(--muted);font-size:14px;line-height:1.45}
+  .name-modal-card label{display:block;color:#526174;font-size:13px;font-weight:600}
+  .name-modal-card input{display:block;width:100%;box-sizing:border-box;margin-top:7px;padding:11px 12px;border:1px solid #b9c7d8;border-radius:7px;color:#17324d;font:inherit}
+  .name-modal-card input:focus{outline:3px solid rgba(0,73,144,.16);border-color:var(--brand)}
+  .name-modal-card button{margin-top:16px;width:100%;border-radius:7px}
+  .name-modal-card .name-error{min-height:18px;margin:8px 0 0;color:#8b1f1f;font-size:12px}
+  .name-modal.closing{animation:modal-fade-out .55s ease both}
+  .name-modal.closing .name-modal-card{animation:modal-pop-out .55s ease both}
+  .name-field-highlight{animation:name-field-pulse 3.6s ease both}
+  @keyframes modal-fade-in{from{opacity:0}to{opacity:1}}
+  @keyframes modal-fade-out{from{opacity:1}to{opacity:0}}
+  @keyframes modal-pop-in{from{opacity:0;transform:translateY(18px) scale(.96)}to{opacity:1;transform:none}}
+  @keyframes modal-pop-out{from{opacity:1;transform:none}to{opacity:0;transform:translateY(-12px) scale(.98)}}
+  @keyframes name-field-pulse{0%,100%{box-shadow:none}8%{box-shadow:0 0 0 5px rgba(0,73,144,.24)}16%{box-shadow:none}25%{box-shadow:0 0 0 5px rgba(0,73,144,.24)}33%{box-shadow:none}42%{box-shadow:0 0 0 5px rgba(0,73,144,.24)}53%{box-shadow:0 0 0 3px rgba(0,73,144,.1)}68%,88%{box-shadow:0 0 0 1px rgba(0,73,144,.04)}}
   .submit-reminder{font-size:12px;color:#7a4d00}
   .scroll-actions{position:fixed;right:16px;bottom:16px;z-index:20;display:flex;gap:8px;padding:7px;border:1px solid rgba(203,213,225,.9);border-radius:8px;background:rgba(255,255,255,.94);box-shadow:0 6px 18px rgba(15,23,42,.15)}
   .scroll-actions button{padding:8px 10px;border-radius:6px;font-size:12px}
   .test-layout{display:grid;grid-template-columns:230px minmax(0,1fr);gap:16px;align-items:start;margin-top:16px}
+  .test-layout.name-required{display:none}
   #questionsContainer{grid-column:2;margin-top:0;min-width:0}
   #overview{
     grid-column:1;
@@ -257,6 +278,18 @@
   <p>Randomized questions and answer order each load · Instant feedback · Realistic roadside sign images</p>
 </header>
 
+<div id="nameModal" class="name-modal" role="dialog" aria-modal="true" aria-labelledby="nameModalTitle">
+  <form id="nameForm" class="name-modal-card">
+    <h2 id="nameModalTitle">Start your practice test</h2>
+    <p>Enter your name before beginning. Your name is used to identify your response in the admin results.</p>
+    <label for="modalUserName">Your name
+      <input id="modalUserName" type="text" maxlength="80" autocomplete="name" required>
+    </label>
+    <div id="nameError" class="name-error" aria-live="polite"></div>
+    <button type="submit">Continue to test</button>
+  </form>
+</div>
+
 <main>
   <div class="panel">
     <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
@@ -266,7 +299,8 @@
       </div>
       <div class="top-controls">
         <label class="user-name-control" for="userName">Name
-          <input id="userName" type="text" maxlength="80" autocomplete="name" placeholder="Optional">
+          <input id="userName" type="text" maxlength="80" autocomplete="name" placeholder="Required" required aria-required="true">
+          <button id="editNameBtn" class="edit-name-button secondary" type="button" aria-label="Edit name" title="Edit name">&#9998;</button>
         </label>
         <label class="question-count-control" for="questionCount">Questions
           <select id="questionCount">
@@ -287,10 +321,11 @@
         <button id="shuffleBtn">Shuffle / New Test</button>
         <button id="gradeBtn">Show score</button>
         <button id="resetBtn" class="secondary">Clear answers</button>
+        <div id="nameReminder" class="name-reminder">Enter your name to begin the test.</div>
       </div>
     </div>
 
-    <div class="test-layout">
+    <div id="testLayout" class="test-layout name-required">
     <section id="overview" aria-live="polite">
       <div class="overview-head">
         <h2>Current overview</h2>
@@ -1564,6 +1599,55 @@ function startNewAttempt(){
   ATTEMPT_ID = `${Date.now()}-${Math.random().toString(36).slice(2)}`;
 }
 
+function updateNameRequirement(){
+  const nameInput = document.getElementById('userName');
+  const hasName = Boolean(nameInput.value.trim());
+  document.getElementById('testLayout').classList.toggle('name-required', !hasName);
+  document.getElementById('nameReminder').hidden = hasName;
+  document.getElementById('editNameBtn').disabled = !hasName;
+  ['questionCount', 'difficulty', 'shuffleBtn', 'gradeBtn', 'resetBtn', 'endSubmitBtn', 'floatingSubmitBtn'].forEach(id => {
+    document.getElementById(id).disabled = !hasName;
+  });
+}
+
+function openNameEditor(){
+  const nameInput = document.getElementById('userName');
+  const modal = document.getElementById('nameModal');
+  const modalInput = document.getElementById('modalUserName');
+  modalInput.value = nameInput.value;
+  document.getElementById('nameError').textContent = '';
+  modal.hidden = false;
+  modalInput.focus();
+  modalInput.select();
+}
+
+function completeNameEntry(event){
+  event.preventDefault();
+  const modalInput = document.getElementById('modalUserName');
+  const name = modalInput.value.trim();
+  const error = document.getElementById('nameError');
+  if(!name){
+    error.textContent = 'Please enter your name to continue.';
+    modalInput.focus();
+    return;
+  }
+
+  const nameInput = document.getElementById('userName');
+  nameInput.value = name;
+  nameInput.readOnly = true;
+  updateNameRequirement();
+  const modal = document.getElementById('nameModal');
+  modal.classList.add('closing');
+  setTimeout(() => {
+    modal.hidden = true;
+    modal.classList.remove('closing');
+    nameInput.scrollIntoView({behavior:'smooth', block:'center'});
+    nameInput.focus();
+    nameInput.classList.add('name-field-highlight');
+    setTimeout(() => nameInput.classList.remove('name-field-highlight'), 3700);
+  }, 560);
+}
+
 function renderQuestions(){
   const container = document.getElementById('questionsContainer');
   container.innerHTML = '';
@@ -1997,6 +2081,9 @@ document.getElementById('resetBtn').addEventListener('click', clearAnswers);
 document.getElementById('shuffleBtn').addEventListener('click', shuffleNewTest);
 document.getElementById('questionCount').addEventListener('change', startSelectedTest);
 document.getElementById('difficulty').addEventListener('change', startSelectedTest);
+document.getElementById('userName').addEventListener('input', updateNameRequirement);
+document.getElementById('nameForm').addEventListener('submit', completeNameEntry);
+document.getElementById('editNameBtn').addEventListener('click', openNameEditor);
 document.getElementById('endSubmitBtn').addEventListener('click', gradeTest);
 document.getElementById('floatingSubmitBtn').addEventListener('click', gradeTest);
 document.getElementById('topBtn').addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
@@ -2004,6 +2091,8 @@ document.getElementById('topBtn').addEventListener('click', () => window.scrollT
 // Initial render
 renderQuestions();
 updateOverview();
+updateNameRequirement();
+document.getElementById('modalUserName').focus();
 
 </script>
 </body>

@@ -548,5 +548,1405 @@
     "submittedAt": "2026-09-22T02:12:50.729Z",
     "clientIp": "192.168.2.24",
     "serverUserAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.7.6 Mobile/15E148 Safari/604.1"
+  },
+  {
+    "sessionId": "1790090444672-w1nwdhvjdre",
+    "attemptId": "1790097273836-0fr7n27e777o",
+    "difficulty": "medium",
+    "user": {
+      "name": "",
+      "platform": "Win32",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.138.0 Chrome/148.0.7778.280 Electron/42.10.0 Safari/537.36"
+    },
+    "feedback": "You have started the practice, and each review will build your confidence.",
+    "improvementAreas": [
+      "road signs",
+      "rules and safe-driving decisions"
+    ],
+    "score": {
+      "correct": 0,
+      "total": 20,
+      "answered": 0,
+      "percent": 0,
+      "signsCorrect": 0,
+      "signsTotal": 3,
+      "rulesCorrect": 0,
+      "rulesTotal": 17
+    },
+    "answers": [
+      {
+        "number": 1,
+        "id": "rule-69-set-39",
+        "type": "rule",
+        "question": "Which source should a G1 learner use when a question asks for a current Ontario penalty?",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "The current Official MTO Driver’s Handbook and Ontario law.",
+          "A guess based on another province.",
+          "An old social-media post.",
+          "A vehicle advertisement."
+        ],
+        "selected": "Not answered",
+        "correct": "The current Official MTO Driver’s Handbook and Ontario law.",
+        "status": "skipped"
+      },
+      {
+        "number": 2,
+        "id": "sign-8-set-32",
+        "type": "sign",
+        "question": "How should you respond when you see this sign near a school?",
+        "image": "https://files.ontario.ca/3-1-2.jpg",
+        "options": [
+          "Sound your horn continuously.",
+          "Increase speed to clear the area quickly.",
+          "Ignore pedestrians; they must yield to vehicles.",
+          "Slow down, watch for children and be prepared to stop."
+        ],
+        "selected": "Not answered",
+        "correct": "Slow down, watch for children and be prepared to stop.",
+        "status": "skipped"
+      },
+      {
+        "number": 3,
+        "id": "rule-17-set-102",
+        "type": "rule",
+        "question": "When passing a cyclist, you should:",
+        "image": "https://files.ontario.ca/3-1-5.jpg",
+        "options": [
+          "Give them at least one metre of space when passing at low speeds and more at higher speeds.",
+          "Force them to the curb.",
+          "Pass as closely as possible.",
+          "Honk and pass quickly."
+        ],
+        "selected": "Not answered",
+        "correct": "Give them at least one metre of space when passing at low speeds and more at higher speeds.",
+        "status": "skipped"
+      },
+      {
+        "number": 4,
+        "id": "sign-18-set-5",
+        "type": "sign",
+        "question": "What does this sign indicate?",
+        "image": "https://files.ontario.ca/3-1-11.jpg",
+        "options": [
+          "Parking for buses only.",
+          "Parking allowed with permit.",
+          "Parking allowed at all times.",
+          "Parking prohibited in this area."
+        ],
+        "selected": "Not answered",
+        "correct": "Parking prohibited in this area.",
+        "status": "skipped"
+      },
+      {
+        "number": 5,
+        "id": "rule-27-set-3",
+        "type": "rule",
+        "question": "If your brakes fail while driving, you should first:",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "Pump the brake pedal to build pressure.",
+          "Jump out of the vehicle.",
+          "Turn off the engine.",
+          "Shift into park immediately."
+        ],
+        "selected": "Not answered",
+        "correct": "Pump the brake pedal to build pressure.",
+        "status": "skipped"
+      },
+      {
+        "number": 6,
+        "id": "rule-5-set-87",
+        "type": "rule",
+        "question": "Another vehicle is about to overtake and pass you. What should you do?",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "Keep to the right and allow the vehicle to pass safely.",
+          "Speed up so passing is not necessary.",
+          "Signal to the other driver not to pass.",
+          "Move left to block the pass."
+        ],
+        "selected": "Not answered",
+        "correct": "Keep to the right and allow the vehicle to pass safely.",
+        "status": "skipped"
+      },
+      {
+        "number": 7,
+        "id": "rule-31-set-58",
+        "type": "rule",
+        "question": "If you approach a railway crossing with flashing lights, you must:",
+        "image": "https://files.ontario.ca/3-1-4.jpg",
+        "options": [
+          "Stop and wait until the lights stop flashing and gates are up.",
+          "Honk and proceed.",
+          "Cross quickly before the train arrives.",
+          "Drive around the gates."
+        ],
+        "selected": "Not answered",
+        "correct": "Stop and wait until the lights stop flashing and gates are up.",
+        "status": "skipped"
+      },
+      {
+        "number": 8,
+        "id": "rule-54-set-12",
+        "type": "rule",
+        "question": "For a novice driver, what can happen after a first conviction for a four-point offence?",
+        "image": "https://files.ontario.ca/3-1-52a.jpg",
+        "options": [
+          "Only a warning is issued.",
+          "The driver automatically receives a full licence.",
+          "The licence may be suspended under the novice-driver escalating sanctions.",
+          "The offence is removed after one month."
+        ],
+        "selected": "Not answered",
+        "correct": "The licence may be suspended under the novice-driver escalating sanctions.",
+        "status": "skipped"
+      },
+      {
+        "number": 9,
+        "id": "rule-4-set-42",
+        "type": "rule",
+        "question": "Before changing lanes in traffic, what must you always do?",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "Sound your horn.",
+          "Look only in the rear-view mirror.",
+          "Signal and check mirrors and blind spots to ensure the move can be made safely.",
+          "Decrease speed sharply."
+        ],
+        "selected": "Not answered",
+        "correct": "Signal and check mirrors and blind spots to ensure the move can be made safely.",
+        "status": "skipped"
+      },
+      {
+        "number": 10,
+        "id": "rule-56-set-29",
+        "type": "rule",
+        "question": "A novice driver is convicted of driving with a blood-alcohol concentration above the novice limit. Which consequence is most likely?",
+        "image": "https://files.ontario.ca/3-1-52a.jpg",
+        "options": [
+          "The offence has no licensing consequence if the driver is under the speed limit.",
+          "The driver may face an immediate suspension and escalating novice-driver sanctions.",
+          "The driver may continue if a passenger is fully licensed.",
+          "Only the vehicle owner receives a penalty."
+        ],
+        "selected": "Not answered",
+        "correct": "The driver may face an immediate suspension and escalating novice-driver sanctions.",
+        "status": "skipped"
+      },
+      {
+        "number": 11,
+        "id": "rule-16-set-21",
+        "type": "rule",
+        "question": "Seat belts are required for:",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "Only on highways.",
+          "All occupants of the vehicle where seat belts are available.",
+          "Drivers and front-seat passengers only.",
+          "Only drivers."
+        ],
+        "selected": "Not answered",
+        "correct": "All occupants of the vehicle where seat belts are available.",
+        "status": "skipped"
+      },
+      {
+        "number": 12,
+        "id": "rule-57-set-14",
+        "type": "rule",
+        "question": "Why should a driver verify the current law before relying on a remembered fine amount?",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "Only insurance companies can change a fine.",
+          "Fine amounts are always identical across Ontario.",
+          "A remembered amount is legally binding once written down.",
+          "Fines, surcharges and licensing consequences can change and depend on the offence."
+        ],
+        "selected": "Not answered",
+        "correct": "Fines, surcharges and licensing consequences can change and depend on the offence.",
+        "status": "skipped"
+      },
+      {
+        "number": 13,
+        "id": "rule-11-set-144",
+        "type": "rule",
+        "question": "At a four-way stop, who has the right-of-way?",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "The largest vehicle.",
+          "The vehicle on the left.",
+          "The first vehicle to stop at the intersection.",
+          "The vehicle that signals first."
+        ],
+        "selected": "Not answered",
+        "correct": "The first vehicle to stop at the intersection.",
+        "status": "skipped"
+      },
+      {
+        "number": 14,
+        "id": "rule-30-set-141",
+        "type": "rule",
+        "question": "When can you pass on the right?",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "When the vehicle ahead is making a left turn and there is room to pass safely.",
+          "Never.",
+          "Only on one-way streets.",
+          "Only on highways."
+        ],
+        "selected": "Not answered",
+        "correct": "When the vehicle ahead is making a left turn and there is room to pass safely.",
+        "status": "skipped"
+      },
+      {
+        "number": 15,
+        "id": "sign-6-set-13",
+        "type": "sign",
+        "question": "What restriction does this sign show?",
+        "image": "",
+        "options": [
+          "Allowed after stopping.",
+          "The indicated turn is prohibited.",
+          "Allowed only at night.",
+          "Allowed for buses only."
+        ],
+        "selected": "Not answered",
+        "correct": "The indicated turn is prohibited.",
+        "status": "skipped"
+      },
+      {
+        "number": 16,
+        "id": "rule-63-set-51",
+        "type": "rule",
+        "question": "What should you do if an online source gives a different penalty from the official Ontario handbook?",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "Choose the larger number automatically.",
+          "Average the two penalties.",
+          "Use the official Ontario source and verify the current law.",
+          "Ignore both sources and guess."
+        ],
+        "selected": "Not answered",
+        "correct": "Use the official Ontario source and verify the current law.",
+        "status": "skipped"
+      },
+      {
+        "number": 17,
+        "id": "rule-60-set-24",
+        "type": "rule",
+        "question": "Which statement about distracted driving penalties is safest for a knowledge-test answer?",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "It is never an offence for a novice driver.",
+          "It is allowed whenever traffic is moving slowly.",
+          "It only applies when a collision occurs.",
+          "The offence can involve fines, demerit points and licence consequences under Ontario law."
+        ],
+        "selected": "Not answered",
+        "correct": "The offence can involve fines, demerit points and licence consequences under Ontario law.",
+        "status": "skipped"
+      },
+      {
+        "number": 18,
+        "id": "rule-36-set-27",
+        "type": "rule",
+        "question": "When approaching a traffic circle (roundabout), you should:",
+        "image": "https://files.ontario.ca/3-1-39a.jpg",
+        "options": [
+          "Stop in the circle.",
+          "Yield to traffic already in the circle and enter when safe.",
+          "Enter without yielding.",
+          "Signal left before entering."
+        ],
+        "selected": "Not answered",
+        "correct": "Yield to traffic already in the circle and enter when safe.",
+        "status": "skipped"
+      },
+      {
+        "number": 19,
+        "id": "rule-48-set-116",
+        "type": "rule",
+        "question": "A vehicle behind you is following too closely on a wet road. What is the safest response?",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "Brake suddenly to make the driver back off.",
+          "Turn on your hazard lights and stop in your lane.",
+          "Speed up above the limit to create space.",
+          "Increase your following distance from the vehicle ahead and allow the vehicle to pass when safe."
+        ],
+        "selected": "Not answered",
+        "correct": "Increase your following distance from the vehicle ahead and allow the vehicle to pass when safe.",
+        "status": "skipped"
+      },
+      {
+        "number": 20,
+        "id": "rule-1-set-6",
+        "type": "rule",
+        "question": "To safely recover from a skid on a slippery road, what should you do first?",
+        "image": "https://files.ontario.ca/3-1-52a.jpg",
+        "options": [
+          "Steer gently in the direction you want the vehicle to go.",
+          "Steer straight ahead and accelerate.",
+          "Turn the steering wheel fully to one side.",
+          "Apply the brakes firmly."
+        ],
+        "selected": "Not answered",
+        "correct": "Steer gently in the direction you want the vehicle to go.",
+        "status": "skipped"
+      }
+    ],
+    "submittedAt": "2026-09-22T17:14:38.516Z",
+    "clientIp": "127.0.0.1",
+    "serverUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.138.0 Chrome/148.0.7778.280 Electron/42.10.0 Safari/537.36"
+  },
+  {
+    "sessionId": "1790097682973-vn5b4mn46km",
+    "attemptId": "1790097682973-2u5ix22ouly",
+    "difficulty": "medium",
+    "user": {
+      "name": "Nashit",
+      "platform": "Win32",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36"
+    },
+    "feedback": "You have started the practice, and each review will build your confidence.",
+    "improvementAreas": [
+      "road signs",
+      "rules and safe-driving decisions"
+    ],
+    "score": {
+      "correct": 0,
+      "total": 20,
+      "answered": 2,
+      "percent": 0,
+      "signsCorrect": 0,
+      "signsTotal": 2,
+      "rulesCorrect": 0,
+      "rulesTotal": 18
+    },
+    "answers": [
+      {
+        "number": 1,
+        "id": "rule-61-set-30",
+        "type": "rule",
+        "question": "If a driver receives a notice that their licence is suspended, what is the legally safest action?",
+        "image": "https://files.ontario.ca/3-1-52a.jpg",
+        "options": [
+          "Let a friend decide whether the notice is valid.",
+          "Keep driving until a police officer confirms it.",
+          "Drive only on roads with low traffic.",
+          "Do not drive and confirm the suspension details through an official Ontario source."
+        ],
+        "selected": "Not answered",
+        "correct": "Do not drive and confirm the suspension details through an official Ontario source.",
+        "status": "skipped"
+      },
+      {
+        "number": 2,
+        "id": "rule-12-set-83",
+        "type": "rule",
+        "question": "What is the two-second rule used for?",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "Timing how long to wait at a stop sign.",
+          "Determining a safe following distance in good conditions.",
+          "Measuring reaction time for braking.",
+          "Measuring the time to change lanes."
+        ],
+        "selected": "Timing how long to wait at a stop sign.",
+        "correct": "Determining a safe following distance in good conditions.",
+        "status": "incorrect"
+      },
+      {
+        "number": 3,
+        "id": "sign-27-set-85",
+        "type": "sign",
+        "question": "When you see this sign, what should you do?",
+        "image": "https://files.ontario.ca/3-1-3.jpg",
+        "options": [
+          "Make a U-turn if the lane is busy.",
+          "Stop and wait for a green light.",
+          "Slow or stop as needed and give right-of-way to traffic on the main road.",
+          "Maintain speed and expect others to move."
+        ],
+        "selected": "Make a U-turn if the lane is busy.",
+        "correct": "Slow or stop as needed and give right-of-way to traffic on the main road.",
+        "status": "incorrect"
+      },
+      {
+        "number": 4,
+        "id": "rule-20-set-60",
+        "type": "rule",
+        "question": "When parking uphill with a curb, you should turn your wheels:",
+        "image": "https://files.ontario.ca/3-1-11.jpg",
+        "options": [
+          "Toward the curb.",
+          "It doesn't matter.",
+          "Straight ahead.",
+          "Away from the curb."
+        ],
+        "selected": "Not answered",
+        "correct": "Away from the curb.",
+        "status": "skipped"
+      },
+      {
+        "number": 5,
+        "id": "rule-53-set-93",
+        "type": "rule",
+        "question": "How many demerit points may result from failing to stop for a school bus when the red lights are flashing?",
+        "image": "https://files.ontario.ca/3-1-2.jpg",
+        "options": [
+          "No points if no child is visible.",
+          "Four points.",
+          "Two points.",
+          "Six points."
+        ],
+        "selected": "Not answered",
+        "correct": "Six points.",
+        "status": "skipped"
+      },
+      {
+        "number": 6,
+        "id": "rule-33-set-28",
+        "type": "rule",
+        "question": "If you miss your exit on a highway, you should:",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "Reverse on the shoulder to the exit.",
+          "Continue to the next exit and re-route.",
+          "Stop and back up.",
+          "Make a U-turn on the highway."
+        ],
+        "selected": "Not answered",
+        "correct": "Continue to the next exit and re-route.",
+        "status": "skipped"
+      },
+      {
+        "number": 7,
+        "id": "rule-59-set-56",
+        "type": "rule",
+        "question": "A driver is convicted of an offence that carries escalating sanctions for novice drivers. What should the driver check first?",
+        "image": "https://files.ontario.ca/3-1-52a.jpg",
+        "options": [
+          "Whether the offence disappears after changing vehicles.",
+          "The current novice-driver sanction rules and the driver’s record.",
+          "Whether the driver can transfer the points to a passenger.",
+          "Whether the vehicle is a preferred colour."
+        ],
+        "selected": "Not answered",
+        "correct": "The current novice-driver sanction rules and the driver’s record.",
+        "status": "skipped"
+      },
+      {
+        "number": 8,
+        "id": "rule-23-set-130",
+        "type": "rule",
+        "question": "When merging onto a highway, you should:",
+        "image": "https://files.ontario.ca/3-1-58.jpg",
+        "options": [
+          "Reverse if there is no gap.",
+          "Enter at any speed and force your way in.",
+          "Match the speed of traffic and merge when safe.",
+          "Stop at the end of the ramp and wait for a gap."
+        ],
+        "selected": "Not answered",
+        "correct": "Match the speed of traffic and merge when safe.",
+        "status": "skipped"
+      },
+      {
+        "number": 9,
+        "id": "sign-1-set-70",
+        "type": "sign",
+        "question": "What must you do at this sign?",
+        "image": "https://files.ontario.ca/3-1-1.jpg",
+        "options": [
+          "Stop only if there is cross traffic.",
+          "Yield only to pedestrians.",
+          "Slow down and continue if clear.",
+          "Come to a complete stop and proceed only when safe."
+        ],
+        "selected": "Not answered",
+        "correct": "Come to a complete stop and proceed only when safe.",
+        "status": "skipped"
+      },
+      {
+        "number": 10,
+        "id": "rule-67-set-9",
+        "type": "rule",
+        "question": "Why is it risky to memorize a penalty without learning the offence it applies to?",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "The offence description is not part of a driving record.",
+          "Penalty details never depend on the charge.",
+          "Similar offences can have different fines, points and licensing consequences.",
+          "All penalties use the same offence code."
+        ],
+        "selected": "Not answered",
+        "correct": "Similar offences can have different fines, points and licensing consequences.",
+        "status": "skipped"
+      },
+      {
+        "number": 11,
+        "id": "rule-80-set-31",
+        "type": "rule",
+        "question": "When approaching a pedestrian at a marked crosswalk, what is the correct action?",
+        "image": "https://files.ontario.ca/3-1-68.jpg",
+        "options": [
+          "Yield and stop if necessary until the pedestrian has safely crossed.",
+          "Continue if you have the green light.",
+          "Sound your horn and proceed.",
+          "Drive around the pedestrian."
+        ],
+        "selected": "Not answered",
+        "correct": "Yield and stop if necessary until the pedestrian has safely crossed.",
+        "status": "skipped"
+      },
+      {
+        "number": 12,
+        "id": "rule-76-set-117",
+        "type": "rule",
+        "question": "When deciding whether to make a U-turn, what should you check first?",
+        "image": "https://files.ontario.ca/3-1-14.jpg",
+        "options": [
+          "Nearby trees or poles.",
+          "The turning radius of your vehicle.",
+          "Whether traffic regulations permit a U-turn at that location.",
+          "The height of the curb."
+        ],
+        "selected": "Not answered",
+        "correct": "Whether traffic regulations permit a U-turn at that location.",
+        "status": "skipped"
+      },
+      {
+        "number": 13,
+        "id": "rule-66-set-62",
+        "type": "rule",
+        "question": "A novice driver is unsure whether a conviction triggers an escalating sanction. What should they do?",
+        "image": "https://files.ontario.ca/3-1-52a.jpg",
+        "options": [
+          "Continue driving until the next licence renewal.",
+          "Ask another learner to interpret the law.",
+          "Check the current official Ontario licensing information before driving.",
+          "Assume the sanction applies only to fully licensed drivers."
+        ],
+        "selected": "Not answered",
+        "correct": "Check the current official Ontario licensing information before driving.",
+        "status": "skipped"
+      },
+      {
+        "number": 14,
+        "id": "rule-1-set-13",
+        "type": "rule",
+        "question": "To safely recover from a skid on a slippery road, what should you do first?",
+        "image": "https://files.ontario.ca/3-1-52a.jpg",
+        "options": [
+          "Steer gently in the direction you want the vehicle to go.",
+          "Apply the brakes firmly.",
+          "Turn the steering wheel fully to one side.",
+          "Steer straight ahead and accelerate."
+        ],
+        "selected": "Not answered",
+        "correct": "Steer gently in the direction you want the vehicle to go.",
+        "status": "skipped"
+      },
+      {
+        "number": 15,
+        "id": "rule-29-set-74",
+        "type": "rule",
+        "question": "If you are being tailgated, you should:",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "Brake suddenly to warn the driver.",
+          "Speed up to increase distance.",
+          "Slow down gradually and, if safe, change lanes to let them pass.",
+          "Stop immediately."
+        ],
+        "selected": "Not answered",
+        "correct": "Slow down gradually and, if safe, change lanes to let them pass.",
+        "status": "skipped"
+      },
+      {
+        "number": 16,
+        "id": "rule-35-set-126",
+        "type": "rule",
+        "question": "If your headlights fail at night, you should:",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "Turn on your hazard lights and pull off the road safely.",
+          "Use high beams.",
+          "Continue driving at the same speed.",
+          "Drive with parking lights only."
+        ],
+        "selected": "Not answered",
+        "correct": "Turn on your hazard lights and pull off the road safely.",
+        "status": "skipped"
+      },
+      {
+        "number": 17,
+        "id": "rule-47-set-46",
+        "type": "rule",
+        "question": "You are approaching an uncontrolled intersection at the same time as a vehicle on your right. What should you do?",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "Stop only if the other vehicle is larger.",
+          "Honk and accelerate through the intersection.",
+          "Proceed first because you are travelling faster.",
+          "Yield to the vehicle on your right."
+        ],
+        "selected": "Not answered",
+        "correct": "Yield to the vehicle on your right.",
+        "status": "skipped"
+      },
+      {
+        "number": 18,
+        "id": "rule-57-set-54",
+        "type": "rule",
+        "question": "Why should a driver verify the current law before relying on a remembered fine amount?",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "Fines, surcharges and licensing consequences can change and depend on the offence.",
+          "A remembered amount is legally binding once written down.",
+          "Fine amounts are always identical across Ontario.",
+          "Only insurance companies can change a fine."
+        ],
+        "selected": "Not answered",
+        "correct": "Fines, surcharges and licensing consequences can change and depend on the offence.",
+        "status": "skipped"
+      },
+      {
+        "number": 19,
+        "id": "rule-54-set-27",
+        "type": "rule",
+        "question": "For a novice driver, what can happen after a first conviction for a four-point offence?",
+        "image": "https://files.ontario.ca/3-1-52a.jpg",
+        "options": [
+          "Only a warning is issued.",
+          "The licence may be suspended under the novice-driver escalating sanctions.",
+          "The offence is removed after one month.",
+          "The driver automatically receives a full licence."
+        ],
+        "selected": "Not answered",
+        "correct": "The licence may be suspended under the novice-driver escalating sanctions.",
+        "status": "skipped"
+      },
+      {
+        "number": 20,
+        "id": "rule-16-set-79",
+        "type": "rule",
+        "question": "Seat belts are required for:",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "All occupants of the vehicle where seat belts are available.",
+          "Drivers and front-seat passengers only.",
+          "Only on highways.",
+          "Only drivers."
+        ],
+        "selected": "Not answered",
+        "correct": "All occupants of the vehicle where seat belts are available.",
+        "status": "skipped"
+      }
+    ],
+    "submittedAt": "2026-09-22T17:21:31.255Z",
+    "clientIp": "127.0.0.1",
+    "serverUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36"
+  },
+  {
+    "sessionId": "1790097682973-vn5b4mn46km",
+    "attemptId": "1790097974295-rib8cthrfar",
+    "difficulty": "medium",
+    "user": {
+      "name": "Mohammad Nashit",
+      "platform": "Win32",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36"
+    },
+    "feedback": "You have started the practice, and each review will build your confidence.",
+    "improvementAreas": [
+      "road signs",
+      "rules and safe-driving decisions"
+    ],
+    "score": {
+      "correct": 0,
+      "total": 20,
+      "answered": 1,
+      "percent": 0,
+      "signsCorrect": 0,
+      "signsTotal": 4,
+      "rulesCorrect": 0,
+      "rulesTotal": 16
+    },
+    "answers": [
+      {
+        "number": 1,
+        "id": "rule-66-set-10",
+        "type": "rule",
+        "question": "A novice driver is unsure whether a conviction triggers an escalating sanction. What should they do?",
+        "image": "https://files.ontario.ca/3-1-52a.jpg",
+        "options": [
+          "Check the current official Ontario licensing information before driving.",
+          "Assume the sanction applies only to fully licensed drivers.",
+          "Continue driving until the next licence renewal.",
+          "Ask another learner to interpret the law."
+        ],
+        "selected": "Continue driving until the next licence renewal.",
+        "correct": "Check the current official Ontario licensing information before driving.",
+        "status": "incorrect"
+      },
+      {
+        "number": 2,
+        "id": "rule-38-set-127",
+        "type": "rule",
+        "question": "When driving behind a large truck, you should:",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "Follow closely to see around it.",
+          "Pass on the right immediately.",
+          "Honk to make it move faster.",
+          "Keep a safe distance because the truck has large blind spots."
+        ],
+        "selected": "Not answered",
+        "correct": "Keep a safe distance because the truck has large blind spots.",
+        "status": "skipped"
+      },
+      {
+        "number": 3,
+        "id": "rule-25-set-47",
+        "type": "rule",
+        "question": "If you see a pedestrian with a white cane or guide dog waiting at a curb, you should:",
+        "image": "https://files.ontario.ca/3-1-68.jpg",
+        "options": [
+          "Proceed; they will wait.",
+          "Stop and yield the right-of-way.",
+          "Drive around them.",
+          "Honk to alert them."
+        ],
+        "selected": "Not answered",
+        "correct": "Stop and yield the right-of-way.",
+        "status": "skipped"
+      },
+      {
+        "number": 4,
+        "id": "rule-40-set-103",
+        "type": "rule",
+        "question": "When approaching a pedestrian with a guide dog or white cane, you must:",
+        "image": "https://files.ontario.ca/3-1-68.jpg",
+        "options": [
+          "Honk to warn them.",
+          "Proceed; they will wait.",
+          "Stop and yield the right-of-way.",
+          "Drive around them."
+        ],
+        "selected": "Not answered",
+        "correct": "Stop and yield the right-of-way.",
+        "status": "skipped"
+      },
+      {
+        "number": 5,
+        "id": "rule-75-set-15",
+        "type": "rule",
+        "question": "Another vehicle is about to overtake and pass you. What should you do?",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "Move left to block the pass.",
+          "Signal to the other driver not to pass.",
+          "Keep to the right and allow the vehicle to pass safely.",
+          "Speed up so passing is not necessary."
+        ],
+        "selected": "Not answered",
+        "correct": "Keep to the right and allow the vehicle to pass safely.",
+        "status": "skipped"
+      },
+      {
+        "number": 6,
+        "id": "sign-2-set-7",
+        "type": "sign",
+        "question": "When you see this sign, what should you do?",
+        "image": "https://files.ontario.ca/3-1-3.jpg",
+        "options": [
+          "Slow or stop as needed and give right-of-way to traffic on the main road.",
+          "Stop and wait for a green light.",
+          "Make a U-turn if the lane is busy.",
+          "Maintain speed and expect others to move."
+        ],
+        "selected": "Not answered",
+        "correct": "Slow or stop as needed and give right-of-way to traffic on the main road.",
+        "status": "skipped"
+      },
+      {
+        "number": 7,
+        "id": "rule-45-set-158",
+        "type": "rule",
+        "question": "When approaching a flashing red light, you must:",
+        "image": "https://files.ontario.ca/3-1-56a.jpg",
+        "options": [
+          "Speed up.",
+          "Stop and proceed when safe (treat as a stop sign).",
+          "Slow down and proceed with caution.",
+          "Ignore it."
+        ],
+        "selected": "Not answered",
+        "correct": "Stop and proceed when safe (treat as a stop sign).",
+        "status": "skipped"
+      },
+      {
+        "number": 8,
+        "id": "rule-16-set-77",
+        "type": "rule",
+        "question": "Seat belts are required for:",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "Only drivers.",
+          "Drivers and front-seat passengers only.",
+          "All occupants of the vehicle where seat belts are available.",
+          "Only on highways."
+        ],
+        "selected": "Not answered",
+        "correct": "All occupants of the vehicle where seat belts are available.",
+        "status": "skipped"
+      },
+      {
+        "number": 9,
+        "id": "rule-74-set-41",
+        "type": "rule",
+        "question": "Before changing lanes in traffic, what must you always do?",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "Signal and check mirrors and blind spots to ensure the move can be made safely.",
+          "Look only in the rear-view mirror.",
+          "Decrease speed sharply.",
+          "Sound your horn."
+        ],
+        "selected": "Not answered",
+        "correct": "Signal and check mirrors and blind spots to ensure the move can be made safely.",
+        "status": "skipped"
+      },
+      {
+        "number": 10,
+        "id": "rule-55-set-44",
+        "type": "rule",
+        "question": "What is the safest way to approach a question about a traffic fine or demerit point penalty?",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "Ignore the penalty because it does not affect driving privileges.",
+          "Assume all offences have the same fine.",
+          "Use the current Ontario handbook and law because penalties can change.",
+          "Guess based on the posted speed limit."
+        ],
+        "selected": "Not answered",
+        "correct": "Use the current Ontario handbook and law because penalties can change.",
+        "status": "skipped"
+      },
+      {
+        "number": 11,
+        "id": "rule-57-set-31",
+        "type": "rule",
+        "question": "Why should a driver verify the current law before relying on a remembered fine amount?",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "Fine amounts are always identical across Ontario.",
+          "A remembered amount is legally binding once written down.",
+          "Fines, surcharges and licensing consequences can change and depend on the offence.",
+          "Only insurance companies can change a fine."
+        ],
+        "selected": "Not answered",
+        "correct": "Fines, surcharges and licensing consequences can change and depend on the offence.",
+        "status": "skipped"
+      },
+      {
+        "number": 12,
+        "id": "rule-20-set-98",
+        "type": "rule",
+        "question": "When parking uphill with a curb, you should turn your wheels:",
+        "image": "https://files.ontario.ca/3-1-11.jpg",
+        "options": [
+          "Toward the curb.",
+          "Straight ahead.",
+          "It doesn't matter.",
+          "Away from the curb."
+        ],
+        "selected": "Not answered",
+        "correct": "Away from the curb.",
+        "status": "skipped"
+      },
+      {
+        "number": 13,
+        "id": "sign-1-set-55",
+        "type": "sign",
+        "question": "What must you do at this sign?",
+        "image": "https://files.ontario.ca/3-1-1.jpg",
+        "options": [
+          "Stop only if there is cross traffic.",
+          "Come to a complete stop and proceed only when safe.",
+          "Slow down and continue if clear.",
+          "Yield only to pedestrians."
+        ],
+        "selected": "Not answered",
+        "correct": "Come to a complete stop and proceed only when safe.",
+        "status": "skipped"
+      },
+      {
+        "number": 14,
+        "id": "rule-53-set-9",
+        "type": "rule",
+        "question": "How many demerit points may result from failing to stop for a school bus when the red lights are flashing?",
+        "image": "https://files.ontario.ca/3-1-2.jpg",
+        "options": [
+          "Four points.",
+          "Two points.",
+          "No points if no child is visible.",
+          "Six points."
+        ],
+        "selected": "Not answered",
+        "correct": "Six points.",
+        "status": "skipped"
+      },
+      {
+        "number": 15,
+        "id": "rule-15-set-75",
+        "type": "rule",
+        "question": "If an emergency vehicle with flashing lights approaches from behind, you should:",
+        "image": "https://files.ontario.ca/3-1-58.jpg",
+        "options": [
+          "Stop in the middle of the road.",
+          "Ignore it and continue driving.",
+          "Speed up to stay ahead.",
+          "Pull over to the right and stop to allow it to pass."
+        ],
+        "selected": "Not answered",
+        "correct": "Pull over to the right and stop to allow it to pass.",
+        "status": "skipped"
+      },
+      {
+        "number": 16,
+        "id": "sign-19-set-76",
+        "type": "sign",
+        "question": "What does this sign mean?",
+        "image": "https://files.ontario.ca/3-1-9.jpg",
+        "options": [
+          "Parking allowed for short periods.",
+          "You may stop to load/unload.",
+          "Stop only for pedestrians.",
+          "Stopping is prohibited at all times."
+        ],
+        "selected": "Not answered",
+        "correct": "Stopping is prohibited at all times.",
+        "status": "skipped"
+      },
+      {
+        "number": 17,
+        "id": "rule-76-set-88",
+        "type": "rule",
+        "question": "When deciding whether to make a U-turn, what should you check first?",
+        "image": "https://files.ontario.ca/3-1-14.jpg",
+        "options": [
+          "Whether traffic regulations permit a U-turn at that location.",
+          "The turning radius of your vehicle.",
+          "Nearby trees or poles.",
+          "The height of the curb."
+        ],
+        "selected": "Not answered",
+        "correct": "Whether traffic regulations permit a U-turn at that location.",
+        "status": "skipped"
+      },
+      {
+        "number": 18,
+        "id": "rule-39-set-150",
+        "type": "rule",
+        "question": "If you see a 'No Stopping' sign, you must:",
+        "image": "https://files.ontario.ca/3-1-11.jpg",
+        "options": [
+          "Stop only for emergency vehicles.",
+          "Not stop at any time for any reason.",
+          "You may stop to pick up passengers.",
+          "Stop only for deliveries."
+        ],
+        "selected": "Not answered",
+        "correct": "Not stop at any time for any reason.",
+        "status": "skipped"
+      },
+      {
+        "number": 19,
+        "id": "rule-7-set-21",
+        "type": "rule",
+        "question": "Why is driving at the maximum speed limit more dangerous at night than during the day?",
+        "image": "https://files.ontario.ca/3-1-21.jpg",
+        "options": [
+          "Roads are always slippery at night.",
+          "You cannot see as far ahead at night, reducing the time to react.",
+          "Parking lights are brighter than headlights.",
+          "Reaction time is always slower at night."
+        ],
+        "selected": "Not answered",
+        "correct": "You cannot see as far ahead at night, reducing the time to react.",
+        "status": "skipped"
+      },
+      {
+        "number": 20,
+        "id": "sign-22-set-148",
+        "type": "sign",
+        "question": "What should you be prepared for when you see this sign?",
+        "image": "https://files.ontario.ca/3-1-56a.jpg",
+        "options": [
+          "No stopping zone.",
+          "Railway crossing ahead.",
+          "Traffic lights ahead; be prepared to stop.",
+          "A roundabout ahead."
+        ],
+        "selected": "Not answered",
+        "correct": "Traffic lights ahead; be prepared to stop.",
+        "status": "skipped"
+      }
+    ],
+    "submittedAt": "2026-09-22T17:26:21.954Z",
+    "clientIp": "127.0.0.1",
+    "serverUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36"
+  },
+  {
+    "sessionId": "1790097682973-vn5b4mn46km",
+    "attemptId": "1790097983763-nhfdrpzhiba",
+    "difficulty": "medium",
+    "user": {
+      "name": "Mohammad Nashit",
+      "platform": "Win32",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36"
+    },
+    "feedback": "You have started the practice, and each review will build your confidence.",
+    "improvementAreas": [
+      "road signs",
+      "rules and safe-driving decisions"
+    ],
+    "score": {
+      "correct": 0,
+      "total": 20,
+      "answered": 0,
+      "percent": 0,
+      "signsCorrect": 0,
+      "signsTotal": 4,
+      "rulesCorrect": 0,
+      "rulesTotal": 16
+    },
+    "answers": [
+      {
+        "number": 1,
+        "id": "rule-40-set-103",
+        "type": "rule",
+        "question": "When approaching a pedestrian with a guide dog or white cane, you must:",
+        "image": "https://files.ontario.ca/3-1-68.jpg",
+        "options": [
+          "Honk to warn them.",
+          "Stop and yield the right-of-way.",
+          "Proceed; they will wait.",
+          "Drive around them."
+        ],
+        "selected": "Not answered",
+        "correct": "Stop and yield the right-of-way.",
+        "status": "skipped"
+      },
+      {
+        "number": 2,
+        "id": "rule-15-set-75",
+        "type": "rule",
+        "question": "If an emergency vehicle with flashing lights approaches from behind, you should:",
+        "image": "https://files.ontario.ca/3-1-58.jpg",
+        "options": [
+          "Ignore it and continue driving.",
+          "Stop in the middle of the road.",
+          "Pull over to the right and stop to allow it to pass.",
+          "Speed up to stay ahead."
+        ],
+        "selected": "Not answered",
+        "correct": "Pull over to the right and stop to allow it to pass.",
+        "status": "skipped"
+      },
+      {
+        "number": 3,
+        "id": "rule-75-set-15",
+        "type": "rule",
+        "question": "Another vehicle is about to overtake and pass you. What should you do?",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "Move left to block the pass.",
+          "Signal to the other driver not to pass.",
+          "Keep to the right and allow the vehicle to pass safely.",
+          "Speed up so passing is not necessary."
+        ],
+        "selected": "Not answered",
+        "correct": "Keep to the right and allow the vehicle to pass safely.",
+        "status": "skipped"
+      },
+      {
+        "number": 4,
+        "id": "rule-45-set-158",
+        "type": "rule",
+        "question": "When approaching a flashing red light, you must:",
+        "image": "https://files.ontario.ca/3-1-56a.jpg",
+        "options": [
+          "Slow down and proceed with caution.",
+          "Ignore it.",
+          "Speed up.",
+          "Stop and proceed when safe (treat as a stop sign)."
+        ],
+        "selected": "Not answered",
+        "correct": "Stop and proceed when safe (treat as a stop sign).",
+        "status": "skipped"
+      },
+      {
+        "number": 5,
+        "id": "rule-38-set-127",
+        "type": "rule",
+        "question": "When driving behind a large truck, you should:",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "Honk to make it move faster.",
+          "Follow closely to see around it.",
+          "Keep a safe distance because the truck has large blind spots.",
+          "Pass on the right immediately."
+        ],
+        "selected": "Not answered",
+        "correct": "Keep a safe distance because the truck has large blind spots.",
+        "status": "skipped"
+      },
+      {
+        "number": 6,
+        "id": "rule-55-set-44",
+        "type": "rule",
+        "question": "What is the safest way to approach a question about a traffic fine or demerit point penalty?",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "Ignore the penalty because it does not affect driving privileges.",
+          "Use the current Ontario handbook and law because penalties can change.",
+          "Assume all offences have the same fine.",
+          "Guess based on the posted speed limit."
+        ],
+        "selected": "Not answered",
+        "correct": "Use the current Ontario handbook and law because penalties can change.",
+        "status": "skipped"
+      },
+      {
+        "number": 7,
+        "id": "rule-66-set-10",
+        "type": "rule",
+        "question": "A novice driver is unsure whether a conviction triggers an escalating sanction. What should they do?",
+        "image": "https://files.ontario.ca/3-1-52a.jpg",
+        "options": [
+          "Assume the sanction applies only to fully licensed drivers.",
+          "Ask another learner to interpret the law.",
+          "Check the current official Ontario licensing information before driving.",
+          "Continue driving until the next licence renewal."
+        ],
+        "selected": "Not answered",
+        "correct": "Check the current official Ontario licensing information before driving.",
+        "status": "skipped"
+      },
+      {
+        "number": 8,
+        "id": "rule-20-set-98",
+        "type": "rule",
+        "question": "When parking uphill with a curb, you should turn your wheels:",
+        "image": "https://files.ontario.ca/3-1-11.jpg",
+        "options": [
+          "Away from the curb.",
+          "Toward the curb.",
+          "Straight ahead.",
+          "It doesn't matter."
+        ],
+        "selected": "Not answered",
+        "correct": "Away from the curb.",
+        "status": "skipped"
+      },
+      {
+        "number": 9,
+        "id": "rule-74-set-41",
+        "type": "rule",
+        "question": "Before changing lanes in traffic, what must you always do?",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "Sound your horn.",
+          "Look only in the rear-view mirror.",
+          "Decrease speed sharply.",
+          "Signal and check mirrors and blind spots to ensure the move can be made safely."
+        ],
+        "selected": "Not answered",
+        "correct": "Signal and check mirrors and blind spots to ensure the move can be made safely.",
+        "status": "skipped"
+      },
+      {
+        "number": 10,
+        "id": "sign-22-set-148",
+        "type": "sign",
+        "question": "What should you be prepared for when you see this sign?",
+        "image": "https://files.ontario.ca/3-1-56a.jpg",
+        "options": [
+          "No stopping zone.",
+          "A roundabout ahead.",
+          "Railway crossing ahead.",
+          "Traffic lights ahead; be prepared to stop."
+        ],
+        "selected": "Not answered",
+        "correct": "Traffic lights ahead; be prepared to stop.",
+        "status": "skipped"
+      },
+      {
+        "number": 11,
+        "id": "rule-53-set-9",
+        "type": "rule",
+        "question": "How many demerit points may result from failing to stop for a school bus when the red lights are flashing?",
+        "image": "https://files.ontario.ca/3-1-2.jpg",
+        "options": [
+          "Four points.",
+          "No points if no child is visible.",
+          "Two points.",
+          "Six points."
+        ],
+        "selected": "Not answered",
+        "correct": "Six points.",
+        "status": "skipped"
+      },
+      {
+        "number": 12,
+        "id": "rule-25-set-47",
+        "type": "rule",
+        "question": "If you see a pedestrian with a white cane or guide dog waiting at a curb, you should:",
+        "image": "https://files.ontario.ca/3-1-68.jpg",
+        "options": [
+          "Honk to alert them.",
+          "Proceed; they will wait.",
+          "Drive around them.",
+          "Stop and yield the right-of-way."
+        ],
+        "selected": "Not answered",
+        "correct": "Stop and yield the right-of-way.",
+        "status": "skipped"
+      },
+      {
+        "number": 13,
+        "id": "rule-7-set-21",
+        "type": "rule",
+        "question": "Why is driving at the maximum speed limit more dangerous at night than during the day?",
+        "image": "https://files.ontario.ca/3-1-21.jpg",
+        "options": [
+          "Parking lights are brighter than headlights.",
+          "You cannot see as far ahead at night, reducing the time to react.",
+          "Reaction time is always slower at night.",
+          "Roads are always slippery at night."
+        ],
+        "selected": "Not answered",
+        "correct": "You cannot see as far ahead at night, reducing the time to react.",
+        "status": "skipped"
+      },
+      {
+        "number": 14,
+        "id": "sign-2-set-7",
+        "type": "sign",
+        "question": "When you see this sign, what should you do?",
+        "image": "https://files.ontario.ca/3-1-3.jpg",
+        "options": [
+          "Slow or stop as needed and give right-of-way to traffic on the main road.",
+          "Make a U-turn if the lane is busy.",
+          "Stop and wait for a green light.",
+          "Maintain speed and expect others to move."
+        ],
+        "selected": "Not answered",
+        "correct": "Slow or stop as needed and give right-of-way to traffic on the main road.",
+        "status": "skipped"
+      },
+      {
+        "number": 15,
+        "id": "sign-19-set-76",
+        "type": "sign",
+        "question": "What does this sign mean?",
+        "image": "https://files.ontario.ca/3-1-9.jpg",
+        "options": [
+          "Stop only for pedestrians.",
+          "You may stop to load/unload.",
+          "Parking allowed for short periods.",
+          "Stopping is prohibited at all times."
+        ],
+        "selected": "Not answered",
+        "correct": "Stopping is prohibited at all times.",
+        "status": "skipped"
+      },
+      {
+        "number": 16,
+        "id": "sign-1-set-55",
+        "type": "sign",
+        "question": "What must you do at this sign?",
+        "image": "https://files.ontario.ca/3-1-1.jpg",
+        "options": [
+          "Come to a complete stop and proceed only when safe.",
+          "Yield only to pedestrians.",
+          "Slow down and continue if clear.",
+          "Stop only if there is cross traffic."
+        ],
+        "selected": "Not answered",
+        "correct": "Come to a complete stop and proceed only when safe.",
+        "status": "skipped"
+      },
+      {
+        "number": 17,
+        "id": "rule-16-set-77",
+        "type": "rule",
+        "question": "Seat belts are required for:",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "Only drivers.",
+          "All occupants of the vehicle where seat belts are available.",
+          "Only on highways.",
+          "Drivers and front-seat passengers only."
+        ],
+        "selected": "Not answered",
+        "correct": "All occupants of the vehicle where seat belts are available.",
+        "status": "skipped"
+      },
+      {
+        "number": 18,
+        "id": "rule-76-set-88",
+        "type": "rule",
+        "question": "When deciding whether to make a U-turn, what should you check first?",
+        "image": "https://files.ontario.ca/3-1-14.jpg",
+        "options": [
+          "Whether traffic regulations permit a U-turn at that location.",
+          "The turning radius of your vehicle.",
+          "The height of the curb.",
+          "Nearby trees or poles."
+        ],
+        "selected": "Not answered",
+        "correct": "Whether traffic regulations permit a U-turn at that location.",
+        "status": "skipped"
+      },
+      {
+        "number": 19,
+        "id": "rule-39-set-150",
+        "type": "rule",
+        "question": "If you see a 'No Stopping' sign, you must:",
+        "image": "https://files.ontario.ca/3-1-11.jpg",
+        "options": [
+          "Not stop at any time for any reason.",
+          "You may stop to pick up passengers.",
+          "Stop only for deliveries.",
+          "Stop only for emergency vehicles."
+        ],
+        "selected": "Not answered",
+        "correct": "Not stop at any time for any reason.",
+        "status": "skipped"
+      },
+      {
+        "number": 20,
+        "id": "rule-57-set-31",
+        "type": "rule",
+        "question": "Why should a driver verify the current law before relying on a remembered fine amount?",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "Fine amounts are always identical across Ontario.",
+          "Fines, surcharges and licensing consequences can change and depend on the offence.",
+          "Only insurance companies can change a fine.",
+          "A remembered amount is legally binding once written down."
+        ],
+        "selected": "Not answered",
+        "correct": "Fines, surcharges and licensing consequences can change and depend on the offence.",
+        "status": "skipped"
+      }
+    ],
+    "submittedAt": "2026-09-22T17:26:26.383Z",
+    "clientIp": "127.0.0.1",
+    "serverUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36"
   }
 ]
