@@ -1623,7 +1623,9 @@ function restoreSavedName(){
   const nameInput = document.getElementById('userName');
   nameInput.value = savedName;
   nameInput.readOnly = true;
-  document.getElementById('nameModal').hidden = true;
+  document.getElementById('nameModalTitle').textContent = 'Welcome back!';
+  document.querySelector('#nameModal .name-modal-card p').textContent = 'Your name is ready. Continue when you are ready.';
+  document.getElementById('modalUserName').value = savedName;
   return true;
 }
 
@@ -2122,13 +2124,9 @@ document.getElementById('topBtn').addEventListener('click', () => window.scrollT
 // Initial render
 renderQuestions();
 updateOverview();
-const hasSavedName = restoreSavedName();
+restoreSavedName();
 updateNameRequirement();
-if(hasSavedName){
-  document.getElementById('userName').focus();
-} else {
-  document.getElementById('modalUserName').focus();
-}
+document.getElementById('modalUserName').focus();
 
 </script>
 </body>
