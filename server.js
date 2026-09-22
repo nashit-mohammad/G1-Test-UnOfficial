@@ -10,8 +10,11 @@ const DATABASE_FILE = path.join(ROOT, 'submissions.json');
 const PAGE_FILE = path.join(ROOT, 'index.html');
 const ADMIN_USERNAME = process.env.ADMIN_USERNAME || '';
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || '';
+const SUPABASE_URL = (process.env.SUPABASE_URL || '').replace(/\/$/, '');
+const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || '';
+const USE_SUPABASE = Boolean(SUPABASE_URL && SUPABASE_SERVICE_ROLE_KEY);
 
-function readSubmissions(){
+function readLocalSubmissions(){
   if(!fs.existsSync(DATABASE_FILE)) return [];
   try {
     const data = JSON.parse(fs.readFileSync(DATABASE_FILE, 'utf8'));
@@ -21,8 +24,95 @@ function readSubmissions(){
   }
 }
 
-function writeSubmissions(submissions){
+function writeLocalSubmissions(submissions){
   fs.writeFileSync(DATABASE_FILE, JSON.stringify(submissions, null, 2), 'utf8');
+}
+
+async function supabaseRequest(pathname, options = {}){
+  const response = await fetch(`${SUPABASE_URL}/rest/v1/${pathname}`, {
+    ...options,
+    headers: {
+      apikey: SUPABASE_SERVICE_ROLE_KEY,
+      Authorization: `Bearer ${SUPABASE_SERVICE_ROLE_KEY}`,
+      'Content-Type': 'application/json',
+      ...(options.headers || {})
+    }
+  });
+  if(!response.ok) throw new Error(`Supabase request failed: ${response.status}`);
+  const responseText = await response.text();
+  return responseText ? JSON.parse(responseText) : null;
+}
+
+function rowToSubmission(row){
+  return {
+    sessionId: row.session_id,
+    attemptId: row.attempt_id,
+    submittedAt: row.submitted_at || row.created_at,
+    user: row.user_data || {},
+    difficulty: row.difficulty || 'medium',
+    feedback: row.feedback || '',
+    improvementAreas: row.improvement_areas || [],
+    score: row.score || {},
+    answers: row.answers || [],
+    clientIp: 'Unknown IP',
+    serverUserAgent: row.user_data?.userAgent || 'Unknown browser'
+  };
+}
+
+async function readSubmissions(){
+  if(!USE_SUPABASE) return readLocalSubmissions();
+  const rows = await supabaseRequest('submissions?select=*');
+  return rows.map(rowToSubmission);
+}
+
+async function saveSubmission(submission){
+  if(!USE_SUPABASE){
+    const submissions = readLocalSubmissions();
+    const existingIndex = submission.attemptId
+      ? submissions.findIndex(item => item.attemptId === submission.attemptId)
+      : submission.sessionId
+        ? submissions.findIndex(item => item.sessionId === submission.sessionId)
+        : -1;
+    if(existingIndex >= 0) submissions[existingIndex] = submission;
+    else submissions.push(submission);
+    writeLocalSubmissions(submissions);
+    return {count: submissions.length, overwritten: existingIndex >= 0};
+  }
+
+  const row = {
+    attempt_id: submission.attemptId || null,
+    session_id: submission.sessionId || null,
+    submitted_at: submission.submittedAt,
+    user_data: submission.user || {},
+    difficulty: submission.difficulty || 'medium',
+    feedback: submission.feedback || '',
+    improvement_areas: submission.improvementAreas || [],
+    score: submission.score,
+    answers: submission.answers
+  };
+  const rows = await supabaseRequest('submissions?on_conflict=attempt_id', {
+    method: 'POST',
+    headers: {'Prefer': 'resolution=merge-duplicates,return=minimal'},
+    body: JSON.stringify(row)
+  });
+  return {count: rows ? rows.length : 0, overwritten: false};
+}
+
+async function deleteSubmission(recordKey){
+  if(!USE_SUPABASE){
+    const submissions = readLocalSubmissions();
+    const remaining = submissions.filter(submission => submission.attemptId !== recordKey && submission.sessionId !== recordKey && submission.submittedAt !== recordKey);
+    if(remaining.length === submissions.length) return false;
+    writeLocalSubmissions(remaining);
+    return true;
+  }
+
+  const rows = await supabaseRequest('submissions?select=id,attempt_id,session_id,submitted_at');
+  const matches = rows.filter(row => row.attempt_id === recordKey || row.session_id === recordKey || row.submitted_at === recordKey);
+  for(const row of matches){
+    await supabaseRequest(`submissions?id=eq.${encodeURIComponent(row.id)}`, {method:'DELETE'});
+  }
+  return matches.length > 0;
 }
 
 function sendJson(response, statusCode, payload){
@@ -76,8 +166,8 @@ function escapeHtml(value){
     .replaceAll("'", '&#39;');
 }
 
-function renderAdminPage(){
-  const submissions = readSubmissions().slice().reverse();
+async function renderAdminPage(){
+  const submissions = (await readSubmissions()).slice().reverse();
   const rows = submissions.length ? submissions.map((submission, index) => {
     const user = submission.user || {};
     const displayName = user.name || 'Name not provided';
@@ -118,7 +208,7 @@ function localAddresses(){
   return Object.values(interfaces).flat().filter(info => info && info.family === 'IPv4' && !info.internal).map(info => info.address);
 }
 
-const server = http.createServer((request, response) => {
+const server = http.createServer(async (request, response) => {
   const requestUrl = new URL(request.url, `http://${request.headers.host || 'localhost'}`);
   const isAdminRoute = requestUrl.pathname === '/admin'
     || (request.method === 'GET' && requestUrl.pathname === '/api/submissions')
@@ -132,21 +222,13 @@ const server = http.createServer((request, response) => {
       body += chunk;
       if(body.length > 2 * 1024 * 1024) request.destroy();
     });
-    request.on('end', () => {
+    request.on('end', async () => {
       try {
         const submission = JSON.parse(body);
         if(!submission || !submission.score || !Array.isArray(submission.answers)) throw new Error('Invalid submission');
-        const submissions = readSubmissions();
         const savedSubmission = {...submission, submittedAt: new Date().toISOString(), clientIp: request.socket.remoteAddress || 'Unknown IP', serverUserAgent: request.headers['user-agent'] || 'Unknown browser'};
-        const existingIndex = submission.attemptId
-          ? submissions.findIndex(item => item.attemptId === submission.attemptId)
-          : submission.sessionId
-            ? submissions.findIndex(item => item.sessionId === submission.sessionId)
-            : -1;
-        if(existingIndex >= 0) submissions[existingIndex] = savedSubmission;
-        else submissions.push(savedSubmission);
-        writeSubmissions(submissions);
-        sendJson(response, 201, {ok:true, count:submissions.length, overwritten: existingIndex >= 0});
+        const result = await saveSubmission(savedSubmission);
+        sendJson(response, 201, {ok:true, ...result});
       } catch(error){
         sendJson(response, 400, {ok:false, error:'Invalid submission'});
       }
@@ -155,27 +237,25 @@ const server = http.createServer((request, response) => {
   }
 
   if(request.method === 'GET' && requestUrl.pathname === '/api/submissions'){
-    sendJson(response, 200, readSubmissions());
+    sendJson(response, 200, await readSubmissions());
     return;
   }
 
   if(request.method === 'DELETE' && requestUrl.pathname.startsWith('/api/submissions/')){
-    const sessionId = decodeURIComponent(requestUrl.pathname.slice('/api/submissions/'.length));
-    const submissions = readSubmissions();
-    const remaining = submissions.filter(submission => submission.attemptId !== sessionId && submission.sessionId !== sessionId && submission.submittedAt !== sessionId);
-    if(remaining.length === submissions.length){
+    const recordKey = decodeURIComponent(requestUrl.pathname.slice('/api/submissions/'.length));
+    if(!await deleteSubmission(recordKey)){
       sendJson(response, 404, {ok:false, error:'Submission not found'});
     } else {
-      writeSubmissions(remaining);
-      sendJson(response, 200, {ok:true, count:remaining.length});
+      sendJson(response, 200, {ok:true});
     }
     return;
   }
 
   if(request.method === 'GET' && requestUrl.pathname === '/admin'){
-    const page = renderAdminPage();
-    response.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
-    response.end(page);
+    renderAdminPage().then(page => {
+      response.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
+      response.end(page);
+    }).catch(() => sendJson(response, 503, {ok:false, error:'Could not load submissions'}));
     return;
   }
 
