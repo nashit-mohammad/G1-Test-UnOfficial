@@ -13,6 +13,7 @@ const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || '';
 const SUPABASE_URL = (process.env.SUPABASE_URL || '').replace(/\/$/, '');
 const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || '';
 const USE_SUPABASE = Boolean(SUPABASE_URL && SUPABASE_SERVICE_ROLE_KEY);
+const FAVICON_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="#004990"/><path d="M32 8 54 20v24L32 56 10 44V20z" fill="#d62828" stroke="#fff" stroke-width="4"/><text x="32" y="38" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#fff">G1</text></svg>`;
 
 function readLocalSubmissions(){
   if(!fs.existsSync(DATABASE_FILE)) return [];
@@ -216,6 +217,12 @@ const server = http.createServer(async (request, response) => {
 
   if(isAdminRoute && !requireAdmin(request, response)) return;
 
+  if(request.method === 'GET' && requestUrl.pathname === '/favicon.ico'){
+    response.writeHead(200, {'Content-Type':'image/svg+xml', 'Cache-Control':'public, max-age=86400'});
+    response.end(FAVICON_SVG);
+    return;
+  }
+
   if(request.method === 'GET' && requestUrl.pathname === '/health'){
     if(!USE_SUPABASE){
       sendJson(response, 200, {ok:true, storage:'local'});
@@ -268,7 +275,7 @@ const server = http.createServer(async (request, response) => {
   if(request.method === 'GET' && requestUrl.pathname === '/admin'){
     renderAdminPage().then(page => {
       response.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
-      response.end(page);
+      response.end(page.replace('<a class="home-link" href="/">Open user page</a>', '<a class="home-link" href="/">Open user page</a><a class="home-link" href="/health">Health check</a>'));
     }).catch(() => sendJson(response, 503, {ok:false, error:'Could not load submissions'}));
     return;
   }
