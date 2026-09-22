@@ -3,11 +3,13 @@ const fs = require('fs');
 const path = require('path');
 const os = require('os');
 
-const PORT = 8000;
+const PORT = Number(process.env.PORT) || 8000;
 const HOST = '0.0.0.0';
 const ROOT = __dirname;
 const DATABASE_FILE = path.join(ROOT, 'submissions.json');
 const PAGE_FILE = path.join(ROOT, 'index.html');
+const ADMIN_USERNAME = process.env.ADMIN_USERNAME || '';
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || '';
 
 function readSubmissions(){
   if(!fs.existsSync(DATABASE_FILE)) return [];
@@ -26,6 +28,43 @@ function writeSubmissions(submissions){
 function sendJson(response, statusCode, payload){
   response.writeHead(statusCode, {'Content-Type':'application/json; charset=utf-8'});
   response.end(JSON.stringify(payload));
+}
+
+function requireAdmin(request, response){
+  if(!ADMIN_USERNAME || !ADMIN_PASSWORD){
+    sendJson(response, 503, {ok:false, error:'Admin authentication is not configured'});
+    return false;
+  }
+
+  const authorization = request.headers.authorization || '';
+  const [scheme, encodedCredentials] = authorization.split(' ');
+  if(scheme !== 'Basic' || !encodedCredentials){
+    response.writeHead(401, {
+      'Content-Type':'text/plain; charset=utf-8',
+      'WWW-Authenticate':'Basic realm="G1 Practice Admin", charset="UTF-8"'
+    });
+    response.end('Admin authentication required');
+    return false;
+  }
+
+  let credentials;
+  try {
+    credentials = Buffer.from(encodedCredentials, 'base64').toString('utf8');
+  } catch(error){
+    credentials = '';
+  }
+  const separator = credentials.indexOf(':');
+  const username = separator >= 0 ? credentials.slice(0, separator) : '';
+  const password = separator >= 0 ? credentials.slice(separator + 1) : '';
+  if(username !== ADMIN_USERNAME || password !== ADMIN_PASSWORD){
+    response.writeHead(401, {
+      'Content-Type':'text/plain; charset=utf-8',
+      'WWW-Authenticate':'Basic realm="G1 Practice Admin", charset="UTF-8"'
+    });
+    response.end('Invalid admin credentials');
+    return false;
+  }
+  return true;
 }
 
 function escapeHtml(value){
@@ -81,6 +120,11 @@ function localAddresses(){
 
 const server = http.createServer((request, response) => {
   const requestUrl = new URL(request.url, `http://${request.headers.host || 'localhost'}`);
+  const isAdminRoute = requestUrl.pathname === '/admin'
+    || (request.method === 'GET' && requestUrl.pathname === '/api/submissions')
+    || (request.method === 'DELETE' && requestUrl.pathname.startsWith('/api/submissions/'));
+
+  if(isAdminRoute && !requireAdmin(request, response)) return;
 
   if(request.method === 'POST' && requestUrl.pathname === '/api/submissions'){
     let body = '';

@@ -1,0 +1,9 @@
+{
+  "name": "g1-test-unofficial",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Ontario G1 practice test with protected admin submissions",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
