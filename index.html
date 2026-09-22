@@ -256,8 +256,8 @@
   }
   .options input{margin-top:3px}
   .label-text{line-height:1.2}
-  .label-correct{background:rgba(20,92,47,.06);border:1px solid rgba(20,92,47,.12)}
-  .label-wrong{background:rgba(139,31,31,.06);border:1px solid rgba(139,31,31,.12)}
+  .label-correct{background:rgba(20,92,47,.16);border:1px solid rgba(20,92,47,.35)}
+  .label-wrong{background:rgba(139,31,31,.14);border:1px solid rgba(139,31,31,.32)}
   .feedback{font-size:13px;margin-top:8px;display:none}
   .feedback.ok{color:var(--ok);display:block}
   .feedback.bad{color:var(--bad);display:block}
@@ -1740,6 +1740,8 @@ function renderQuestions(){
 
       // instant feedback
       input.addEventListener('change', () => {
+        // Lock this question after its first answer.
+        ul.querySelectorAll('input').forEach(inp => { inp.disabled = true; });
         // clear previous classes
         ul.querySelectorAll('label').forEach(l => l.classList.remove('label-correct','label-wrong'));
         const feedback = qDiv.querySelector('.feedback');
