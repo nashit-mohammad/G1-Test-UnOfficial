@@ -7,7 +7,7 @@ const PORT = 8000;
 const HOST = '0.0.0.0';
 const ROOT = __dirname;
 const DATABASE_FILE = path.join(ROOT, 'submissions.json');
-const PAGE_FILE = path.join(ROOT, 'ontario-g1-practice.html');
+const PAGE_FILE = path.join(ROOT, 'index.html');
 
 function readSubmissions(){
   if(!fs.existsSync(DATABASE_FILE)) return [];
@@ -63,7 +63,7 @@ function renderAdminPage(){
       <div class="attempt-meta">Road signs: ${escapeHtml(submission.score.signsCorrect)}/${escapeHtml(submission.score.signsTotal)} | Rules: ${escapeHtml(submission.score.rulesCorrect)}/${escapeHtml(submission.score.rulesTotal)}</div>
       <div class="device-meta">Device: ${escapeHtml(platform)} | IP: ${escapeHtml(clientIp)}<br>Browser: ${escapeHtml(browser)}</div>
       <div class="feedback-summary"><strong>Feedback:</strong> ${escapeHtml(submission.feedback || 'Not recorded')}<br><strong>Current improvement area:</strong> ${escapeHtml((submission.improvementAreas || []).join(', ') || 'None recorded')}</div>
-      <button class="delete-attempt" type="button" data-record-key="${escapeHtml(submission.sessionId || submission.submittedAt || '')}">Delete this response</button>
+      <button class="delete-attempt" type="button" data-record-key="${escapeHtml(submission.attemptId || submission.sessionId || submission.submittedAt || '')}">Delete this response</button>
       <label class="skip-filter"><input type="checkbox" class="hide-skipped"> Hide skipped questions</label>
       <div class="table-wrap"><table><thead><tr><th>#</th><th>Type</th><th>Question</th><th>Submitted</th><th>Correct answer</th><th>Status</th></tr></thead><tbody>${answers}</tbody></table></div>
     </details>`;
@@ -94,7 +94,11 @@ const server = http.createServer((request, response) => {
         if(!submission || !submission.score || !Array.isArray(submission.answers)) throw new Error('Invalid submission');
         const submissions = readSubmissions();
         const savedSubmission = {...submission, submittedAt: new Date().toISOString(), clientIp: request.socket.remoteAddress || 'Unknown IP', serverUserAgent: request.headers['user-agent'] || 'Unknown browser'};
-        const existingIndex = submission.sessionId ? submissions.findIndex(item => item.sessionId === submission.sessionId) : -1;
+        const existingIndex = submission.attemptId
+          ? submissions.findIndex(item => item.attemptId === submission.attemptId)
+          : submission.sessionId
+            ? submissions.findIndex(item => item.sessionId === submission.sessionId)
+            : -1;
         if(existingIndex >= 0) submissions[existingIndex] = savedSubmission;
         else submissions.push(savedSubmission);
         writeSubmissions(submissions);
@@ -114,7 +118,7 @@ const server = http.createServer((request, response) => {
   if(request.method === 'DELETE' && requestUrl.pathname.startsWith('/api/submissions/')){
     const sessionId = decodeURIComponent(requestUrl.pathname.slice('/api/submissions/'.length));
     const submissions = readSubmissions();
-    const remaining = submissions.filter(submission => submission.sessionId !== sessionId && submission.submittedAt !== sessionId);
+    const remaining = submissions.filter(submission => submission.attemptId !== sessionId && submission.sessionId !== sessionId && submission.submittedAt !== sessionId);
     if(remaining.length === submissions.length){
       sendJson(response, 404, {ok:false, error:'Submission not found'});
     } else {

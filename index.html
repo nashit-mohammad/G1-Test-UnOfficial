@@ -59,7 +59,7 @@
   button.secondary{
     background:#e2e6f0;
     color:var(--brand);
-  }
+  } 
   .legend{font-size:12px;color:var(--muted)}
   .question-count-control{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)}
   .question-count-control select{padding:8px 28px 8px 9px;border:1px solid #cbd5e1;border-radius:6px;background:#fff;color:#17324d;font-weight:600}
@@ -1558,6 +1558,11 @@ const SESSION_ID = (() => {
   }
   return id;
 })();
+let ATTEMPT_ID = `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+
+function startNewAttempt(){
+  ATTEMPT_ID = `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+}
 
 function renderQuestions(){
   const container = document.getElementById('questionsContainer');
@@ -1571,6 +1576,7 @@ function renderQuestions(){
     qDiv.dataset.type = q.type;
     qDiv.dataset.qid = q.id;
     qDiv.dataset.image = q.type === 'sign' ? (q.image || '') : getRuleImage(q.text);
+    qDiv.questionData = q;
 
     // header
     const header = document.createElement('div');
@@ -1757,9 +1763,9 @@ async function saveSubmission(payload, resultBox){
       body: JSON.stringify(payload)
     });
     if(!response.ok) throw new Error('Save failed');
-    resultBox.innerHTML += '<ul class="feedback-list"><li>💾 Saved for admin review.</li></ul>';
+    resultBox.insertAdjacentHTML('beforeend', '<ul class="feedback-list"><li>💾 Saved for admin review.</li></ul>');
   } catch(error){
-    resultBox.innerHTML += '<ul class="feedback-list"><li>⚠️ Could not save this attempt. Make sure the page is opened through the local server.</li></ul>';
+    resultBox.insertAdjacentHTML('beforeend', '<ul class="feedback-list"><li>⚠️ Could not save this attempt. Make sure the page is opened through the local server.</li></ul>');
   }
 }
 
@@ -1919,9 +1925,12 @@ function gradeTest(){
   if(missedQuestionIds.length){
     box.innerHTML += '<br><button id="missedTopicsBtn" type="button">Practice missed topics</button>';
     document.getElementById('missedTopicsBtn').addEventListener('click', () => {
-      const missed = new Set(missedQuestionIds);
-      QUESTION_BANK = QUESTION_BANK.filter(question => missed.has(question.id));
+      QUESTION_BANK = Array.from(questions)
+        .filter(question => missedQuestionIds.includes(question.dataset.qid))
+        .map(question => question.questionData)
+        .filter(Boolean);
       TEST_LENGTH = QUESTION_BANK.length;
+      startNewAttempt();
       renderQuestions();
       clearAnswers();
       window.scrollTo({top: 0, behavior: 'smooth'});
@@ -1932,6 +1941,7 @@ function gradeTest(){
 
   saveSubmission({
     sessionId: SESSION_ID,
+    attemptId: ATTEMPT_ID,
     difficulty: CURRENT_DIFFICULTY,
     user: {
       name: document.getElementById('userName').value.trim(),
@@ -1966,12 +1976,14 @@ function clearAnswers(){
 }
 
 function shuffleNewTest(){
+  startNewAttempt();
   QUESTION_BANK = buildQuestionBank(CURRENT_DIFFICULTY);
   renderQuestions();
   clearAnswers();
 }
 
 function startSelectedTest(){
+  startNewAttempt();
   TEST_LENGTH = Number(document.getElementById('questionCount').value);
   CURRENT_DIFFICULTY = document.getElementById('difficulty').value;
   QUESTION_BANK = buildQuestionBank(CURRENT_DIFFICULTY);
