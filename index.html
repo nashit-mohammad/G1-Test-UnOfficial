@@ -1561,12 +1561,132 @@ function buildQuestionBank(selectedDifficulty = 'medium'){
     }
   ];
 
+  const hardRuleTemplates = [
+    {
+      text: "How many demerit points are added for driving 16 to 29 km/h over the speed limit?",
+      options: {a: "2", b: "3", c: "4", d: "6"},
+      answer: 'b'
+    },
+    {
+      text: "How many demerit points are added for driving 30 to 49 km/h over the speed limit?",
+      options: {a: "2", b: "3", c: "4", d: "6"},
+      answer: 'c'
+    },
+    {
+      text: "How many demerit points are added for driving 50 km/h or more over the speed limit?",
+      options: {a: "3", b: "4", c: "6", d: "7"},
+      answer: 'c'
+    },
+    {
+      text: "How many demerit points may result from failing to stop for a school bus when the red lights are flashing?",
+      options: {a: "2", b: "4", c: "6", d: "8"},
+      answer: 'c'
+    },
+    {
+      text: "How many demerit points may result from careless driving?",
+      options: {a: "3", b: "4", c: "6", d: "7"},
+      answer: 'c'
+    },
+    {
+      text: "How many demerit points may result from distracted driving upon conviction?",
+      options: {a: "2", b: "3", c: "4", d: "6"},
+      answer: 'b'
+    },
+    {
+      text: "For a fully licensed driver, how many demerit points trigger a licence suspension?",
+      options: {a: "6", b: "9", c: "12", d: "15"},
+      answer: 'd'
+    },
+    {
+      text: "For a fully licensed driver, how many demerit points require an interview?",
+      options: {a: "6 to 8", b: "9 to 14", c: "15 to 17", d: "18 or more"},
+      answer: 'b'
+    },
+    {
+      text: "For a novice driver, how many demerit points can result in a 30-day licence suspension?",
+      options: {a: "2 to 5", b: "6 to 8", c: "9 to 14", d: "15 or more"},
+      answer: 'b'
+    },
+    {
+      text: "For a novice driver, how many demerit points can result in a 60-day licence suspension?",
+      options: {a: "2 to 5", b: "6 to 8", c: "9 or more", d: "15 or more"},
+      answer: 'c'
+    },
+    {
+      text: "What blood-alcohol concentration is the criminal driving limit for most drivers?",
+      options: {a: "0.02", b: "0.05", c: "0.08", d: "0.10"},
+      answer: 'c'
+    },
+    {
+      text: "At what blood-alcohol range can a driver receive a provincial warn-range roadside suspension?",
+      options: {a: "0.00 to 0.02", b: "0.03 to 0.04", c: "0.05 to 0.079", d: "0.08 to 0.10"},
+      answer: 'c'
+    },
+    {
+      text: "What blood-alcohol level must a G1, G2 or M2 driver have while driving?",
+      options: {a: "0.00", b: "Below 0.05", c: "Below 0.08", d: "Any level below 0.10"},
+      answer: 'a'
+    },
+    {
+      text: "For drivers under 22, what blood-alcohol level is permitted while driving?",
+      options: {a: "0.00", b: "Below 0.05", c: "Below 0.08", d: "The same as a fully licensed driver"},
+      answer: 'a'
+    },
+    {
+      text: "How long is a vehicle impounded after a first stunt-driving or street-racing offence?",
+      options: {a: "3 days", b: "7 days", c: "14 days", d: "30 days"},
+      answer: 'c'
+    },
+    {
+      text: "How long can a vehicle be impounded for driving without required insurance?",
+      options: {a: "7 days", b: "14 days", c: "30 days", d: "45 days"},
+      answer: 'd'
+    },
+    {
+      text: "How long is a first roadside suspension for a driver in the warn range?",
+      options: {a: "12 hours", b: "24 hours", c: "3 days", d: "7 days"},
+      answer: 'c'
+    },
+    {
+      text: "How long is a second warn-range roadside suspension within five years?",
+      options: {a: "3 days", b: "7 days", c: "14 days", d: "30 days"},
+      answer: 'b'
+    },
+    {
+      text: "How long is a third or subsequent warn-range roadside suspension within five years?",
+      options: {a: "7 days", b: "14 days", c: "30 days", d: "45 days"},
+      answer: 'c'
+    },
+    {
+      text: "What is the minimum fine for a first conviction for distracted driving in Ontario?",
+      options: {a: "$250", b: "$400", c: "$615", d: "$1,000"},
+      answer: 'c'
+    },
+    {
+      text: "What is the maximum fine for a first conviction for distracted driving in Ontario?",
+      options: {a: "$615", b: "$1,000", c: "$2,000", d: "$3,000"},
+      answer: 'b'
+    },
+    {
+      text: "How many days can a fully licensed driver be suspended for a first distracted-driving conviction?",
+      options: {a: "1 day", b: "3 days", c: "7 days", d: "30 days"},
+      answer: 'b'
+    },
+    {
+      text: "How many days can a fully licensed driver be suspended for a second distracted-driving conviction?",
+      options: {a: "3 days", b: "7 days", c: "14 days", d: "30 days"},
+      answer: 'b'
+    }
+  ];
+
+  const allRuleTemplates = ruleTemplates.concat(hardRuleTemplates);
+
   // Duplicate and shuffle rule templates to reach 80 rule questions
   const ruleQuestions = [];
   let idx = 0;
   while(ruleQuestions.length < 80){
-    const t = ruleTemplates[idx % ruleTemplates.length];
-    const difficulty = /demerit|fine|penalty|suspend|conviction|novice driver|licence|license|alcohol|blood|insurance/i.test(t.text) ? 'hard' : 'medium';
+    const t = allRuleTemplates[idx % allRuleTemplates.length];
+    const difficulty = hardRuleTemplates.includes(t) || /demerit|fine|penalty|suspend|conviction|novice driver|licence|license|alcohol|blood|insurance/i.test(t.text) ? 'hard' : 'medium';
     // create a shallow copy with unique id
     ruleQuestions.push({
       id: `rule-${ruleQuestions.length+1}`,
@@ -1581,9 +1701,8 @@ function buildQuestionBank(selectedDifficulty = 'medium'){
 
   const allQuestions = signQuestions.concat(ruleQuestions);
   const hardQuestions = allQuestions.filter(question => question.difficulty === 'hard');
-  const advancedRuleQuestions = allQuestions.filter(question => question.type === 'rule' && question.difficulty === 'medium');
   const eligibleQuestions = selectedDifficulty === 'hard'
-    ? hardQuestions.concat(advancedRuleQuestions)
+    ? hardQuestions
     : selectedDifficulty === 'easy'
       ? allQuestions.filter(question => question.difficulty !== 'hard')
       : allQuestions.concat(hardQuestions, hardQuestions);
