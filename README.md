@@ -16,7 +16,17 @@ The public practice page can submit responses, but viewing or deleting responses
 
 ## Email notifications
 
-To email the admin whenever a response is submitted, configure these private environment variables before starting the server:
+Render timed out when connecting to Gmail SMTP. For Render, Resend is recommended because it sends over HTTPS. Create an account at https://resend.com, create an API key, and configure these private environment variables in Render:
+
+```text
+ADMIN_EMAIL=nashit.mohammad@gmail.com
+RESEND_API_KEY=re_your_api_key
+RESEND_FROM=G1 Practice <onboarding@resend.dev>
+```
+
+For production, verify your own domain in Resend and use an address from that domain for `RESEND_FROM`. After adding the variables, redeploy and submit a new test response. The log should show `Submission notification email sent to nashit.mohammad@gmail.com`.
+
+SMTP is still supported for local development. Configure these private environment variables before starting the server:
 
 ```powershell
 $env:ADMIN_EMAIL = "nashit.mohammad@gmail.com"

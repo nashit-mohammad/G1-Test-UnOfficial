@@ -18,6 +18,8 @@ const SMTP_SECURE = process.env.SMTP_SECURE === 'true';
 const SMTP_USER = process.env.SMTP_USER || '';
 const SMTP_PASSWORD = process.env.SMTP_PASSWORD || '';
 const SMTP_FROM = process.env.SMTP_FROM || SMTP_USER;
+const RESEND_API_KEY = process.env.RESEND_API_KEY || '';
+const RESEND_FROM = process.env.RESEND_FROM || '';
 const SUPABASE_URL = (process.env.SUPABASE_URL || '').replace(/\/$/, '');
 const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || '';
 const USE_SUPABASE = Boolean(SUPABASE_URL && SUPABASE_SERVICE_ROLE_KEY);
@@ -38,7 +40,7 @@ function writeLocalSubmissions(submissions){
 }
 
 function emailNotificationsConfigured(){
-  return Boolean(ADMIN_EMAIL && SMTP_HOST && SMTP_USER && SMTP_PASSWORD && SMTP_FROM);
+  return Boolean(ADMIN_EMAIL && ((RESEND_API_KEY && RESEND_FROM) || (SMTP_HOST && SMTP_USER && SMTP_PASSWORD && SMTP_FROM)));
 }
 
 function buildSubmissionEmail(submission){
@@ -94,26 +96,35 @@ function buildSubmissionEmail(submission){
 
 async function notifyAdminOfSubmission(submission){
   if(!emailNotificationsConfigured()){
-    console.warn('Submission saved, but email notification is not configured. Set SMTP_HOST, SMTP_USER, SMTP_PASSWORD, and SMTP_FROM in Render Environment.');
+    console.warn('Submission saved, but email notification is not configured. Set RESEND_API_KEY and RESEND_FROM in Render Environment.');
     return false;
   }
 
-  const transporter = nodemailer.createTransport({
-    host: SMTP_HOST,
-    port: SMTP_PORT,
-    secure: SMTP_SECURE,
-    auth: {user: SMTP_USER, pass: SMTP_PASSWORD}
-  });
   const user = submission.user || {};
   const displayName = user.name || 'Name not provided';
   const email = buildSubmissionEmail(submission);
-  await transporter.sendMail({
-    from: SMTP_FROM,
-    to: ADMIN_EMAIL,
-    subject: `New G1 practice response from ${displayName}`,
-    text: email.text,
-    html: email.html
-  });
+  const subject = `New G1 practice response from ${displayName}`;
+  if(RESEND_API_KEY && RESEND_FROM){
+    const resendResponse = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${RESEND_API_KEY}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({from: RESEND_FROM, to: [ADMIN_EMAIL], subject, text: email.text, html: email.html})
+    });
+    if(!resendResponse.ok){
+      throw new Error(`Resend request failed: ${resendResponse.status} ${await resendResponse.text()}`);
+    }
+  } else {
+    const transporter = nodemailer.createTransport({
+      host: SMTP_HOST,
+      port: SMTP_PORT,
+      secure: SMTP_SECURE,
+      auth: {user: SMTP_USER, pass: SMTP_PASSWORD}
+    });
+    await transporter.sendMail({from: SMTP_FROM, to: ADMIN_EMAIL, subject, text: email.text, html: email.html});
+  }
   console.log(`Submission notification email sent to ${ADMIN_EMAIL}`);
   return true;
 }
