@@ -93,7 +93,10 @@ function buildSubmissionEmail(submission){
 }
 
 async function notifyAdminOfSubmission(submission){
-  if(!emailNotificationsConfigured()) return false;
+  if(!emailNotificationsConfigured()){
+    console.warn('Submission saved, but email notification is not configured. Set SMTP_HOST, SMTP_USER, SMTP_PASSWORD, and SMTP_FROM in Render Environment.');
+    return false;
+  }
 
   const transporter = nodemailer.createTransport({
     host: SMTP_HOST,
@@ -111,6 +114,7 @@ async function notifyAdminOfSubmission(submission){
     text: email.text,
     html: email.html
   });
+  console.log(`Submission notification email sent to ${ADMIN_EMAIL}`);
   return true;
 }
 
