@@ -62,6 +62,14 @@
     background:#e2e6f0;
     color:var(--brand);
   } 
+  /* Greyed-out look for disabled buttons Nashit */
+  button:disabled {
+    background: #cbd5e1 !important;
+    color: #7f8fa4 !important;
+    cursor: not-allowed !important;
+    opacity: 0.7;
+  }
+  /* Greyed-out look for disabled buttons Nashit END */
   .legend{font-size:12px;color:var(--muted)}
   .question-count-control{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)}
   .question-count-control select{padding:8px 28px 8px 9px;border:1px solid #cbd5e1;border-radius:6px;background:#fff;color:#17324d;font-weight:600}
@@ -2014,6 +2022,20 @@ async function saveSubmission(payload, resultBox){
 
 // --- Grading ---
 function gradeTest(){
+  
+  //Added Nashit
+  // 1. DISABLE THE SUBMIT BUTTON
+  // Replace 'submitBtn' with the actual ID of your submit button in the HTML
+  const floatingSubmitBtn1 = document.getElementById('floatingSubmitBtn');
+  if (floatingSubmitBtn1) {
+    floatingSubmitBtn1.disabled = true;
+  }
+  const endSubmitBtn1 = document.getElementById('endSubmitBtn');
+  if (endSubmitBtn1) {
+    endSubmitBtn1.disabled = true;
+  }
+  //Added Nashit END
+
   const questions = document.querySelectorAll('.question');
   let total = 0, correct = 0;
   let answered = 0;
@@ -2173,6 +2195,13 @@ function gradeTest(){
         .map(question => question.questionData)
         .filter(Boolean);
       TEST_LENGTH = QUESTION_BANK.length;
+
+      // Enable submit button Nashit
+      // 3. RE-ENABLE THE SUBMIT BUTTON IF THEY RETRY
+      if (floatingSubmitBtn1) floatingSubmitBtn1.disabled = false;
+      if (endSubmitBtn1) endSubmitBtn1.disabled = false;
+      // Enable submit button Nashit END
+
       startNewAttempt();
       renderQuestions();
       clearAnswers();
@@ -2209,6 +2238,15 @@ function gradeTest(){
 
 // --- Reset / Shuffle ---
 function clearAnswers(){
+
+  // Enable submit button Nashit
+  // 3. RE-ENABLE THE SUBMIT BUTTON IF THEY RETRY
+  const floatingSubmitBtn1 = document.getElementById('floatingSubmitBtn');
+  const endSubmitBtn1 = document.getElementById('endSubmitBtn');
+  if (floatingSubmitBtn1) floatingSubmitBtn1.disabled = false;
+  if (endSubmitBtn1) endSubmitBtn1.disabled = false;
+  // Enable submit button Nashit END
+
   document.querySelectorAll('input[type="radio"]').forEach(i => i.checked = false);
   document.querySelectorAll('.feedback').forEach(f => { f.style.display='none'; f.textContent=''; });
   const box = document.getElementById('resultBox');
