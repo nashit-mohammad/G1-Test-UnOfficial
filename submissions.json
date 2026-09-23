@@ -1948,5 +1948,355 @@
     "submittedAt": "2026-09-22T17:26:26.383Z",
     "clientIp": "127.0.0.1",
     "serverUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36"
+  },
+  {
+    "sessionId": "1790097682973-vn5b4mn46km",
+    "attemptId": "1790128306210-19sgjuzip5v",
+    "difficulty": "medium",
+    "user": {
+      "name": "Mohammad Nashit",
+      "platform": "Win32",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36"
+    },
+    "feedback": "You have started the practice, and each review will build your confidence.",
+    "improvementAreas": [
+      "road signs",
+      "rules and safe-driving decisions"
+    ],
+    "score": {
+      "correct": 0,
+      "total": 20,
+      "answered": 1,
+      "percent": 0,
+      "signsCorrect": 0,
+      "signsTotal": 3,
+      "rulesCorrect": 0,
+      "rulesTotal": 17
+    },
+    "answers": [
+      {
+        "number": 1,
+        "id": "rule-64-set-24",
+        "type": "rule",
+        "question": "A driver accumulates demerit points but has not received a suspension notice. What is the best conclusion?",
+        "image": "https://files.ontario.ca/3-1-52a.jpg",
+        "options": [
+          "The driver should still review the current point thresholds and record status.",
+          "The driver may ignore future notices.",
+          "No points can ever affect the driver’s licence.",
+          "The points automatically transfer to the vehicle owner."
+        ],
+        "selected": "No points can ever affect the driver’s licence.",
+        "correct": "The driver should still review the current point thresholds and record status.",
+        "status": "incorrect"
+      },
+      {
+        "number": 2,
+        "id": "rule-15-set-135",
+        "type": "rule",
+        "question": "If an emergency vehicle with flashing lights approaches from behind, you should:",
+        "image": "https://files.ontario.ca/3-1-58.jpg",
+        "options": [
+          "Pull over to the right and stop to allow it to pass.",
+          "Stop in the middle of the road.",
+          "Speed up to stay ahead.",
+          "Ignore it and continue driving."
+        ],
+        "selected": "Not answered",
+        "correct": "Pull over to the right and stop to allow it to pass.",
+        "status": "skipped"
+      },
+      {
+        "number": 3,
+        "id": "rule-62-set-94",
+        "type": "rule",
+        "question": "Why can a novice driver face consequences beyond the ordinary fine for one offence?",
+        "image": "https://files.ontario.ca/3-1-52a.jpg",
+        "options": [
+          "The vehicle automatically receives demerit points.",
+          "Novice drivers are exempt from all traffic laws.",
+          "The passenger chooses the penalty.",
+          "Ontario applies escalating sanctions to certain novice-driver convictions."
+        ],
+        "selected": "Not answered",
+        "correct": "Ontario applies escalating sanctions to certain novice-driver convictions.",
+        "status": "skipped"
+      },
+      {
+        "number": 4,
+        "id": "rule-28-set-32",
+        "type": "rule",
+        "question": "When approaching an intersection with a broken traffic signal (no lights), you should:",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "Wait for police instructions only.",
+          "Yield only to vehicles on the left.",
+          "Treat it as a four-way stop.",
+          "Proceed without stopping."
+        ],
+        "selected": "Not answered",
+        "correct": "Treat it as a four-way stop.",
+        "status": "skipped"
+      },
+      {
+        "number": 5,
+        "id": "rule-71-set-89",
+        "type": "rule",
+        "question": "To safely recover from a skid on a slippery road, what should you do first?",
+        "image": "https://files.ontario.ca/3-1-52a.jpg",
+        "options": [
+          "Apply the brakes firmly.",
+          "Steer gently in the direction you want the vehicle to go.",
+          "Steer straight ahead and accelerate.",
+          "Turn the steering wheel fully to one side."
+        ],
+        "selected": "Not answered",
+        "correct": "Steer gently in the direction you want the vehicle to go.",
+        "status": "skipped"
+      },
+      {
+        "number": 6,
+        "id": "sign-34-set-59",
+        "type": "sign",
+        "question": "What is the correct action when approaching this sign?",
+        "image": "",
+        "options": [
+          "Continue if you have the green light.",
+          "Yield and stop if necessary until pedestrians have crossed.",
+          "Sound your horn and proceed.",
+          "Drive around pedestrians."
+        ],
+        "selected": "Not answered",
+        "correct": "Yield and stop if necessary until pedestrians have crossed.",
+        "status": "skipped"
+      },
+      {
+        "number": 7,
+        "id": "rule-18-set-93",
+        "type": "rule",
+        "question": "If your vehicle starts to hydroplane, you should:",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "Ease off the accelerator and steer straight until you regain traction.",
+          "Brake hard immediately.",
+          "Turn the steering wheel sharply.",
+          "Accelerate to regain control."
+        ],
+        "selected": "Not answered",
+        "correct": "Ease off the accelerator and steer straight until you regain traction.",
+        "status": "skipped"
+      },
+      {
+        "number": 8,
+        "id": "rule-14-set-40",
+        "type": "rule",
+        "question": "When a school bus has its upper red lights flashing and stop arm extended, drivers must:",
+        "image": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20640%20360%22%3E%3Crect%20width%3D%22640%22%20height%3D%22360%22%20fill%3D%22%23cfe8f5%22%2F%3E%3Crect%20y%3D%22190%22%20width%3D%22640%22%20height%3D%22170%22%20fill%3D%22%234b5563%22%2F%3E%3Cpath%20d%3D%22M0%20275H640%22%20stroke%3D%22%23f8fafc%22%20stroke-width%3D%226%22%20stroke-dasharray%3D%2234%2024%22%2F%3E%3Cg%20transform%3D%22translate(215%20112)%22%3E%3Crect%20width%3D%22230%22%20height%3D%22105%22%20rx%3D%2212%22%20fill%3D%22%23f5c542%22%20stroke%3D%22%23263746%22%20stroke-width%3D%226%22%2F%3E%3Crect%20x%3D%2228%22%20y%3D%2228%22%20width%3D%22174%22%20height%3D%2242%22%20rx%3D%225%22%20fill%3D%22%23b9d8e5%22%20stroke%3D%22%23263746%22%20stroke-width%3D%224%22%2F%3E%3Ccircle%20cx%3D%2245%22%20cy%3D%22110%22%20r%3D%2220%22%20fill%3D%22%2317202a%22%2F%3E%3Ccircle%20cx%3D%22185%22%20cy%3D%22110%22%20r%3D%2220%22%20fill%3D%22%2317202a%22%2F%3E%3Ccircle%20cx%3D%2225%22%20cy%3D%2216%22%20r%3D%2210%22%20fill%3D%22%23ef4444%22%2F%3E%3Ccircle%20cx%3D%22205%22%20cy%3D%2216%22%20r%3D%2210%22%20fill%3D%22%23ef4444%22%2F%3E%3Ctext%20x%3D%22115%22%20y%3D%2292%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2219%22%20font-weight%3D%22700%22%20fill%3D%22%23263746%22%3ESCHOOL%20BUS%3C%2Ftext%3E%3C%2Fg%3E%3Cpath%20d%3D%22M205%20175H145%22%20stroke%3D%22%23ef4444%22%20stroke-width%3D%228%22%2F%3E%3Crect%20x%3D%22112%22%20y%3D%22153%22%20width%3D%2234%22%20height%3D%2243%22%20rx%3D%223%22%20fill%3D%22%23ef4444%22%20stroke%3D%22%237f1d1d%22%20stroke-width%3D%224%22%2F%3E%3Ctext%20x%3D%22320%22%20y%3D%2255%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2225%22%20font-weight%3D%22700%22%20fill%3D%22%23b91c1c%22%3ESTOP%20FOR%20FLASHING%20RED%20LIGHTS%3C%2Ftext%3E%3C%2Fsvg%3E",
+        "options": [
+          "Pass carefully on the left.",
+          "Slow down and proceed.",
+          "Honk to alert the driver.",
+          "Stop and remain stopped until lights are turned off and arm retracted."
+        ],
+        "selected": "Not answered",
+        "correct": "Stop and remain stopped until lights are turned off and arm retracted.",
+        "status": "skipped"
+      },
+      {
+        "number": 9,
+        "id": "sign-7-set-36",
+        "type": "sign",
+        "question": "What restriction does this sign show?",
+        "image": "https://files.ontario.ca/3-1-14.jpg",
+        "options": [
+          "The indicated turn is prohibited.",
+          "Allowed only at night.",
+          "Allowed after stopping.",
+          "Allowed for buses only."
+        ],
+        "selected": "Not answered",
+        "correct": "The indicated turn is prohibited.",
+        "status": "skipped"
+      },
+      {
+        "number": 10,
+        "id": "rule-41-set-75",
+        "type": "rule",
+        "question": "When driving in winter conditions, you should:",
+        "image": "https://files.ontario.ca/3-1-52a.jpg",
+        "options": [
+          "Reduce speed and increase following distance.",
+          "Tailgate to keep warm.",
+          "Use cruise control on icy roads.",
+          "Drive at the posted speed limit regardless of conditions."
+        ],
+        "selected": "Not answered",
+        "correct": "Reduce speed and increase following distance.",
+        "status": "skipped"
+      },
+      {
+        "number": 11,
+        "id": "rule-57-set-16",
+        "type": "rule",
+        "question": "Why should a driver verify the current law before relying on a remembered fine amount?",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "A remembered amount is legally binding once written down.",
+          "Fine amounts are always identical across Ontario.",
+          "Only insurance companies can change a fine.",
+          "Fines, surcharges and licensing consequences can change and depend on the offence."
+        ],
+        "selected": "Not answered",
+        "correct": "Fines, surcharges and licensing consequences can change and depend on the offence.",
+        "status": "skipped"
+      },
+      {
+        "number": 12,
+        "id": "rule-49-set-111",
+        "type": "rule",
+        "question": "Your vehicle begins to hydroplane during heavy rain. What should you do?",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "Brake hard immediately.",
+          "Ease off the accelerator and keep the steering steady until traction returns.",
+          "Turn sharply toward the shoulder.",
+          "Accelerate to drive through the water faster."
+        ],
+        "selected": "Not answered",
+        "correct": "Ease off the accelerator and keep the steering steady until traction returns.",
+        "status": "skipped"
+      },
+      {
+        "number": 13,
+        "id": "rule-33-set-137",
+        "type": "rule",
+        "question": "If you miss your exit on a highway, you should:",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "Make a U-turn on the highway.",
+          "Stop and back up.",
+          "Continue to the next exit and re-route.",
+          "Reverse on the shoulder to the exit."
+        ],
+        "selected": "Not answered",
+        "correct": "Continue to the next exit and re-route.",
+        "status": "skipped"
+      },
+      {
+        "number": 14,
+        "id": "rule-26-set-47",
+        "type": "rule",
+        "question": "When approaching a stopped school bus on a two-lane road with flashing red lights, you must:",
+        "image": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20640%20360%22%3E%3Crect%20width%3D%22640%22%20height%3D%22360%22%20fill%3D%22%23cfe8f5%22%2F%3E%3Crect%20y%3D%22190%22%20width%3D%22640%22%20height%3D%22170%22%20fill%3D%22%234b5563%22%2F%3E%3Cpath%20d%3D%22M0%20275H640%22%20stroke%3D%22%23f8fafc%22%20stroke-width%3D%226%22%20stroke-dasharray%3D%2234%2024%22%2F%3E%3Cg%20transform%3D%22translate(215%20112)%22%3E%3Crect%20width%3D%22230%22%20height%3D%22105%22%20rx%3D%2212%22%20fill%3D%22%23f5c542%22%20stroke%3D%22%23263746%22%20stroke-width%3D%226%22%2F%3E%3Crect%20x%3D%2228%22%20y%3D%2228%22%20width%3D%22174%22%20height%3D%2242%22%20rx%3D%225%22%20fill%3D%22%23b9d8e5%22%20stroke%3D%22%23263746%22%20stroke-width%3D%224%22%2F%3E%3Ccircle%20cx%3D%2245%22%20cy%3D%22110%22%20r%3D%2220%22%20fill%3D%22%2317202a%22%2F%3E%3Ccircle%20cx%3D%22185%22%20cy%3D%22110%22%20r%3D%2220%22%20fill%3D%22%2317202a%22%2F%3E%3Ccircle%20cx%3D%2225%22%20cy%3D%2216%22%20r%3D%2210%22%20fill%3D%22%23ef4444%22%2F%3E%3Ccircle%20cx%3D%22205%22%20cy%3D%2216%22%20r%3D%2210%22%20fill%3D%22%23ef4444%22%2F%3E%3Ctext%20x%3D%22115%22%20y%3D%2292%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2219%22%20font-weight%3D%22700%22%20fill%3D%22%23263746%22%3ESCHOOL%20BUS%3C%2Ftext%3E%3C%2Fg%3E%3Cpath%20d%3D%22M205%20175H145%22%20stroke%3D%22%23ef4444%22%20stroke-width%3D%228%22%2F%3E%3Crect%20x%3D%22112%22%20y%3D%22153%22%20width%3D%2234%22%20height%3D%2243%22%20rx%3D%223%22%20fill%3D%22%23ef4444%22%20stroke%3D%22%237f1d1d%22%20stroke-width%3D%224%22%2F%3E%3Ctext%20x%3D%22320%22%20y%3D%2255%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2225%22%20font-weight%3D%22700%22%20fill%3D%22%23b91c1c%22%3ESTOP%20FOR%20FLASHING%20RED%20LIGHTS%3C%2Ftext%3E%3C%2Fsvg%3E",
+        "options": [
+          "Pass carefully on the left.",
+          "Honk and pass.",
+          "Slow down and proceed.",
+          "Stop and remain stopped until lights are off."
+        ],
+        "selected": "Not answered",
+        "correct": "Stop and remain stopped until lights are off.",
+        "status": "skipped"
+      },
+      {
+        "number": 15,
+        "id": "rule-69-set-61",
+        "type": "rule",
+        "question": "Which source should a G1 learner use when a question asks for a current Ontario penalty?",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "A vehicle advertisement.",
+          "A guess based on another province.",
+          "An old social-media post.",
+          "The current Official MTO Driver’s Handbook and Ontario law."
+        ],
+        "selected": "Not answered",
+        "correct": "The current Official MTO Driver’s Handbook and Ontario law.",
+        "status": "skipped"
+      },
+      {
+        "number": 16,
+        "id": "rule-45-set-78",
+        "type": "rule",
+        "question": "When approaching a flashing red light, you must:",
+        "image": "https://files.ontario.ca/3-1-56a.jpg",
+        "options": [
+          "Ignore it.",
+          "Slow down and proceed with caution.",
+          "Speed up.",
+          "Stop and proceed when safe (treat as a stop sign)."
+        ],
+        "selected": "Not answered",
+        "correct": "Stop and proceed when safe (treat as a stop sign).",
+        "status": "skipped"
+      },
+      {
+        "number": 17,
+        "id": "sign-40-set-31",
+        "type": "sign",
+        "question": "What does this sign tell you about traffic flow?",
+        "image": "",
+        "options": [
+          "Two-way traffic ahead.",
+          "Only heavy vehicles allowed.",
+          "One-way traffic only.",
+          "Passing prohibited."
+        ],
+        "selected": "Not answered",
+        "correct": "Two-way traffic ahead.",
+        "status": "skipped"
+      },
+      {
+        "number": 18,
+        "id": "rule-11-set-117",
+        "type": "rule",
+        "question": "At a four-way stop, who has the right-of-way?",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "The vehicle that signals first.",
+          "The largest vehicle.",
+          "The vehicle on the left.",
+          "The first vehicle to stop at the intersection."
+        ],
+        "selected": "Not answered",
+        "correct": "The first vehicle to stop at the intersection.",
+        "status": "skipped"
+      },
+      {
+        "number": 19,
+        "id": "rule-53-set-51",
+        "type": "rule",
+        "question": "How many demerit points may result from failing to stop for a school bus when the red lights are flashing?",
+        "image": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20640%20360%22%3E%3Crect%20width%3D%22640%22%20height%3D%22360%22%20fill%3D%22%23cfe8f5%22%2F%3E%3Crect%20y%3D%22190%22%20width%3D%22640%22%20height%3D%22170%22%20fill%3D%22%234b5563%22%2F%3E%3Cpath%20d%3D%22M0%20275H640%22%20stroke%3D%22%23f8fafc%22%20stroke-width%3D%226%22%20stroke-dasharray%3D%2234%2024%22%2F%3E%3Cg%20transform%3D%22translate(215%20112)%22%3E%3Crect%20width%3D%22230%22%20height%3D%22105%22%20rx%3D%2212%22%20fill%3D%22%23f5c542%22%20stroke%3D%22%23263746%22%20stroke-width%3D%226%22%2F%3E%3Crect%20x%3D%2228%22%20y%3D%2228%22%20width%3D%22174%22%20height%3D%2242%22%20rx%3D%225%22%20fill%3D%22%23b9d8e5%22%20stroke%3D%22%23263746%22%20stroke-width%3D%224%22%2F%3E%3Ccircle%20cx%3D%2245%22%20cy%3D%22110%22%20r%3D%2220%22%20fill%3D%22%2317202a%22%2F%3E%3Ccircle%20cx%3D%22185%22%20cy%3D%22110%22%20r%3D%2220%22%20fill%3D%22%2317202a%22%2F%3E%3Ccircle%20cx%3D%2225%22%20cy%3D%2216%22%20r%3D%2210%22%20fill%3D%22%23ef4444%22%2F%3E%3Ccircle%20cx%3D%22205%22%20cy%3D%2216%22%20r%3D%2210%22%20fill%3D%22%23ef4444%22%2F%3E%3Ctext%20x%3D%22115%22%20y%3D%2292%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2219%22%20font-weight%3D%22700%22%20fill%3D%22%23263746%22%3ESCHOOL%20BUS%3C%2Ftext%3E%3C%2Fg%3E%3Cpath%20d%3D%22M205%20175H145%22%20stroke%3D%22%23ef4444%22%20stroke-width%3D%228%22%2F%3E%3Crect%20x%3D%22112%22%20y%3D%22153%22%20width%3D%2234%22%20height%3D%2243%22%20rx%3D%223%22%20fill%3D%22%23ef4444%22%20stroke%3D%22%237f1d1d%22%20stroke-width%3D%224%22%2F%3E%3Ctext%20x%3D%22320%22%20y%3D%2255%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2225%22%20font-weight%3D%22700%22%20fill%3D%22%23b91c1c%22%3ESTOP%20FOR%20FLASHING%20RED%20LIGHTS%3C%2Ftext%3E%3C%2Fsvg%3E",
+        "options": [
+          "Six points.",
+          "Four points.",
+          "No points if no child is visible.",
+          "Two points."
+        ],
+        "selected": "Not answered",
+        "correct": "Six points.",
+        "status": "skipped"
+      },
+      {
+        "number": 20,
+        "id": "rule-17-set-45",
+        "type": "rule",
+        "question": "When passing a cyclist, you should:",
+        "image": "https://files.ontario.ca/3-1-5.jpg",
+        "options": [
+          "Honk and pass quickly.",
+          "Force them to the curb.",
+          "Give them at least one metre of space when passing at low speeds and more at higher speeds.",
+          "Pass as closely as possible."
+        ],
+        "selected": "Not answered",
+        "correct": "Give them at least one metre of space when passing at low speeds and more at higher speeds.",
+        "status": "skipped"
+      }
+    ],
+    "submittedAt": "2026-09-23T01:51:51.584Z",
+    "clientIp": "127.0.0.1",
+    "serverUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36"
   }
 ]

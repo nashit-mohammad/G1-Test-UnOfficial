@@ -2,6 +2,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const os = require('os');
+const nodemailer = require('nodemailer');
 
 const PORT = Number(process.env.PORT) || 8000;
 const HOST = '0.0.0.0';
@@ -10,6 +11,13 @@ const DATABASE_FILE = path.join(ROOT, 'submissions.json');
 const PAGE_FILE = path.join(ROOT, 'index.html');
 const ADMIN_USERNAME = process.env.ADMIN_USERNAME || '';
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || '';
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'nashit.mohammad@gmail.com';
+const SMTP_HOST = process.env.SMTP_HOST || '';
+const SMTP_PORT = Number(process.env.SMTP_PORT) || 587;
+const SMTP_SECURE = process.env.SMTP_SECURE === 'true';
+const SMTP_USER = process.env.SMTP_USER || '';
+const SMTP_PASSWORD = process.env.SMTP_PASSWORD || '';
+const SMTP_FROM = process.env.SMTP_FROM || SMTP_USER;
 const SUPABASE_URL = (process.env.SUPABASE_URL || '').replace(/\/$/, '');
 const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || '';
 const USE_SUPABASE = Boolean(SUPABASE_URL && SUPABASE_SERVICE_ROLE_KEY);
@@ -27,6 +35,83 @@ function readLocalSubmissions(){
 
 function writeLocalSubmissions(submissions){
   fs.writeFileSync(DATABASE_FILE, JSON.stringify(submissions, null, 2), 'utf8');
+}
+
+function emailNotificationsConfigured(){
+  return Boolean(ADMIN_EMAIL && SMTP_HOST && SMTP_USER && SMTP_PASSWORD && SMTP_FROM);
+}
+
+function buildSubmissionEmail(submission){
+  const user = submission.user || {};
+  const score = submission.score || {};
+  const answers = submission.answers || [];
+  const displayName = user.name || 'Name not provided';
+  const platform = user.platform || 'Unknown platform';
+  const browser = user.userAgent || submission.serverUserAgent || 'Unknown browser';
+  const improvementAreas = submission.improvementAreas || [];
+  const answerRows = answers.map(answer => {
+    const isSkipped = answer.status === 'skipped' || answer.selected === 'Not answered';
+    const status = isSkipped ? 'skipped' : answer.status || 'incorrect';
+    const statusIcon = status === 'correct' ? '&#9989;' : status === 'skipped' ? '&#9197;' : '&#10060;';
+    const statusColor = status === 'correct' ? '#176b3c' : status === 'skipped' ? '#64748b' : '#a52222';
+    const image = answer.image && /^https?:\/\//i.test(answer.image)
+      ? `<img src="${escapeHtml(answer.image)}" alt="Related question image" width="120" style="display:block;width:120px;height:80px;object-fit:contain;margin:0 0 8px;background:#eef3f8;border:1px solid #dbe2ea;border-radius:5px;">`
+      : '';
+    return `<tr>
+      <td style="padding:10px 8px;border:1px solid #dbe2ea;vertical-align:top;">${escapeHtml(answer.number)}</td>
+      <td style="padding:10px 8px;border:1px solid #dbe2ea;vertical-align:top;">${escapeHtml(answer.type)}</td>
+      <td style="padding:10px 8px;border:1px solid #dbe2ea;vertical-align:top;">${image}<strong>${escapeHtml(answer.question)}</strong><ol style="margin:8px 0 0;padding-left:20px;color:#526174;">${(answer.options || []).map(option => `<li style="padding:2px 0;">${escapeHtml(option)}</li>`).join('')}</ol></td>
+      <td style="padding:10px 8px;border:1px solid #dbe2ea;vertical-align:top;">${escapeHtml(answer.selected || 'Not answered')}</td>
+      <td style="padding:10px 8px;border:1px solid #dbe2ea;vertical-align:top;">${escapeHtml(answer.correct)}</td>
+      <td style="padding:10px 8px;border:1px solid #dbe2ea;vertical-align:top;color:${statusColor};font-weight:700;white-space:nowrap;">${statusIcon} ${escapeHtml(status)}</td>
+    </tr>`;
+  }).join('');
+  const textAnswers = answers.map(answer => {
+    const status = answer.status === 'skipped' || answer.selected === 'Not answered' ? 'skipped' : answer.status || 'incorrect';
+    return `Question ${answer.number} (${answer.type})\n${answer.question}\nSelected: ${answer.selected || 'Not answered'}\nCorrect: ${answer.correct}\nStatus: ${status}`;
+  }).join('\n\n');
+  const text = [
+    'A new G1 practice response was submitted.',
+    `Name: ${displayName}`,
+    `Platform: ${platform}`,
+    `Browser: ${browser}`,
+    `IP: ${submission.clientIp || 'Unknown IP'}`,
+    `Score: ${score.correct ?? 0}/${score.total ?? 0} (${score.percent ?? 0}%)`,
+    `Answered: ${score.answered ?? 0}`,
+    `Road signs: ${score.signsCorrect ?? 0}/${score.signsTotal ?? 0}`,
+    `Rules: ${score.rulesCorrect ?? 0}/${score.rulesTotal ?? 0}`,
+    `Difficulty: ${submission.difficulty || 'medium'}`,
+    `Submitted: ${submission.submittedAt}`,
+    `Feedback: ${submission.feedback || 'Not recorded'}`,
+    `Improvement areas: ${improvementAreas.join(', ') || 'None recorded'}`,
+    '',
+    'Answers:',
+    textAnswers
+  ].join('\n');
+  const html = `<!doctype html><html><body style="margin:0;padding:24px;background:#edf3f8;font-family:Arial,sans-serif;color:#17202a;"><table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td align="center"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:1100px;background:#fff;border:1px solid #dbe2ea;"><tr><td style="padding:24px 26px;background:#004990;color:#fff;"><h1 style="margin:0;font-size:24px;">&#128203; New G1 Practice Response</h1><p style="margin:8px 0 0;color:#e5eff8;">A user submitted a response for admin review.</p></td></tr><tr><td style="padding:20px 24px;"><h2 style="margin:0 0 14px;color:#17324d;">&#127919; ${escapeHtml(displayName)} &mdash; ${escapeHtml(score.percent ?? 0)}%</h2><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:18px;"><tr><td style="padding:10px;background:#f4f7fb;border:1px solid #dbe2ea;"><strong>&#9989; Score</strong><br>${escapeHtml(score.correct ?? 0)}/${escapeHtml(score.total ?? 0)}</td><td style="padding:10px;background:#f4f7fb;border:1px solid #dbe2ea;"><strong>&#128221; Answered</strong><br>${escapeHtml(score.answered ?? 0)}</td><td style="padding:10px;background:#f4f7fb;border:1px solid #dbe2ea;"><strong>&#128663; Road signs</strong><br>${escapeHtml(score.signsCorrect ?? 0)}/${escapeHtml(score.signsTotal ?? 0)}</td><td style="padding:10px;background:#f4f7fb;border:1px solid #dbe2ea;"><strong>&#128218; Rules</strong><br>${escapeHtml(score.rulesCorrect ?? 0)}/${escapeHtml(score.rulesTotal ?? 0)}</td></tr></table><h3 style="color:#17324d;">&#128100; User and device</h3><p style="padding:10px;background:#f4f7fb;line-height:1.6;"><strong>Name:</strong> ${escapeHtml(displayName)}<br><strong>Platform:</strong> ${escapeHtml(platform)}<br><strong>Browser:</strong> ${escapeHtml(browser)}<br><strong>IP:</strong> ${escapeHtml(submission.clientIp || 'Unknown IP')}<br><strong>Difficulty:</strong> ${escapeHtml(submission.difficulty || 'medium')}<br><strong>Submitted:</strong> ${escapeHtml(submission.submittedAt)}</p><h3 style="color:#17324d;">&#128172; Feedback</h3><p style="padding:10px;border-left:3px solid #d99018;background:#fffaf0;line-height:1.5;"><strong>Feedback:</strong> ${escapeHtml(submission.feedback || 'Not recorded')}<br><strong>Improvement areas:</strong> ${escapeHtml(improvementAreas.join(', ') || 'None recorded')}</p><h3 style="color:#17324d;">&#128203; Answer review</h3><table width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;font-size:13px;"><thead><tr style="background:#eef3f8;color:#334155;"><th align="left" style="padding:9px 8px;border:1px solid #dbe2ea;">#</th><th align="left" style="padding:9px 8px;border:1px solid #dbe2ea;">Type</th><th align="left" style="padding:9px 8px;border:1px solid #dbe2ea;">Question</th><th align="left" style="padding:9px 8px;border:1px solid #dbe2ea;">Submitted</th><th align="left" style="padding:9px 8px;border:1px solid #dbe2ea;">Correct answer</th><th align="left" style="padding:9px 8px;border:1px solid #dbe2ea;">Status</th></tr></thead><tbody>${answerRows}</tbody></table></td></tr></table></td></tr></table></body></html>`;
+  return {html, text};
+}
+
+async function notifyAdminOfSubmission(submission){
+  if(!emailNotificationsConfigured()) return false;
+
+  const transporter = nodemailer.createTransport({
+    host: SMTP_HOST,
+    port: SMTP_PORT,
+    secure: SMTP_SECURE,
+    auth: {user: SMTP_USER, pass: SMTP_PASSWORD}
+  });
+  const user = submission.user || {};
+  const displayName = user.name || 'Name not provided';
+  const email = buildSubmissionEmail(submission);
+  await transporter.sendMail({
+    from: SMTP_FROM,
+    to: ADMIN_EMAIL,
+    subject: `New G1 practice response from ${displayName}`,
+    text: email.text,
+    html: email.html
+  });
+  return true;
 }
 
 async function supabaseRequest(pathname, options = {}){
@@ -258,6 +343,11 @@ const server = http.createServer(async (request, response) => {
         if(!submission || !submission.score || !Array.isArray(submission.answers)) throw new Error('Invalid submission');
         const savedSubmission = {...submission, submittedAt: new Date().toISOString(), clientIp: request.socket.remoteAddress || 'Unknown IP', serverUserAgent: request.headers['user-agent'] || 'Unknown browser'};
         const result = await saveSubmission(savedSubmission);
+        try {
+          await notifyAdminOfSubmission(savedSubmission);
+        } catch(error){
+          console.error('Could not send submission notification email:', error.message);
+        }
         sendJson(response, 201, {ok:true, ...result});
       } catch(error){
         sendJson(response, 400, {ok:false, error:'Invalid submission'});
