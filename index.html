@@ -644,7 +644,7 @@ function buildQuestionBank(selectedDifficulty = 'medium'){
         options = {
           a: "Maintain speed and expect others to move.",
           b: "Stop and wait for a green light.",
-          c: "Slow or stop as needed and give right-of-way to traffic on the main road.",
+          c: "Slow or stop as needed and give right-of-way to traffic and pedestrians on the road you are entering or crossing.",
           d: "Make a U-turn if the lane is busy."
         };
         answer = 'c';
@@ -653,7 +653,7 @@ function buildQuestionBank(selectedDifficulty = 'medium'){
       case 'speed80':
         text = "What does this regulatory speed sign indicate?";
         options = {
-          a: "The maximum legal speed in ideal conditions.",
+          a: "The posted maximum speed limit; drive slower if conditions make that necessary.",
           b: "The minimum speed you must maintain.",
           c: "A suggested speed only for trucks.",
           d: "The speed required when passing other vehicles."
@@ -786,7 +786,7 @@ function buildQuestionBank(selectedDifficulty = 'medium'){
       case 'bike_lane':
         text = "What does this sign indicate?";
         options = {
-          a: "Bicycle lane; cyclists have priority in the lane.",
+          a: "A bicycle lane is present; do not drive in it except as permitted to turn or access a driveway.",
           b: "No bicycles allowed.",
           c: "Bicycles must dismount.",
           d: "Bicycles share the lane with cars."
@@ -796,7 +796,7 @@ function buildQuestionBank(selectedDifficulty = 'medium'){
       case 'bus_lane':
         text = "What does this sign indicate?";
         options = {
-          a: "Bus lane; only buses may use during posted times.",
+          a: "A reserved bus lane; follow the sign for which vehicles may use it and when.",
           b: "No buses allowed.",
           c: "Parking for buses only.",
           d: "Bus stop ahead."
@@ -993,14 +993,14 @@ function buildQuestionBank(selectedDifficulty = 'medium'){
       text: "When must you use your headlights?",
       options: {
         a: "Only on highways.",
-        b: "From dusk to dawn and in poor visibility.",
+        b: "From 30 minutes before sunset until 30 minutes after sunrise, and whenever visibility is poor.",
         c: "Only when it is raining.",
         d: "Only when other vehicles are present."
       },
       answer: 'b'
     },
     {
-      text: "When a school bus has its upper red lights flashing and stop arm extended, drivers must:",
+      text: "When a school bus has its upper red lights flashing and stop arm extended, drivers on a road without a median must:",
       options: {
         a: "Pass carefully on the left.",
         b: "Stop and remain stopped until lights are turned off and arm retracted.",
@@ -1053,8 +1053,8 @@ function buildQuestionBank(selectedDifficulty = 'medium'){
       text: "Using a hand-held phone while driving is:",
       options: {
         a: "Allowed for quick calls.",
-        b: "Permitted if you are stopped at a red light.",
-        c: "Illegal for G1 drivers and dangerous for all drivers.",
+        b: "Not permitted while stopped at a red light.",
+        c: "Illegal for all drivers while driving, including at a red light.",
         d: "Allowed if you use one hand."
       },
       answer: 'c'
@@ -1120,7 +1120,7 @@ function buildQuestionBank(selectedDifficulty = 'medium'){
       answer: 'b'
     },
     {
-      text: "When approaching a stopped school bus on a two-lane road with flashing red lights, you must:",
+      text: "When approaching a stopped school bus on a road without a median with flashing red lights, you must:",
       options: {
         a: "Pass carefully on the left.",
         b: "Stop and remain stopped until lights are off.",
@@ -1180,14 +1180,14 @@ function buildQuestionBank(selectedDifficulty = 'medium'){
       answer: 'b'
     },
     {
-      text: "When parallel parking on a level street, you should park within how many centimetres of the curb?",
+      text: "When stopping on a road, how close should your vehicle be to the curb or edge of the roadway?",
       options: {
         a: "50 cm",
         b: "100 cm",
         c: "30 cm",
         d: "10 cm"
       },
-      answer: 'a'
+      answer: 'c'
     },
     {
       text: "If you miss your exit on a highway, you should:",
@@ -1330,7 +1330,7 @@ function buildQuestionBank(selectedDifficulty = 'medium'){
       answer: 'b'
     },
     {
-      text: "You are approaching an uncontrolled intersection at the same time as a vehicle on your right. What should you do?",
+      text: "You and another vehicle arrive at an uncontrolled intersection at the same time. The other vehicle is on your right. What should you do?",
       options: {
         a: "Proceed first because you are travelling faster.",
         b: "Yield to the vehicle on your right.",
@@ -1568,6 +1568,31 @@ function buildQuestionBank(selectedDifficulty = 'medium'){
         d: "Insurance is optional for novice drivers."
       },
       answer: 'a'
+    },
+    {
+      text: "In Ontario, which children must the driver ensure are secured in an appropriate child car seat or booster seat?",
+      options: {a: "Children under 6 years old.", b: "Children under 8 years old, unless they meet a seat-belt-only milestone.", c: "All children under 12 years old, without exception.", d: "Only children under 18 kg."},
+      answer: 'b'
+    },
+    {
+      text: "When may a child use a seat belt without a child car seat or booster seat in Ontario?",
+      options: {a: "When the child turns 8, weighs 36 kg, or reaches 145 cm tall.", b: "As soon as the child can sit upright.", c: "Only after the child turns 12.", d: "When the vehicle has side airbags."},
+      answer: 'a'
+    },
+    {
+      text: "Which child generally needs a booster seat under Ontario's child-seat rules?",
+      options: {a: "A child under 8 who weighs 18 to 36 kg and is under 145 cm tall, after outgrowing the forward-facing seat.", b: "Any child under 12, regardless of size.", c: "A child who weighs less than 9 kg.", d: "Only a child sitting in the front seat."},
+      answer: 'a'
+    },
+    {
+      text: "What type of seat belt must be available to use a booster seat?",
+      options: {a: "A lap belt only.", b: "A shoulder belt only.", c: "Both a lap belt and a shoulder belt.", d: "No seat belt is needed if the booster is secured."},
+      answer: 'c'
+    },
+    {
+      text: "Where is the safest place for a child under 13 to ride, especially when the vehicle has front airbags?",
+      options: {a: "In the front seat beside an active airbag.", b: "In the back seat, away from an active airbag.", c: "In the cargo area.", d: "On an adult's lap in the front seat."},
+      answer: 'b'
     }
   ];
 
@@ -1598,23 +1623,23 @@ function buildQuestionBank(selectedDifficulty = 'medium'){
       answer: 'c'
     },
     {
-      text: "How many demerit points may result from distracted driving upon conviction?",
+      text: "For a fully licensed driver, how many demerit points are added for a first distracted-driving conviction?",
       options: {a: "2", b: "3", c: "4", d: "6"},
       answer: 'b'
     },
     {
-      text: "For a fully licensed driver, how many demerit points trigger a licence suspension?",
-      options: {a: "6", b: "9", c: "12", d: "15"},
+      text: "At how many demerit points can a fully licensed driver receive a 30-day licence suspension?",
+      options: {a: "6", b: "9", c: "12", d: "15 or more"},
       answer: 'd'
     },
     {
-      text: "For a fully licensed driver, how many demerit points require an interview?",
-      options: {a: "6 to 8", b: "9 to 14", c: "15 to 17", d: "18 or more"},
+      text: "For a fully licensed driver, what happens at 9 to 14 demerit points?",
+      options: {a: "An automatic suspension.", b: "A second warning letter encouraging improved driving behaviour.", c: "A first warning letter only.", d: "No action is taken."},
       answer: 'b'
     },
     {
-      text: "For a novice driver, how many demerit points can result in a 30-day licence suspension?",
-      options: {a: "2 to 5", b: "6 to 8", c: "9 to 14", d: "15 or more"},
+      text: "For a novice driver, what happens at 6 to 8 demerit points?",
+      options: {a: "An automatic 30-day suspension.", b: "A second warning letter encouraging improved driving behaviour.", c: "A first warning letter only.", d: "No action is taken."},
       answer: 'b'
     },
     {
@@ -1623,7 +1648,7 @@ function buildQuestionBank(selectedDifficulty = 'medium'){
       answer: 'c'
     },
     {
-      text: "What blood-alcohol concentration is the criminal driving limit for most drivers?",
+      text: "For most drivers, at what blood-alcohol concentration does driving become a criminal offence?",
       options: {a: "0.02", b: "0.05", c: "0.08", d: "0.10"},
       answer: 'c'
     },
@@ -1648,22 +1673,22 @@ function buildQuestionBank(selectedDifficulty = 'medium'){
       answer: 'c'
     },
     {
-      text: "How long can a vehicle be impounded for driving without required insurance?",
-      options: {a: "7 days", b: "14 days", c: "30 days", d: "45 days"},
+      text: "After conviction for driving without required insurance, what is the maximum period a court may order the vehicle impounded?",
+      options: {a: "7 days", b: "14 days", c: "45 days", d: "Up to 3 months"},
       answer: 'd'
     },
     {
-      text: "How long is a first roadside suspension for a driver in the warn range?",
-      options: {a: "12 hours", b: "24 hours", c: "3 days", d: "7 days"},
+      text: "How long is the immediate roadside suspension for a first warn-range reading?",
+      options: {a: "12 hours", b: "3 days", c: "7 days", d: "14 days"},
       answer: 'c'
     },
     {
-      text: "How long is a second warn-range roadside suspension within five years?",
+      text: "How long is the immediate roadside suspension for a second warn-range reading within five years?",
       options: {a: "3 days", b: "7 days", c: "14 days", d: "30 days"},
-      answer: 'b'
+      answer: 'c'
     },
     {
-      text: "How long is a third or subsequent warn-range roadside suspension within five years?",
+      text: "How long is the immediate roadside suspension for a third or subsequent warn-range reading within five years?",
       options: {a: "7 days", b: "14 days", c: "30 days", d: "45 days"},
       answer: 'c'
     },
