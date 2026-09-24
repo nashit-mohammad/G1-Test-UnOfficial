@@ -270,7 +270,9 @@
   .feedback{font-size:13px;margin-top:8px;display:none}
   .feedback.ok{color:var(--ok);display:block}
   .feedback.bad{color:var(--bad);display:block}
-  #resultBox{margin-top:12px;padding:12px;border-radius:8px;display:none}
+  #resultBox{margin-top:12px;padding:16px;border-radius:10px;display:none;box-shadow:0 4px 14px rgba(23,50,77,.12);scroll-margin-top:16px}
+  #resultBox .result-heading{display:flex;align-items:center;gap:8px;margin:0 0 10px;font-size:17px}
+  #resultBox .result-score{font-size:18px;line-height:1.5}
   #resultBox.pass{background:rgba(20,92,47,.06);color:var(--ok);border:1px solid rgba(20,92,47,.12)}
   #resultBox.fail{background:rgba(139,31,31,.06);color:var(--bad);border:1px solid rgba(139,31,31,.12)}
   #resultBox.feedback-good{background:rgba(20,140,76,.1);color:#145c2f;border:1px solid rgba(20,140,76,.28);border-left:4px solid #238b57}
@@ -356,7 +358,7 @@
         <span class="key-item"><i class="key-dot incorrect"></i>Incorrect</span>
       </div>
       <div id="questionMarks" aria-label="Question status markers"></div>
-      <div id="resultBox"><ul class="feedback-list"><li>💡 Answer a question to receive feedback about your current strengths and improvement areas.</li></ul></div>
+      <div id="resultBox" role="status" aria-live="polite"><ul class="feedback-list"><li>💡 Answer a question to receive feedback about your current strengths and improvement areas.</li></ul></div>
     </section>
 
     <div id="questionsContainer"></div>
@@ -1740,6 +1742,18 @@ const SESSION_ID = (() => {
 })();
 let ATTEMPT_ID = `${Date.now()}-${Math.random().toString(36).slice(2)}`;
 const SAVED_NAME_KEY = 'g1-practice-user-name';
+let IS_GRADED = false;
+
+function updateSubmitButtonState(){
+  const disabled = IS_GRADED || !document.getElementById('userName').value.trim();
+  ['gradeBtn', 'endSubmitBtn', 'floatingSubmitBtn'].forEach(id => {
+    document.getElementById(id).disabled = disabled;
+  });
+  document.getElementById('resetBtn').disabled = disabled;
+  document.querySelectorAll('#questionsContainer input[type="radio"]').forEach(input => {
+    input.disabled = IS_GRADED;
+  });
+}
 
 function startNewAttempt(){
   ATTEMPT_ID = `${Date.now()}-${Math.random().toString(36).slice(2)}`;
@@ -1763,9 +1777,10 @@ function updateNameRequirement(){
   document.getElementById('testLayout').classList.toggle('name-required', !hasName);
   document.getElementById('nameReminder').hidden = hasName;
   document.getElementById('editNameBtn').disabled = !hasName;
-  ['questionCount', 'difficulty', 'shuffleBtn', 'gradeBtn', 'resetBtn', 'endSubmitBtn', 'floatingSubmitBtn'].forEach(id => {
+  ['questionCount', 'difficulty', 'shuffleBtn', 'resetBtn'].forEach(id => {
     document.getElementById(id).disabled = !hasName;
   });
+  updateSubmitButtonState();
 }
 
 function openNameEditor(){
@@ -2022,19 +2037,9 @@ async function saveSubmission(payload, resultBox){
 
 // --- Grading ---
 function gradeTest(){
-  
-  //Added Nashit
-  // 1. DISABLE THE SUBMIT BUTTON
-  // Replace 'submitBtn' with the actual ID of your submit button in the HTML
-  const floatingSubmitBtn1 = document.getElementById('floatingSubmitBtn');
-  if (floatingSubmitBtn1) {
-    floatingSubmitBtn1.disabled = true;
-  }
-  const endSubmitBtn1 = document.getElementById('endSubmitBtn');
-  if (endSubmitBtn1) {
-    endSubmitBtn1.disabled = true;
-  }
-  //Added Nashit END
+  if (IS_GRADED || !document.getElementById('userName').value.trim()) return;
+  IS_GRADED = true;
+  updateSubmitButtonState();
 
   const questions = document.querySelectorAll('.question');
   let total = 0, correct = 0;
@@ -2082,7 +2087,7 @@ function gradeTest(){
 
   const box = document.getElementById('resultBox');
   box.style.display = 'block';
-  box.innerHTML = `<strong>Overall:</strong> ${correct}/${total} (${overallPct}%)<br>
+  box.innerHTML = `<h2 class="result-heading">✅ Results are ready</h2><div class="result-score"><strong>Overall:</strong> ${correct}/${total} (${overallPct}%)</div>
                    <strong>Road signs:</strong> ${signsCorrect}/${signsTotal} (${signsPct}%)<br>
                    <strong>Rules:</strong> ${rulesCorrect}/${rulesTotal} (${rulesPct}%)`;
 
@@ -2179,6 +2184,8 @@ function gradeTest(){
     : 'Keep practicing both sections to maintain this performance.';
   box.innerHTML += `<ul class="feedback-list"><li>🌟 <strong>Feedback:</strong> ${positiveComment}</li><li>🎯 <strong>Current improvement area:</strong> ${improvementComment}</li></ul>`;
 
+  box.scrollIntoView({behavior: 'smooth', block: 'nearest'});
+
   const missedQuestionIds = Array.from(questions)
     .filter(question => {
       const qid = question.dataset.qid;
@@ -2196,13 +2203,6 @@ function gradeTest(){
         .filter(Boolean);
       TEST_LENGTH = QUESTION_BANK.length;
 
-      // Enable submit button Nashit
-      // 3. RE-ENABLE THE SUBMIT BUTTON IF THEY RETRY
-      if (floatingSubmitBtn1) floatingSubmitBtn1.disabled = false;
-      if (endSubmitBtn1) endSubmitBtn1.disabled = false;
-      // Enable submit button Nashit END
-
-      startNewAttempt();
       renderQuestions();
       clearAnswers();
       window.scrollTo({top: 0, behavior: 'smooth'});
@@ -2238,16 +2238,17 @@ function gradeTest(){
 
 // --- Reset / Shuffle ---
 function clearAnswers(){
+  if (IS_GRADED) startNewAttempt();
+  IS_GRADED = false;
+  updateSubmitButtonState();
 
-  // Enable submit button Nashit
-  // 3. RE-ENABLE THE SUBMIT BUTTON IF THEY RETRY
-  const floatingSubmitBtn1 = document.getElementById('floatingSubmitBtn');
-  const endSubmitBtn1 = document.getElementById('endSubmitBtn');
-  if (floatingSubmitBtn1) floatingSubmitBtn1.disabled = false;
-  if (endSubmitBtn1) endSubmitBtn1.disabled = false;
-  // Enable submit button Nashit END
-
-  document.querySelectorAll('input[type="radio"]').forEach(i => i.checked = false);
+  document.querySelectorAll('#questionsContainer input[type="radio"]').forEach(input => {
+    input.checked = false;
+    input.disabled = false;
+  });
+  document.querySelectorAll('#questionsContainer label').forEach(label => {
+    label.classList.remove('label-correct', 'label-wrong');
+  });
   document.querySelectorAll('.feedback').forEach(f => { f.style.display='none'; f.textContent=''; });
   const box = document.getElementById('resultBox');
   box.style.display = 'block';
@@ -2284,7 +2285,6 @@ document.getElementById('editNameBtn').addEventListener('click', openNameEditor)
 document.getElementById('endSubmitBtn').addEventListener('click', gradeTest);
 document.getElementById('floatingSubmitBtn').addEventListener('click', gradeTest);
 document.getElementById('topBtn').addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
-
 // Initial render
 renderQuestions();
 updateOverview();
