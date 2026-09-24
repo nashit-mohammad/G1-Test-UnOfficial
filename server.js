@@ -11,7 +11,7 @@ const DATABASE_FILE = path.join(ROOT, 'submissions.json');
 const PAGE_FILE = path.join(ROOT, 'index.html');
 const ADMIN_USERNAME = process.env.ADMIN_USERNAME || '';
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || '';
-const ADMIN_EMAILS = (process.env.ADMIN_EMAIL || 'nashit.mohammad@gmail.com')
+const ADMIN_EMAILS = (process.env.ADMIN_EMAIL || '')
   .split(/[;,]/)
   .map(email => email.trim())
   .filter(Boolean);
