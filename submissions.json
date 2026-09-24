@@ -2298,5 +2298,705 @@
     "submittedAt": "2026-09-23T01:51:51.584Z",
     "clientIp": "127.0.0.1",
     "serverUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36"
+  },
+  {
+    "sessionId": "1790097682973-vn5b4mn46km",
+    "attemptId": "1790219185031-2y7w5ks494s",
+    "difficulty": "medium",
+    "user": {
+      "name": "Mohammad Nashit",
+      "platform": "Win32",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36"
+    },
+    "feedback": "You have started the practice, and each review will build your confidence.",
+    "improvementAreas": [
+      "road signs",
+      "rules and safe-driving decisions"
+    ],
+    "score": {
+      "correct": 0,
+      "total": 20,
+      "answered": 0,
+      "percent": 0,
+      "signsCorrect": 0,
+      "signsTotal": 6,
+      "rulesCorrect": 0,
+      "rulesTotal": 14
+    },
+    "answers": [
+      {
+        "number": 1,
+        "id": "sign-26-set-89",
+        "type": "sign",
+        "question": "What must you do at this sign?",
+        "image": "https://files.ontario.ca/3-1-1.jpg",
+        "options": [
+          "Stop only if there is cross traffic.",
+          "Slow down and continue if clear.",
+          "Come to a complete stop and proceed only when safe.",
+          "Yield only to pedestrians."
+        ],
+        "selected": "Not answered",
+        "correct": "Come to a complete stop and proceed only when safe.",
+        "status": "skipped"
+      },
+      {
+        "number": 2,
+        "id": "rule-65-set-68",
+        "type": "rule",
+        "question": "Which factor can affect the seriousness of a driving offence beyond the basic ticket amount?",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "The offence type, conviction history, licence class and applicable Ontario sanctions.",
+          "The colour of the vehicle only.",
+          "Whether the radio was on.",
+          "The driver’s preferred route."
+        ],
+        "selected": "Not answered",
+        "correct": "The offence type, conviction history, licence class and applicable Ontario sanctions.",
+        "status": "skipped"
+      },
+      {
+        "number": 3,
+        "id": "rule-41-set-8",
+        "type": "rule",
+        "question": "When driving in winter conditions, you should:",
+        "image": "https://files.ontario.ca/3-1-52a.jpg",
+        "options": [
+          "Tailgate to keep warm.",
+          "Use cruise control on icy roads.",
+          "Reduce speed and increase following distance.",
+          "Drive at the posted speed limit regardless of conditions."
+        ],
+        "selected": "Not answered",
+        "correct": "Reduce speed and increase following distance.",
+        "status": "skipped"
+      },
+      {
+        "number": 4,
+        "id": "sign-36-set-35",
+        "type": "sign",
+        "question": "What hazard does this sign warn you about?",
+        "image": "https://files.ontario.ca/3-1-4.jpg",
+        "options": [
+          "A sharp curve ahead.",
+          "A hidden intersection.",
+          "A divided highway begins.",
+          "A railway crossing ahead."
+        ],
+        "selected": "Not answered",
+        "correct": "A railway crossing ahead.",
+        "status": "skipped"
+      },
+      {
+        "number": 5,
+        "id": "rule-48-set-17",
+        "type": "rule",
+        "question": "A vehicle behind you is following too closely on a wet road. What is the safest response?",
+        "image": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20640%20360%22%3E%3Crect%20width%3D%22640%22%20height%3D%22360%22%20fill%3D%22%23dcecf5%22%2F%3E%3Crect%20y%3D%22205%22%20width%3D%22640%22%20height%3D%22155%22%20fill%3D%22%234b5563%22%2F%3E%3Cpath%20d%3D%22M0%20282H640%22%20stroke%3D%22%23f8fafc%22%20stroke-width%3D%226%22%20stroke-dasharray%3D%2232%2024%22%2F%3E%3Cg%20transform%3D%22translate(92%20168)%22%3E%3Crect%20width%3D%22140%22%20height%3D%2266%22%20rx%3D%2212%22%20fill%3D%22%23d94343%22%2F%3E%3Crect%20x%3D%2224%22%20y%3D%22-25%22%20width%3D%2284%22%20height%3D%2234%22%20rx%3D%228%22%20fill%3D%22%23f0f5f8%22%20stroke%3D%22%23263746%22%20stroke-width%3D%225%22%2F%3E%3Ccircle%20cx%3D%2234%22%20cy%3D%2268%22%20r%3D%2217%22%20fill%3D%22%2317202a%22%2F%3E%3Ccircle%20cx%3D%22108%22%20cy%3D%2268%22%20r%3D%2217%22%20fill%3D%22%2317202a%22%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%22translate(408%20168)%22%3E%3Crect%20width%3D%22140%22%20height%3D%2266%22%20rx%3D%2212%22%20fill%3D%22%232d78b7%22%2F%3E%3Crect%20x%3D%2224%22%20y%3D%22-25%22%20width%3D%2284%22%20height%3D%2234%22%20rx%3D%228%22%20fill%3D%22%23f0f5f8%22%20stroke%3D%22%23263746%22%20stroke-width%3D%225%22%2F%3E%3Ccircle%20cx%3D%2234%22%20cy%3D%2268%22%20r%3D%2217%22%20fill%3D%22%2317202a%22%2F%3E%3Ccircle%20cx%3D%22108%22%20cy%3D%2268%22%20r%3D%2217%22%20fill%3D%22%2317202a%22%2F%3E%3C%2Fg%3E%3Cpath%20d%3D%22M238%20145H402M238%20133l-18%2012%2018%2012M402%20133l18%2012-18%2012%22%20fill%3D%22none%22%20stroke%3D%22%23f59e0b%22%20stroke-width%3D%228%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Ctext%20x%3D%22320%22%20y%3D%22112%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2228%22%20font-weight%3D%22700%22%20fill%3D%22%237a4d00%22%3Esafe%20following%20gap%3C%2Ftext%3E%3C%2Fsvg%3E",
+        "options": [
+          "Speed up above the limit to create space.",
+          "Increase your following distance from the vehicle ahead and allow the vehicle to pass when safe.",
+          "Turn on your hazard lights and stop in your lane.",
+          "Brake suddenly to make the driver back off."
+        ],
+        "selected": "Not answered",
+        "correct": "Increase your following distance from the vehicle ahead and allow the vehicle to pass when safe.",
+        "status": "skipped"
+      },
+      {
+        "number": 6,
+        "id": "sign-21-set-12",
+        "type": "sign",
+        "question": "What does this sign indicate?",
+        "image": "",
+        "options": [
+          "Bus lane; only buses may use during posted times.",
+          "Parking for buses only.",
+          "No buses allowed.",
+          "Bus stop ahead."
+        ],
+        "selected": "Not answered",
+        "correct": "Bus lane; only buses may use during posted times.",
+        "status": "skipped"
+      },
+      {
+        "number": 7,
+        "id": "rule-2-set-86",
+        "type": "rule",
+        "question": "When may you lend your driver's licence to another person?",
+        "image": "https://files.ontario.ca/3-1-52a.jpg",
+        "options": [
+          "You must not lend your licence to anyone.",
+          "For identification at a store.",
+          "When they are learning to drive.",
+          "Only to a close family member."
+        ],
+        "selected": "Not answered",
+        "correct": "You must not lend your licence to anyone.",
+        "status": "skipped"
+      },
+      {
+        "number": 8,
+        "id": "rule-14-set-88",
+        "type": "rule",
+        "question": "When a school bus has its upper red lights flashing and stop arm extended, drivers must:",
+        "image": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20640%20360%22%3E%3Crect%20width%3D%22640%22%20height%3D%22360%22%20fill%3D%22%23cfe8f5%22%2F%3E%3Crect%20y%3D%22190%22%20width%3D%22640%22%20height%3D%22170%22%20fill%3D%22%234b5563%22%2F%3E%3Cpath%20d%3D%22M0%20275H640%22%20stroke%3D%22%23f8fafc%22%20stroke-width%3D%226%22%20stroke-dasharray%3D%2234%2024%22%2F%3E%3Cg%20transform%3D%22translate(215%20112)%22%3E%3Crect%20width%3D%22230%22%20height%3D%22105%22%20rx%3D%2212%22%20fill%3D%22%23f5c542%22%20stroke%3D%22%23263746%22%20stroke-width%3D%226%22%2F%3E%3Crect%20x%3D%2228%22%20y%3D%2228%22%20width%3D%22174%22%20height%3D%2242%22%20rx%3D%225%22%20fill%3D%22%23b9d8e5%22%20stroke%3D%22%23263746%22%20stroke-width%3D%224%22%2F%3E%3Ccircle%20cx%3D%2245%22%20cy%3D%22110%22%20r%3D%2220%22%20fill%3D%22%2317202a%22%2F%3E%3Ccircle%20cx%3D%22185%22%20cy%3D%22110%22%20r%3D%2220%22%20fill%3D%22%2317202a%22%2F%3E%3Ccircle%20cx%3D%2225%22%20cy%3D%2216%22%20r%3D%2210%22%20fill%3D%22%23ef4444%22%2F%3E%3Ccircle%20cx%3D%22205%22%20cy%3D%2216%22%20r%3D%2210%22%20fill%3D%22%23ef4444%22%2F%3E%3Ctext%20x%3D%22115%22%20y%3D%2292%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2219%22%20font-weight%3D%22700%22%20fill%3D%22%23263746%22%3ESCHOOL%20BUS%3C%2Ftext%3E%3C%2Fg%3E%3Cpath%20d%3D%22M205%20175H145%22%20stroke%3D%22%23ef4444%22%20stroke-width%3D%228%22%2F%3E%3Crect%20x%3D%22112%22%20y%3D%22153%22%20width%3D%2234%22%20height%3D%2243%22%20rx%3D%223%22%20fill%3D%22%23ef4444%22%20stroke%3D%22%237f1d1d%22%20stroke-width%3D%224%22%2F%3E%3Ctext%20x%3D%22320%22%20y%3D%2255%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2225%22%20font-weight%3D%22700%22%20fill%3D%22%23b91c1c%22%3ESTOP%20FOR%20FLASHING%20RED%20LIGHTS%3C%2Ftext%3E%3C%2Fsvg%3E",
+        "options": [
+          "Stop and remain stopped until lights are turned off and arm retracted.",
+          "Slow down and proceed.",
+          "Pass carefully on the left.",
+          "Honk to alert the driver."
+        ],
+        "selected": "Not answered",
+        "correct": "Stop and remain stopped until lights are turned off and arm retracted.",
+        "status": "skipped"
+      },
+      {
+        "number": 9,
+        "id": "rule-44-set-44",
+        "type": "rule",
+        "question": "If you are driving and feel drowsy, you should:",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "Drive faster to reach destination sooner.",
+          "Drink coffee and continue driving.",
+          "Open the windows and keep driving.",
+          "Stop in a safe place and rest or switch drivers."
+        ],
+        "selected": "Not answered",
+        "correct": "Stop in a safe place and rest or switch drivers.",
+        "status": "skipped"
+      },
+      {
+        "number": 10,
+        "id": "sign-13-set-24",
+        "type": "sign",
+        "question": "What should you do when you see this lane merging sign?",
+        "image": "https://files.ontario.ca/3-1-58.jpg",
+        "options": [
+          "Turn around and find another route.",
+          "Stop immediately.",
+          "Move into the merging lane as quickly as possible.",
+          "Be prepared for traffic to merge and adjust speed or lane position to allow it."
+        ],
+        "selected": "Not answered",
+        "correct": "Be prepared for traffic to merge and adjust speed or lane position to allow it.",
+        "status": "skipped"
+      },
+      {
+        "number": 11,
+        "id": "sign-27-set-45",
+        "type": "sign",
+        "question": "When you see this sign, what should you do?",
+        "image": "https://files.ontario.ca/3-1-3.jpg",
+        "options": [
+          "Maintain speed and expect others to move.",
+          "Slow or stop as needed and give right-of-way to traffic on the main road.",
+          "Stop and wait for a green light.",
+          "Make a U-turn if the lane is busy."
+        ],
+        "selected": "Not answered",
+        "correct": "Slow or stop as needed and give right-of-way to traffic on the main road.",
+        "status": "skipped"
+      },
+      {
+        "number": 12,
+        "id": "rule-6-set-58",
+        "type": "rule",
+        "question": "When deciding whether to make a U-turn, what should you check first?",
+        "image": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20640%20360%22%3E%3Crect%20width%3D%22640%22%20height%3D%22360%22%20fill%3D%22%23dcecf5%22%2F%3E%3Crect%20y%3D%2275%22%20width%3D%22640%22%20height%3D%22220%22%20fill%3D%22%234b5563%22%2F%3E%3Cpath%20d%3D%22M0%20185H640%22%20stroke%3D%22%23f8fafc%22%20stroke-width%3D%226%22%20stroke-dasharray%3D%2234%2024%22%2F%3E%3Cpath%20d%3D%22M320%20260%20C145%20260%20145%20110%20320%20110%20C425%20110%20455%20170%20420%20220%22%20fill%3D%22none%22%20stroke%3D%22%23f59e0b%22%20stroke-width%3D%2212%22%20stroke-linecap%3D%22round%22%2F%3E%3Cpath%20d%3D%22M415%20183l8%2038%2034-18%22%20fill%3D%22none%22%20stroke%3D%22%23f59e0b%22%20stroke-width%3D%2212%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cg%20transform%3D%22translate(392%20197)%20rotate(-20)%22%3E%3Crect%20width%3D%22104%22%20height%3D%2248%22%20rx%3D%2210%22%20fill%3D%22%232d78b7%22%20stroke%3D%22%2317202a%22%20stroke-width%3D%225%22%2F%3E%3Crect%20x%3D%2220%22%20y%3D%22-18%22%20width%3D%2262%22%20height%3D%2225%22%20rx%3D%225%22%20fill%3D%22%23dcecf5%22%20stroke%3D%22%2317202a%22%20stroke-width%3D%224%22%2F%3E%3Ccircle%20cx%3D%2224%22%20cy%3D%2251%22%20r%3D%2213%22%20fill%3D%22%2317202a%22%2F%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2251%22%20r%3D%2213%22%20fill%3D%22%2317202a%22%2F%3E%3C%2Fg%3E%3Ctext%20x%3D%22320%22%20y%3D%2245%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2226%22%20font-weight%3D%22700%22%20fill%3D%22%237a4d00%22%3ECHECK%20TRAFFIC%20BEFORE%20A%20U-TURN%3C%2Ftext%3E%3C%2Fsvg%3E",
+        "options": [
+          "Whether traffic regulations permit a U-turn at that location.",
+          "The height of the curb.",
+          "Nearby trees or poles.",
+          "The turning radius of your vehicle."
+        ],
+        "selected": "Not answered",
+        "correct": "Whether traffic regulations permit a U-turn at that location.",
+        "status": "skipped"
+      },
+      {
+        "number": 13,
+        "id": "rule-68-set-71",
+        "type": "rule",
+        "question": "If a driver is prohibited from driving during a suspension, what is the safest interpretation?",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "The driver may drive only outside the city.",
+          "The driver must not operate a motor vehicle until the suspension is officially over.",
+          "The driver may drive if the trip is short.",
+          "The driver may drive if a learner is present."
+        ],
+        "selected": "Not answered",
+        "correct": "The driver must not operate a motor vehicle until the suspension is officially over.",
+        "status": "skipped"
+      },
+      {
+        "number": 14,
+        "id": "rule-46-set-151",
+        "type": "rule",
+        "question": "If your vehicle starts to skid on ice, you should:",
+        "image": "https://files.ontario.ca/3-1-52a.jpg",
+        "options": [
+          "Accelerate to regain traction.",
+          "Turn off the engine.",
+          "Take your foot off the accelerator and steer gently in the direction you want to go.",
+          "Brake hard and turn sharply."
+        ],
+        "selected": "Not answered",
+        "correct": "Take your foot off the accelerator and steer gently in the direction you want to go.",
+        "status": "skipped"
+      },
+      {
+        "number": 15,
+        "id": "rule-13-set-11",
+        "type": "rule",
+        "question": "When must you use your headlights?",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "Only when it is raining.",
+          "From dusk to dawn and in poor visibility.",
+          "Only on highways.",
+          "Only when other vehicles are present."
+        ],
+        "selected": "Not answered",
+        "correct": "From dusk to dawn and in poor visibility.",
+        "status": "skipped"
+      },
+      {
+        "number": 16,
+        "id": "rule-11-set-83",
+        "type": "rule",
+        "question": "At a four-way stop, who has the right-of-way?",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "The first vehicle to stop at the intersection.",
+          "The vehicle on the left.",
+          "The largest vehicle.",
+          "The vehicle that signals first."
+        ],
+        "selected": "Not answered",
+        "correct": "The first vehicle to stop at the intersection.",
+        "status": "skipped"
+      },
+      {
+        "number": 17,
+        "id": "rule-60-set-150",
+        "type": "rule",
+        "question": "Which statement about distracted driving penalties is safest for a knowledge-test answer?",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "The offence can involve fines, demerit points and licence consequences under Ontario law.",
+          "It only applies when a collision occurs.",
+          "It is never an offence for a novice driver.",
+          "It is allowed whenever traffic is moving slowly."
+        ],
+        "selected": "Not answered",
+        "correct": "The offence can involve fines, demerit points and licence consequences under Ontario law.",
+        "status": "skipped"
+      },
+      {
+        "number": 18,
+        "id": "rule-79-set-16",
+        "type": "rule",
+        "question": "For a novice driver, how many demerit points can result in a 30-day licence suspension?",
+        "image": "https://files.ontario.ca/3-1-52a.jpg",
+        "options": [
+          "2 to 5",
+          "9 to 14",
+          "6 to 8",
+          "15 or more"
+        ],
+        "selected": "Not answered",
+        "correct": "6 to 8",
+        "status": "skipped"
+      },
+      {
+        "number": 19,
+        "id": "rule-5-set-56",
+        "type": "rule",
+        "question": "Another vehicle is about to overtake and pass you. What should you do?",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "Speed up so passing is not necessary.",
+          "Move left to block the pass.",
+          "Keep to the right and allow the vehicle to pass safely.",
+          "Signal to the other driver not to pass."
+        ],
+        "selected": "Not answered",
+        "correct": "Keep to the right and allow the vehicle to pass safely.",
+        "status": "skipped"
+      },
+      {
+        "number": 20,
+        "id": "sign-17-set-6",
+        "type": "sign",
+        "question": "What should you expect when you see this sign?",
+        "image": "https://files.ontario.ca/3-1-74.jpg",
+        "options": [
+          "Railway crossing ahead.",
+          "Road work ahead; slow down and follow directions.",
+          "No stopping allowed.",
+          "School crossing ahead."
+        ],
+        "selected": "Not answered",
+        "correct": "Road work ahead; slow down and follow directions.",
+        "status": "skipped"
+      }
+    ],
+    "submittedAt": "2026-09-24T03:06:39.836Z",
+    "clientIp": "127.0.0.1",
+    "serverUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36"
+  },
+  {
+    "sessionId": "1790097682973-vn5b4mn46km",
+    "attemptId": "1790219206193-gz3m7wdagc",
+    "difficulty": "medium",
+    "user": {
+      "name": "Mohammad Nashit",
+      "platform": "Win32",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36"
+    },
+    "feedback": "You have started the practice, and each review will build your confidence.",
+    "improvementAreas": [
+      "road signs",
+      "rules and safe-driving decisions"
+    ],
+    "score": {
+      "correct": 1,
+      "total": 20,
+      "answered": 2,
+      "percent": 5,
+      "signsCorrect": 1,
+      "signsTotal": 6,
+      "rulesCorrect": 0,
+      "rulesTotal": 14
+    },
+    "answers": [
+      {
+        "number": 1,
+        "id": "rule-2-set-86",
+        "type": "rule",
+        "question": "When may you lend your driver's licence to another person?",
+        "image": "https://files.ontario.ca/3-1-52a.jpg",
+        "options": [
+          "For identification at a store.",
+          "You must not lend your licence to anyone.",
+          "When they are learning to drive.",
+          "Only to a close family member."
+        ],
+        "selected": "For identification at a store.",
+        "correct": "You must not lend your licence to anyone.",
+        "status": "incorrect"
+      },
+      {
+        "number": 2,
+        "id": "sign-26-set-89",
+        "type": "sign",
+        "question": "What must you do at this sign?",
+        "image": "https://files.ontario.ca/3-1-1.jpg",
+        "options": [
+          "Yield only to pedestrians.",
+          "Slow down and continue if clear.",
+          "Stop only if there is cross traffic.",
+          "Come to a complete stop and proceed only when safe."
+        ],
+        "selected": "Come to a complete stop and proceed only when safe.",
+        "correct": "Come to a complete stop and proceed only when safe.",
+        "status": "correct"
+      },
+      {
+        "number": 3,
+        "id": "rule-68-set-71",
+        "type": "rule",
+        "question": "If a driver is prohibited from driving during a suspension, what is the safest interpretation?",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "The driver may drive if the trip is short.",
+          "The driver must not operate a motor vehicle until the suspension is officially over.",
+          "The driver may drive only outside the city.",
+          "The driver may drive if a learner is present."
+        ],
+        "selected": "Not answered",
+        "correct": "The driver must not operate a motor vehicle until the suspension is officially over.",
+        "status": "skipped"
+      },
+      {
+        "number": 4,
+        "id": "rule-14-set-88",
+        "type": "rule",
+        "question": "When a school bus has its upper red lights flashing and stop arm extended, drivers must:",
+        "image": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20640%20360%22%3E%3Crect%20width%3D%22640%22%20height%3D%22360%22%20fill%3D%22%23cfe8f5%22%2F%3E%3Crect%20y%3D%22190%22%20width%3D%22640%22%20height%3D%22170%22%20fill%3D%22%234b5563%22%2F%3E%3Cpath%20d%3D%22M0%20275H640%22%20stroke%3D%22%23f8fafc%22%20stroke-width%3D%226%22%20stroke-dasharray%3D%2234%2024%22%2F%3E%3Cg%20transform%3D%22translate(215%20112)%22%3E%3Crect%20width%3D%22230%22%20height%3D%22105%22%20rx%3D%2212%22%20fill%3D%22%23f5c542%22%20stroke%3D%22%23263746%22%20stroke-width%3D%226%22%2F%3E%3Crect%20x%3D%2228%22%20y%3D%2228%22%20width%3D%22174%22%20height%3D%2242%22%20rx%3D%225%22%20fill%3D%22%23b9d8e5%22%20stroke%3D%22%23263746%22%20stroke-width%3D%224%22%2F%3E%3Ccircle%20cx%3D%2245%22%20cy%3D%22110%22%20r%3D%2220%22%20fill%3D%22%2317202a%22%2F%3E%3Ccircle%20cx%3D%22185%22%20cy%3D%22110%22%20r%3D%2220%22%20fill%3D%22%2317202a%22%2F%3E%3Ccircle%20cx%3D%2225%22%20cy%3D%2216%22%20r%3D%2210%22%20fill%3D%22%23ef4444%22%2F%3E%3Ccircle%20cx%3D%22205%22%20cy%3D%2216%22%20r%3D%2210%22%20fill%3D%22%23ef4444%22%2F%3E%3Ctext%20x%3D%22115%22%20y%3D%2292%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2219%22%20font-weight%3D%22700%22%20fill%3D%22%23263746%22%3ESCHOOL%20BUS%3C%2Ftext%3E%3C%2Fg%3E%3Cpath%20d%3D%22M205%20175H145%22%20stroke%3D%22%23ef4444%22%20stroke-width%3D%228%22%2F%3E%3Crect%20x%3D%22112%22%20y%3D%22153%22%20width%3D%2234%22%20height%3D%2243%22%20rx%3D%223%22%20fill%3D%22%23ef4444%22%20stroke%3D%22%237f1d1d%22%20stroke-width%3D%224%22%2F%3E%3Ctext%20x%3D%22320%22%20y%3D%2255%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2225%22%20font-weight%3D%22700%22%20fill%3D%22%23b91c1c%22%3ESTOP%20FOR%20FLASHING%20RED%20LIGHTS%3C%2Ftext%3E%3C%2Fsvg%3E",
+        "options": [
+          "Pass carefully on the left.",
+          "Stop and remain stopped until lights are turned off and arm retracted.",
+          "Slow down and proceed.",
+          "Honk to alert the driver."
+        ],
+        "selected": "Not answered",
+        "correct": "Stop and remain stopped until lights are turned off and arm retracted.",
+        "status": "skipped"
+      },
+      {
+        "number": 5,
+        "id": "rule-48-set-17",
+        "type": "rule",
+        "question": "A vehicle behind you is following too closely on a wet road. What is the safest response?",
+        "image": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20640%20360%22%3E%3Crect%20width%3D%22640%22%20height%3D%22360%22%20fill%3D%22%23dcecf5%22%2F%3E%3Crect%20y%3D%22205%22%20width%3D%22640%22%20height%3D%22155%22%20fill%3D%22%234b5563%22%2F%3E%3Cpath%20d%3D%22M0%20282H640%22%20stroke%3D%22%23f8fafc%22%20stroke-width%3D%226%22%20stroke-dasharray%3D%2232%2024%22%2F%3E%3Cg%20transform%3D%22translate(92%20168)%22%3E%3Crect%20width%3D%22140%22%20height%3D%2266%22%20rx%3D%2212%22%20fill%3D%22%23d94343%22%2F%3E%3Crect%20x%3D%2224%22%20y%3D%22-25%22%20width%3D%2284%22%20height%3D%2234%22%20rx%3D%228%22%20fill%3D%22%23f0f5f8%22%20stroke%3D%22%23263746%22%20stroke-width%3D%225%22%2F%3E%3Ccircle%20cx%3D%2234%22%20cy%3D%2268%22%20r%3D%2217%22%20fill%3D%22%2317202a%22%2F%3E%3Ccircle%20cx%3D%22108%22%20cy%3D%2268%22%20r%3D%2217%22%20fill%3D%22%2317202a%22%2F%3E%3C%2Fg%3E%3Cg%20transform%3D%22translate(408%20168)%22%3E%3Crect%20width%3D%22140%22%20height%3D%2266%22%20rx%3D%2212%22%20fill%3D%22%232d78b7%22%2F%3E%3Crect%20x%3D%2224%22%20y%3D%22-25%22%20width%3D%2284%22%20height%3D%2234%22%20rx%3D%228%22%20fill%3D%22%23f0f5f8%22%20stroke%3D%22%23263746%22%20stroke-width%3D%225%22%2F%3E%3Ccircle%20cx%3D%2234%22%20cy%3D%2268%22%20r%3D%2217%22%20fill%3D%22%2317202a%22%2F%3E%3Ccircle%20cx%3D%22108%22%20cy%3D%2268%22%20r%3D%2217%22%20fill%3D%22%2317202a%22%2F%3E%3C%2Fg%3E%3Cpath%20d%3D%22M238%20145H402M238%20133l-18%2012%2018%2012M402%20133l18%2012-18%2012%22%20fill%3D%22none%22%20stroke%3D%22%23f59e0b%22%20stroke-width%3D%228%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Ctext%20x%3D%22320%22%20y%3D%22112%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2228%22%20font-weight%3D%22700%22%20fill%3D%22%237a4d00%22%3Esafe%20following%20gap%3C%2Ftext%3E%3C%2Fsvg%3E",
+        "options": [
+          "Speed up above the limit to create space.",
+          "Brake suddenly to make the driver back off.",
+          "Increase your following distance from the vehicle ahead and allow the vehicle to pass when safe.",
+          "Turn on your hazard lights and stop in your lane."
+        ],
+        "selected": "Not answered",
+        "correct": "Increase your following distance from the vehicle ahead and allow the vehicle to pass when safe.",
+        "status": "skipped"
+      },
+      {
+        "number": 6,
+        "id": "rule-60-set-150",
+        "type": "rule",
+        "question": "Which statement about distracted driving penalties is safest for a knowledge-test answer?",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "It is allowed whenever traffic is moving slowly.",
+          "The offence can involve fines, demerit points and licence consequences under Ontario law.",
+          "It only applies when a collision occurs.",
+          "It is never an offence for a novice driver."
+        ],
+        "selected": "Not answered",
+        "correct": "The offence can involve fines, demerit points and licence consequences under Ontario law.",
+        "status": "skipped"
+      },
+      {
+        "number": 7,
+        "id": "sign-36-set-35",
+        "type": "sign",
+        "question": "What hazard does this sign warn you about?",
+        "image": "https://files.ontario.ca/3-1-4.jpg",
+        "options": [
+          "A sharp curve ahead.",
+          "A hidden intersection.",
+          "A divided highway begins.",
+          "A railway crossing ahead."
+        ],
+        "selected": "Not answered",
+        "correct": "A railway crossing ahead.",
+        "status": "skipped"
+      },
+      {
+        "number": 8,
+        "id": "rule-44-set-44",
+        "type": "rule",
+        "question": "If you are driving and feel drowsy, you should:",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "Stop in a safe place and rest or switch drivers.",
+          "Drink coffee and continue driving.",
+          "Open the windows and keep driving.",
+          "Drive faster to reach destination sooner."
+        ],
+        "selected": "Not answered",
+        "correct": "Stop in a safe place and rest or switch drivers.",
+        "status": "skipped"
+      },
+      {
+        "number": 9,
+        "id": "rule-5-set-56",
+        "type": "rule",
+        "question": "Another vehicle is about to overtake and pass you. What should you do?",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "Keep to the right and allow the vehicle to pass safely.",
+          "Signal to the other driver not to pass.",
+          "Speed up so passing is not necessary.",
+          "Move left to block the pass."
+        ],
+        "selected": "Not answered",
+        "correct": "Keep to the right and allow the vehicle to pass safely.",
+        "status": "skipped"
+      },
+      {
+        "number": 10,
+        "id": "rule-79-set-16",
+        "type": "rule",
+        "question": "For a novice driver, how many demerit points can result in a 30-day licence suspension?",
+        "image": "https://files.ontario.ca/3-1-52a.jpg",
+        "options": [
+          "9 to 14",
+          "2 to 5",
+          "6 to 8",
+          "15 or more"
+        ],
+        "selected": "Not answered",
+        "correct": "6 to 8",
+        "status": "skipped"
+      },
+      {
+        "number": 11,
+        "id": "sign-13-set-24",
+        "type": "sign",
+        "question": "What should you do when you see this lane merging sign?",
+        "image": "https://files.ontario.ca/3-1-58.jpg",
+        "options": [
+          "Turn around and find another route.",
+          "Stop immediately.",
+          "Be prepared for traffic to merge and adjust speed or lane position to allow it.",
+          "Move into the merging lane as quickly as possible."
+        ],
+        "selected": "Not answered",
+        "correct": "Be prepared for traffic to merge and adjust speed or lane position to allow it.",
+        "status": "skipped"
+      },
+      {
+        "number": 12,
+        "id": "sign-21-set-12",
+        "type": "sign",
+        "question": "What does this sign indicate?",
+        "image": "",
+        "options": [
+          "No buses allowed.",
+          "Bus stop ahead.",
+          "Parking for buses only.",
+          "Bus lane; only buses may use during posted times."
+        ],
+        "selected": "Not answered",
+        "correct": "Bus lane; only buses may use during posted times.",
+        "status": "skipped"
+      },
+      {
+        "number": 13,
+        "id": "rule-11-set-83",
+        "type": "rule",
+        "question": "At a four-way stop, who has the right-of-way?",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "The vehicle on the left.",
+          "The first vehicle to stop at the intersection.",
+          "The largest vehicle.",
+          "The vehicle that signals first."
+        ],
+        "selected": "Not answered",
+        "correct": "The first vehicle to stop at the intersection.",
+        "status": "skipped"
+      },
+      {
+        "number": 14,
+        "id": "rule-13-set-11",
+        "type": "rule",
+        "question": "When must you use your headlights?",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "Only when other vehicles are present.",
+          "Only when it is raining.",
+          "From dusk to dawn and in poor visibility.",
+          "Only on highways."
+        ],
+        "selected": "Not answered",
+        "correct": "From dusk to dawn and in poor visibility.",
+        "status": "skipped"
+      },
+      {
+        "number": 15,
+        "id": "rule-46-set-151",
+        "type": "rule",
+        "question": "If your vehicle starts to skid on ice, you should:",
+        "image": "https://files.ontario.ca/3-1-52a.jpg",
+        "options": [
+          "Accelerate to regain traction.",
+          "Brake hard and turn sharply.",
+          "Turn off the engine.",
+          "Take your foot off the accelerator and steer gently in the direction you want to go."
+        ],
+        "selected": "Not answered",
+        "correct": "Take your foot off the accelerator and steer gently in the direction you want to go.",
+        "status": "skipped"
+      },
+      {
+        "number": 16,
+        "id": "rule-41-set-8",
+        "type": "rule",
+        "question": "When driving in winter conditions, you should:",
+        "image": "https://files.ontario.ca/3-1-52a.jpg",
+        "options": [
+          "Use cruise control on icy roads.",
+          "Tailgate to keep warm.",
+          "Reduce speed and increase following distance.",
+          "Drive at the posted speed limit regardless of conditions."
+        ],
+        "selected": "Not answered",
+        "correct": "Reduce speed and increase following distance.",
+        "status": "skipped"
+      },
+      {
+        "number": 17,
+        "id": "sign-27-set-45",
+        "type": "sign",
+        "question": "When you see this sign, what should you do?",
+        "image": "https://files.ontario.ca/3-1-3.jpg",
+        "options": [
+          "Make a U-turn if the lane is busy.",
+          "Slow or stop as needed and give right-of-way to traffic on the main road.",
+          "Stop and wait for a green light.",
+          "Maintain speed and expect others to move."
+        ],
+        "selected": "Not answered",
+        "correct": "Slow or stop as needed and give right-of-way to traffic on the main road.",
+        "status": "skipped"
+      },
+      {
+        "number": 18,
+        "id": "rule-65-set-68",
+        "type": "rule",
+        "question": "Which factor can affect the seriousness of a driving offence beyond the basic ticket amount?",
+        "image": "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=420&q=82",
+        "options": [
+          "The driver’s preferred route.",
+          "The colour of the vehicle only.",
+          "Whether the radio was on.",
+          "The offence type, conviction history, licence class and applicable Ontario sanctions."
+        ],
+        "selected": "Not answered",
+        "correct": "The offence type, conviction history, licence class and applicable Ontario sanctions.",
+        "status": "skipped"
+      },
+      {
+        "number": 19,
+        "id": "sign-17-set-6",
+        "type": "sign",
+        "question": "What should you expect when you see this sign?",
+        "image": "https://files.ontario.ca/3-1-74.jpg",
+        "options": [
+          "Road work ahead; slow down and follow directions.",
+          "School crossing ahead.",
+          "Railway crossing ahead.",
+          "No stopping allowed."
+        ],
+        "selected": "Not answered",
+        "correct": "Road work ahead; slow down and follow directions.",
+        "status": "skipped"
+      },
+      {
+        "number": 20,
+        "id": "rule-6-set-58",
+        "type": "rule",
+        "question": "When deciding whether to make a U-turn, what should you check first?",
+        "image": "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20640%20360%22%3E%3Crect%20width%3D%22640%22%20height%3D%22360%22%20fill%3D%22%23dcecf5%22%2F%3E%3Crect%20y%3D%2275%22%20width%3D%22640%22%20height%3D%22220%22%20fill%3D%22%234b5563%22%2F%3E%3Cpath%20d%3D%22M0%20185H640%22%20stroke%3D%22%23f8fafc%22%20stroke-width%3D%226%22%20stroke-dasharray%3D%2234%2024%22%2F%3E%3Cpath%20d%3D%22M320%20260%20C145%20260%20145%20110%20320%20110%20C425%20110%20455%20170%20420%20220%22%20fill%3D%22none%22%20stroke%3D%22%23f59e0b%22%20stroke-width%3D%2212%22%20stroke-linecap%3D%22round%22%2F%3E%3Cpath%20d%3D%22M415%20183l8%2038%2034-18%22%20fill%3D%22none%22%20stroke%3D%22%23f59e0b%22%20stroke-width%3D%2212%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cg%20transform%3D%22translate(392%20197)%20rotate(-20)%22%3E%3Crect%20width%3D%22104%22%20height%3D%2248%22%20rx%3D%2210%22%20fill%3D%22%232d78b7%22%20stroke%3D%22%2317202a%22%20stroke-width%3D%225%22%2F%3E%3Crect%20x%3D%2220%22%20y%3D%22-18%22%20width%3D%2262%22%20height%3D%2225%22%20rx%3D%225%22%20fill%3D%22%23dcecf5%22%20stroke%3D%22%2317202a%22%20stroke-width%3D%224%22%2F%3E%3Ccircle%20cx%3D%2224%22%20cy%3D%2251%22%20r%3D%2213%22%20fill%3D%22%2317202a%22%2F%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2251%22%20r%3D%2213%22%20fill%3D%22%2317202a%22%2F%3E%3C%2Fg%3E%3Ctext%20x%3D%22320%22%20y%3D%2245%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2226%22%20font-weight%3D%22700%22%20fill%3D%22%237a4d00%22%3ECHECK%20TRAFFIC%20BEFORE%20A%20U-TURN%3C%2Ftext%3E%3C%2Fsvg%3E",
+        "options": [
+          "The height of the curb.",
+          "The turning radius of your vehicle.",
+          "Nearby trees or poles.",
+          "Whether traffic regulations permit a U-turn at that location."
+        ],
+        "selected": "Not answered",
+        "correct": "Whether traffic regulations permit a U-turn at that location.",
+        "status": "skipped"
+      }
+    ],
+    "submittedAt": "2026-09-24T03:06:55.365Z",
+    "clientIp": "127.0.0.1",
+    "serverUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36"
   }
 ]
