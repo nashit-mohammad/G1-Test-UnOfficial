@@ -11,7 +11,10 @@ const DATABASE_FILE = path.join(ROOT, 'submissions.json');
 const PAGE_FILE = path.join(ROOT, 'index.html');
 const ADMIN_USERNAME = process.env.ADMIN_USERNAME || '';
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || '';
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'nashit.mohammad@gmail.com';
+const ADMIN_EMAILS = (process.env.ADMIN_EMAIL || 'nashit.mohammad@gmail.com')
+  .split(/[;,]/)
+  .map(email => email.trim())
+  .filter(Boolean);
 const SMTP_HOST = process.env.SMTP_HOST || '';
 const SMTP_PORT = Number(process.env.SMTP_PORT) || 587;
 const SMTP_SECURE = process.env.SMTP_SECURE === 'true';
@@ -40,7 +43,7 @@ function writeLocalSubmissions(submissions){
 }
 
 function emailNotificationsConfigured(){
-  return Boolean(ADMIN_EMAIL && ((RESEND_API_KEY && RESEND_FROM) || (SMTP_HOST && SMTP_USER && SMTP_PASSWORD && SMTP_FROM)));
+  return Boolean(ADMIN_EMAILS.length && ((RESEND_API_KEY && RESEND_FROM) || (SMTP_HOST && SMTP_USER && SMTP_PASSWORD && SMTP_FROM)));
 }
 
 function buildSubmissionEmail(submission){
@@ -111,7 +114,7 @@ async function notifyAdminOfSubmission(submission){
         Authorization: `Bearer ${RESEND_API_KEY}`,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({from: RESEND_FROM, to: [ADMIN_EMAIL], subject, text: email.text, html: email.html})
+      body: JSON.stringify({from: RESEND_FROM, to: ADMIN_EMAILS, subject, text: email.text, html: email.html})
     });
     if(!resendResponse.ok){
       throw new Error(`Resend request failed: ${resendResponse.status} ${await resendResponse.text()}`);
@@ -123,9 +126,9 @@ async function notifyAdminOfSubmission(submission){
       secure: SMTP_SECURE,
       auth: {user: SMTP_USER, pass: SMTP_PASSWORD}
     });
-    await transporter.sendMail({from: SMTP_FROM, to: ADMIN_EMAIL, subject, text: email.text, html: email.html});
+    await transporter.sendMail({from: SMTP_FROM, to: ADMIN_EMAILS, subject, text: email.text, html: email.html});
   }
-  console.log(`Submission notification email sent to ${ADMIN_EMAIL}`);
+  console.log(`Submission notification email sent to ${ADMIN_EMAILS.join(', ')}`);
   return true;
 }
 
