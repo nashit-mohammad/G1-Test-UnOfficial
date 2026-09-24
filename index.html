@@ -297,7 +297,7 @@
     <h2 id="nameModalTitle">Start your practice test</h2>
     <p>Enter your name before beginning.</p>
     <label for="modalUserName">Your name
-      <input id="modalUserName" type="text" maxlength="80" autocomplete="name" required>
+      <input id="modalUserName" type="text" maxlength="50" autocomplete="name" required>
     </label>
     <div id="nameError" class="name-error" aria-live="polite"></div>
     <button type="submit">Continue to test</button>
@@ -313,7 +313,7 @@
       </div>
       <div class="top-controls">
         <label class="user-name-control" for="userName">Name
-          <input id="userName" type="text" maxlength="80" autocomplete="name" placeholder="Required" required aria-required="true">
+          <input id="userName" type="text" maxlength="50" autocomplete="name" placeholder="Required" required aria-required="true">
           <button id="editNameBtn" class="edit-name-button secondary" type="button" aria-label="Edit name" title="Edit name">&#9998;</button>
         </label>
         <label class="question-count-control" for="questionCount">Questions
@@ -1826,6 +1826,11 @@ function completeNameEntry(event){
   const error = document.getElementById('nameError');
   if(!name){
     error.textContent = 'Please enter your name to continue.';
+    modalInput.focus();
+    return;
+  }
+  if(name.length > 50 || !/^[\p{L}\p{N} _.]+$/u.test(name)){
+    error.textContent = 'Use up to 50 letters, numbers, spaces, underscores, or periods.';
     modalInput.focus();
     return;
   }
