@@ -19,7 +19,7 @@ The public practice page can submit responses, but viewing or deleting responses
 Render timed out when connecting to Gmail SMTP. For Render, Resend is recommended because it sends over HTTPS. Create an account at https://resend.com, create an API key, and configure these private environment variables in Render:
 
 ```text
-ADMIN_EMAIL=nashit.mohammad@gmail.com;anwar.aimon@gmail.com
+ADMIN_EMAIL=XXXXX
 RESEND_API_KEY=re_your_api_key
 RESEND_FROM=G1 Practice <onboarding@resend.dev>
 ```
