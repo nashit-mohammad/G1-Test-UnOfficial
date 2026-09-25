@@ -29,7 +29,7 @@ For production, verify your own domain in Resend and use an address from that do
 SMTP is still supported for local development. Configure these private environment variables before starting the server:
 
 ```powershell
-$env:ADMIN_EMAIL = "nashit.mohammad@gmail.com;anwar.aimon@gmail.com"
+$env:ADMIN_EMAIL = "XXXXXX"
 $env:SMTP_HOST = "smtp.example.com"
 $env:SMTP_PORT = "587"
 $env:SMTP_SECURE = "false"
